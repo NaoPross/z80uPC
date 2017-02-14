@@ -1,4 +1,4 @@
-
+## everywhere
 # libreoffice lock files 
 **/.~lock*
 
@@ -6,4 +6,43 @@
 **/*.swp
 **/*~
 
+## doc related
+# latex
+doc/**/*.aux
+doc/**/*.log
 
+## sw related
+# autotools
+sw/**/makefile
+sw/**/makefile.in
+sw/**/ar-lib
+sw/**/mdate-sh
+sw/**/py-compile
+sw/**/test-driver
+sw/**/ylwrap
+sw/**/autom4te.cache
+sw/**/autoscan.log
+sw/**/autoscan-*.log
+sw/**/aclocal.m4
+sw/**/compile
+sw/**/config.guess
+sw/**/config.h.in
+sw/**/config.log
+sw/**/config.status
+sw/**/config.sub
+sw/**/configure
+sw/**/configure.scan
+sw/**/depcomp
+sw/**/install-sh
+sw/**/missing
+sw/**/stamp-h*
+sw/**/build-aux
+sw/**/ltmain.sh
+sw/**/texinfo.tex
+sw/**/.deps
+
+# binaries
+sw/**/*.hex
+sw/**/*.bin
+sw/**/*.o
+sw/**/*.a
