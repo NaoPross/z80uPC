@@ -1,0 +1,28 @@
+STRUCTURE
+---------
+[*] address space
+[ ] pcb size (standard)
+[ ] ram pages
+
+HARDWARE
+--------
+[ ] bus buffering
+[*] ROM
+[*] RAM
+[*] clock circuit
+[ ] reset circuit
+[ ] digital port interface
+[ ] serial terminal
+[ ] extension connector
+[ ] keyboard driver
+[ ] display driver
+[ ] PCB layout
+
+SOFTWARE
+--------
+[ ] bootloader
+[ ] command interpreter
+[ ] program loader
+[ ] address editor
+[ ] NVRAM eraser
+[ ] data dump/copy

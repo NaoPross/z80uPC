@@ -1,0 +1,90 @@
+\documentclass[final, ms, a4paper, 11pt]{memoir}
+
+\usepackage[a4paper, inner=3cm, outer=3cm, marginpar=0pt]{geometry}
+\usepackage[explicit]{titlesec}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{xcolor} %
+
+% set line height
+\renewcommand{\baselinestretch}{1}
+% font hyphenation
+\usepackage{everysel}
+\EverySelectfont{%
+\fontdimen2\font=0.6em % interword space
+\fontdimen3\font=0.2em % interword stretch
+\fontdimen4\font=0.1em % interword shrink
+\fontdimen7\font=0.9em % extra space
+\hyphenchar\font=`\-% to allow hyphenation
+}
+
+
+% set section style
+% \newcommand{\secstyle}[2]{[ #2 ] \textcolor{red!50!black}{\MakeUppercase{#1}}}
+% \renewcommand*\thesection{\arabic{section}} % hide chapter
+
+\newcommand\ddate{01.01.1970}
+\titleformat{\section}
+  {\normalfont}{- \ddate{}:}{1em}
+  {\textcolor{red!50!black}{\MakeUppercase{#1}} -}
+% monochrome
+% \titleformat{\section}
+%   {\normalfont}{\thesection}{1em}{\MakeUppercase{#1}}
+
+\begin{document}
+\noindent {\Large Z80 Single Board Computer: Note e Diario di Lavoro} \\\\
+\noindent SAM Bellinzona 2016/2017 \\
+\noindent REF: Daniele Kamm \\
+\noindent PIF: Naoki Pross \\
+\vspace{5mm}
+
+\renewcommand\ddate{30.01.2017}
+\section{Perch\`e uno Z80?}
+Originariamente questo progetto era un esperimento per costruire una
+cartridge per il GameBoy Classic (DMZ-01) che conteneva dell'hardware
+aggiuntivo che avrebbe potuto interfacciare dell'hardware esterno con la CPU
+del GameBoy. Successivamente per\`o il progetto si \`e rivelato pi\`u
+complicato del previsto a causa della complessa struttura del GB (GameBoy) e
+la difficolt\`a per ritrovare l'hardware stesso. Quindi sotto consiglio del
+docente ho cambiato il progetto in un Single Board Computer dato che sono
+interessato in informatica di basso livello e la CPU del GB era basata sul
+processore Z80 con un instruction set e assembly simile.
+
+\renewcommand\ddate{09.02.2017}
+\section{Hardware}
+Dopo una ricerca abbastanza intensiva dal magazzino della scuola abbiamo trovato
+i seguenti componenti principali del che utilizzer\`o per costruire il computer.
+\begin{table}[h!] \centering
+\begin{tabular}{ l l l l }
+    Z8400AB1 (Z80ACPU) & Zilog   & x1 & CPU \\
+    Z8420AB1 (Z80APIO) & Zilog   & x1 & Port Interface \\
+    Z8430AB1 (Z80ACTC) & Zilog   & x1 & Timer Clock \\
+    M28C64             & ST      & x2 & EEPROM \\
+    HM62256B           & HITACHI & x1 & SRAM \\
+    TL16C550C          & TI      & x1 & Seriale (UART / RS232) \\
+\end{tabular}
+\end{table}
+
+Tutti gli altri componenti secondati come porte logiche e circuiti combinatori
+integrati saranno indicati in una lista finale nella documentazione riassuntiva.
+
+\renewcommand\ddate{13.02.2017}
+\section{Address space}
+\begin{wrapfigure}{R}{.35\linewidth} \centering
+    \includegraphics[width=.9\linewidth]{res/addrspace.pdf}
+\end{wrapfigure}
+Come prima cosa dopo aver deciso il processore (Z80) \`e necessario definire
+l'address space per decidere come collegare l'hardware. Si vede chiaramente che
+la RAM usa la maggior parte dell'address space mentre la rom \`e solamente di
+16KB, ma questo non \`e un problema perch\`e ho intenzione di aggiungere delle
+interfacce esterne per poter collegare dispositivi di memoria come per esempio
+le uSD. Dunque questa EEPROM vicina al processore sar\`a utilizzata unicamente
+per il bootloader e per un sistema operativo molto basilare.
+
+\renewcommand\ddate{23.02.2017}
+\section{Banchi di memoria}
+
+\renewcommand\ddate{04.03.2017}
+\section{Standards e  Norme}
+
+\end{document}
