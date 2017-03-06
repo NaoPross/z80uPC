@@ -1,18 +1,21 @@
 STRUCTURE
 ---------
 [*] address space
-[ ] pcb size (standard)
+[ ] pcb size (eurocard?)
 [ ] ram pages
 
 HARDWARE
 --------
-[ ] bus buffering
+[?] bus buffering
 [*] ROM
 [*] RAM
-[*] clock circuit
-[ ] reset circuit
+[*] primary clock (4MHz)
+[*] secondary clock (200Hz)
+[*] stepper button
+[*] reset circuit
 [ ] digital port interface
 [ ] serial terminal
+[ ] address and data visualizer (7SEG display)
 [ ] extension connector
 [ ] keyboard driver
 [ ] display driver
