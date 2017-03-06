@@ -1,0 +1,10 @@
+Output: Protel
+Type  : ProtelNetlist
+From  : Project [z80uPC.PrjPCB]
+   Generated File[MainSheet.NET]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 10:54:34 On 06.03.2017
