@@ -2,6 +2,7 @@
 
 \usepackage[a4paper, inner=3cm, outer=3cm, marginpar=0pt]{geometry}
 \usepackage[explicit]{titlesec}
+\usepackage{csvsimple}
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{xcolor} %
@@ -81,8 +82,8 @@ interfacce esterne per poter collegare dispositivi di memoria come per esempio
 le uSD. Dunque questa EEPROM vicina al processore sar\`a utilizzata unicamente
 per il bootloader e per un sistema operativo molto basilare.
 
-\renewcommand\ddate{23.02.2017}
-\section{Banchi di memoria}
+% \renewcommand\ddate{23.02.2017}
+% \section{Banchi di memoria e paging della RAM}
 
 \renewcommand\ddate{06.03.2017}
 \section{Schede normate e clock secondari}
@@ -92,8 +93,63 @@ poter montare tutte le schede su un rack. Cos\`i facendo si avrebbe dei
 connettori standard sul retro che si potrebbero utilizzare per le periferiche
 esterne. Alternativamente si potrebbe utilizzare una struttura simile al PC/104
 permettendo di interfacciare delle periferiche specifiche per computer ancora
-diponibili sul mercato.
+diponibili sul mercato. Il connettore standard per PC/104 \`e un header 32x2,
+quindi con 64 pin mappato come indicato sotto, con un opzionale estensione che
+pu\`o aumentare il connettore a 146
+pins\footnote{http://pinouts.ru/Slots/Pc104_pinout.shtml}.
+\begin{tabular}
+\csvautotabular{res/pc104conn.csv}
+\end{tabular}
+
+\renewcommand\ddate{07.03.2017}
+\section{Tastiera Misteriosa}
+Nello stesso luogo in cui avevo trovato lo Z80 stesso ho trovato anche una
+tastiera con un connettore mai visto. Il connettore era composto da 19 pin, di
+cui 16 erano collegati all'interno della tastiera. Inizialmente pensavo che la
+tastiera contenesse gi\`a un driver che generava degli interrupt, come una
+qualsiasi tastiera moderna, con l'unica differenza che il bus di comunicazione
+era parallelo. Ma dopo una ricerca rapida senza risultati ho deciso di aprire la
+tastiera per analizzare il layout. Inaspettatamente ho scoperto che l'intero PCB
+non \`e altro che una griglia 9x9 con i 18 fili che portano al connettore.
+Questo hardware probabilmente era per un C64 Commodore 64 che aveva il resto
+della logica programmata nella ROM o sulla scheda madre.
+
+Per utilizzare l'hardware in questo stato \`e dunque necessario attivare i
+primi 9 bit del connettore e successivamente leggere i seguenti 9 mascherando il
+tasto interessato. Qui sotto ho preso un esempio che ho trovato online per
+dimostrare il concetto in assembly.
+
+\begin{centering}\begin{verbatim}
+; This program waits until the key "S" was pushed.
+; Start with SYS 49152
+
+*=$c000                  ; startaddress 
+
+PRA  =  $dc00            ; CIA#1 (Port Register A)
+DDRA =  $dc02            ; CIA#1 (Data Direction Register A)
+
+PRB  =  $dc01            ; CIA#1 (Port Register B)
+DDRB =  $dc03            ; CIA#1 (Data Direction Register B)
 
 
+start    sei             ; interrupts deactivated
+
+         lda #%11111111  ; CIA#1 port A = outputs 
+         sta DDRA             
+
+         lda #%00000000  ; CIA#1 port B = inputs
+         sta DDRB             
+
+         lda #%11111101  ; testing column 1 (COL1) of the matrix
+         sta PRA
+            
+loop     lda PRB
+         and #%00100000  ; masking row 5 (ROW5) 
+         bne loop        ; wait until key "S" 
+
+         cli             ; interrupts activated
+
+ende     rts             ; back to BASIC
+\end{verbatim}\end{centering}
 
 \end{document}
