@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0  Date: 04/04/2015 23:06:23
+#
+$CMP 2SA1020
+D 2SA1016, 50V Vce, 2A Ic, One Watt High Current PNP Transistor, TO-92
+K High Current PNP Transistor
+$ENDCMP
+#
+#End Doc Library

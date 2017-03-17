@@ -22,11 +22,15 @@ HARDWARE
 [*] secondary clock (200Hz)
 [*] stepper button
 [*] reset circuit
-[ ] serial terminal
-[ ] digital port interface
-[ ] timer(s)
-[ ] extension connector
-[ ] address and data visualizer (7SEG display)
+[*] serial circuit
+    [*] usart
+    [*] transceiver
+[*] digital port interface
+[*] timer(s)
+[*] extension connector
+[*] address and data visualizer (7SEG display)
+[ ] address decoder
+[ ] interrupt priorities
 [ ] keyboard driver
 [ ] display adapter
 [ ] PCB layout
@@ -40,4 +44,4 @@ SOFTWARE
 [ ] NVRAM eraser
 [ ] data dump/copy
 [ ] basic kernel
-[ ] C compiler
+[ ] C compiler ?

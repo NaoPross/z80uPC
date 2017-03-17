@@ -96,7 +96,8 @@ permettendo di interfacciare delle periferiche specifiche per computer ancora
 diponibili sul mercato. Il connettore standard per PC/104 \`e un header 32x2,
 quindi con 64 pin mappato come indicato sotto, con un opzionale estensione che
 pu\`o aumentare il connettore a 146
-pins\footnote{http://pinouts.ru/Slots/Pc104_pinout.shtml}.
+pins\footnote{http://pinouts.ru/Slots/Pc104\_pinout.shtml}.
+
 \begin{tabular}
 \csvautotabular{res/pc104conn.csv}
 \end{tabular}
@@ -151,5 +152,12 @@ loop     lda PRB
 
 ende     rts             ; back to BASIC
 \end{verbatim}\end{centering}
+
+\renewcommand\ddate{16.03.2017}
+\section{Visualizzare e i dati}
+Avendo messo un ``clock-stepper'' probabilmente \`e utile poter anche
+visualizzare i valori esadecimali sul bus di dati e di indirizzi, dunque ho
+pensato di aggiungere dei display a 7 segmenti collegati alle 8 e 16 linee dei
+due bus, 
 
 \end{document}
