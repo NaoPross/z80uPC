@@ -71,9 +71,9 @@ integrati saranno indicati in una lista finale nella documentazione riassuntiva.
 
 \renewcommand\ddate{13.02.2017}
 \section{Address space}
-\begin{wrapfigure}{R}{.35\linewidth} \centering
-    \includegraphics[width=.9\linewidth]{res/addrspace.pdf}
-\end{wrapfigure}
+% \begin{wrapfigure}{R}{.35\linewidth} \centering
+%     \includegraphics[width=.9\linewidth]{res/addrspace.pdf}
+% \end{wrapfigure}
 Come prima cosa dopo aver deciso il processore (Z80) \`e necessario definire
 l'address space per decidere come collegare l'hardware. Si vede chiaramente che
 la RAM usa la maggior parte dell'address space mentre la rom \`e solamente di
@@ -98,9 +98,7 @@ quindi con 64 pin mappato come indicato sotto, con un opzionale estensione che
 pu\`o aumentare il connettore a 146
 pins\footnote{http://pinouts.ru/Slots/Pc104\_pinout.shtml}.
 
-\begin{tabular}
 \csvautotabular{res/pc104conn.csv}
-\end{tabular}
 
 \renewcommand\ddate{07.03.2017}
 \section{Tastiera Misteriosa}
@@ -120,7 +118,8 @@ primi 9 bit del connettore e successivamente leggere i seguenti 9 mascherando il
 tasto interessato. Qui sotto ho preso un esempio che ho trovato online per
 dimostrare il concetto in assembly.
 
-\begin{centering}\begin{verbatim}
+\begin{centering}
+\begin{verbatim}
 ; This program waits until the key "S" was pushed.
 ; Start with SYS 49152
 
@@ -151,7 +150,8 @@ loop     lda PRB
          cli             ; interrupts activated
 
 ende     rts             ; back to BASIC
-\end{verbatim}\end{centering}
+\end{verbatim}
+\end{centering}
 
 \renewcommand\ddate{16.03.2017}
 \section{Visualizzare e i dati}
