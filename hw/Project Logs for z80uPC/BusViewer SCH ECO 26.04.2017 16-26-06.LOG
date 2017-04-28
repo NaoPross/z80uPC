@@ -1,0 +1,5 @@
+Change Component Footprint: Designator=P3 Old Footprint=HDR2X5 New Footprint=MHDR2X5
+Add Pin To Net: Pin=S1-1 Old Net=NetS1_1 New Net=CLK
+Add Pin To Net: Pin=S1-3 Old Net=NetS1_3 New Net=CLK3
+Add Pin To Net: Pin=S1-4 Old Net=NetS1_4 New Net=CLK2
+Add Pin To Net: Pin=S1-5 Old Net=NetS1_5 New Net=CLK1
