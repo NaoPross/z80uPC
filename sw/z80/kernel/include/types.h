@@ -6,4 +6,6 @@
 #define int16_t     int
 #define uint16_t    unsigned int
 
+#define size_t      uint16_t
+
 #endif
