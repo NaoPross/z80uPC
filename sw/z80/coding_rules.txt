@@ -1,0 +1,120 @@
+CODING STYLE FOR THIS PROJECT
+=============================
+
+In order to have a consistent codebase, there are the following rules on
+writing code in C (and assembly). For the most part they are similar to the
+Linux kernel coding rules by Torvalds.
+
+PROGRAM LOGIC
+-------------
+I expect a certain level of common sense from people so I won't mention the
+super-basic stuff. But I would like to point out a few thing I WON'T accept
+(unless there is a valid reason and an explanation of why).  First, I believe
+that code has to be aesthetically pleasing to watch and with a clear logic
+flow so:
+
+    - Avoid deeply nested code and recursive black magic
+
+    - No special cases: generally the code of a function should behave the
+      same with any argument. Avoid horrible exceptions for magic values
+
+    - No extreme modularization: do not write code that is extremely
+      encapsulated with dozens of helper functions to control every signal
+      that runs through the damn motherboard
+
+EDITOR (SPACES > TABS)
+----------------------
+You can use your favourite editor but spaces are better than tabs, no
+discussion. For this project every source file must have an indent of 4
+spaces. Since 80 characters is the standard terminal width, the code has to be
+hard wrapped at 80, 78 or 72 characters. Also there shouldn't be any markup on
+the source code for your editor, not even in the comments; just the code.
+
+    - use spaces, 1 indent - 4 spaces
+    - hard wrap at 80 / 78 / 72 characters
+    - no markup for folds or any other editor specific feature
+    
+
+C CODE INDENT AND BRACES
+------------------------
+I personally prefer the K&R coding style because it was used in 'The C
+Programming Language' book from Dennis Ritchie which is the 'standard' for
+learning C. But I also like Linus' kernel coding rules, so sometimes I might
+use some of his rules. Anyway, you can look them up if you want to or just
+look at the following example that sums most of the important stuff.
+
+    - K&R braces and function prototypes
+    - snake_case for variables and function names
+    - pointer asterisk in front of the variable ( ex: int *p; )
+
+Here's a short example that uses most of the stuff:
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    #define MY_DEVICE_MEMORY_ADDR   0x5020
+
+    #define MY_DEVICE_FLAG_RDY      1
+    #define MY_DEVICE_FLAG_ERR      2
+
+    // same for unions
+    struct my_device
+    {
+        volatile uint8_t buffer;
+        volatile uint8_t flags;
+    } *_my_dev = (struct my_device *) MY_DEVICE_MEMORY_ADDR;
+
+    
+    int my_device_write(uint8_t *data, size_t size);
+
+    /* This is the main function
+     * and this is a multiline comment to explain something if needed
+     */
+    int main(int argc, char *argv[])
+    {
+        int i;
+        int j = 0;
+        uint8_t data[2] = { 0xFF, 0xAB };
+        const char *string = "My magic string";
+
+        while (j < 100) {
+            j++;
+        }
+
+        printf("%s\n", string);
+
+        if (some_condition) {
+            // inline comment
+        } else {
+            my_device_write(data, 2);
+        }
+
+        switch (i) {
+        case 0:
+            some_function();
+            break;
+
+        case 1:
+            // ...
+            break;
+
+        default:
+            // ...
+        }
+    }
+
+    int my_device_write(uint8_t *data, size_t size) 
+    {
+        int i;
+
+        for (i = 0; i < size; i++) {
+            _my_dev.buffer = data;
+            while (!(_my_dev.flags & (1<<MY_DEVICE_FLAG_RDY)));
+
+            if (_my_dev.flags &  (1<<MY_DEVICE_FLAG_ERR)) {
+                return -1;
+            }
+        }
+
+        return i;
+    }
