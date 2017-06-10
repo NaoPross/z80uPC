@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=A12 Pin=U1-2
+Added Pin To Net: NetName=MMU_A12 Pin=U1-2
