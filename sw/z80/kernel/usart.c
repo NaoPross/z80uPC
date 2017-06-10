@@ -65,8 +65,8 @@ int usart_write(uint8_t *data, size_t size)
 
     while (size--) {
         _usart->buffer = *(dp++);
+        while (_usart->LSR.transmitter_empty);
     }
-    while (_usart->LSR.transmitter_empty);
 
     // TODO: do something that actually counts for sent bytes 
     return size;
@@ -83,7 +83,7 @@ int usart_read(uint8_t *buffer, size_t count)
         if (_usart->LSR.framing_error || _usart->LSR.parity_error) {
             bp--; // delete last byte (?)
         } else {
-           read_count++;
+            read_count++;
         }
     }
 
