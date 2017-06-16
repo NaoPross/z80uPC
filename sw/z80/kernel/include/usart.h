@@ -134,7 +134,7 @@ struct _usart_device
 // setup functions (wrappers)
 void usart_set_baudrate(uint16_t baudrate);
 void usart_set_parity(int mode);
-void usart_set_stob_bits(int count);
+void usart_set_stop_bits(int count);
 void usart_set_word_length(int length);
 void usart_set_autoflow(int mode);
 
