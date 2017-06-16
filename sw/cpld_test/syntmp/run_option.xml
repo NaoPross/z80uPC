@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- 
+  Synopsys, Inc.
+  Version I-2014.03LC 
+  Project file \\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\syntmp\run_option.xml
+  Written on Thu Jun 01 13:51:51 2017
+
+
+--> 
+<project_attribute_list name="Project Settings"> 
+     <option name="project_name" display_name="Project Name">cpld_test</option>
+     <option name="impl_name" display_name="Implementation Name">cpld_test</option>
+     <option name="top_module" display_name="Top Module">cpld_test</option>
+     <option name="resource_sharing" display_name="Resource Sharing">1</option>
+     <option name="disable_io_insertion" display_name="Disable I/O Insertion">0</option>
+     <option name="symbolic_fsm_compiler" display_name="FSM Compiler">1</option>
+</project_attribute_list>
+
