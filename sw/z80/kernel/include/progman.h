@@ -51,7 +51,6 @@ struct program_base {
     size_t inst_size;   // size of the instructions set
     void * bss_data;    // pointer to the bss/data space
     size_t data_size;   // size of the bss/data space
-    size_t stack_size;  // size of the stack to determine the stack limit
 };
 
 void prog_alloc(int8_t id, struct program_info *info, const struct program_base *base);

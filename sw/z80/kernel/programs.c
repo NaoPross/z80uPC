@@ -1,4 +1,5 @@
 #include "progman.h"
+#include "string.h"
 
 #define EMPTY_PROG_INFO 0x0
 
@@ -37,8 +38,34 @@ int8_t prog_req(struct program_info *info) {
 
 void prog_alloc(int8_t id, struct program_info *info, const struct program_base *base) {
 
-    // TODO, implements program allocation
+    void *addr = (id ? PROG_1_PREFIX : PROG_0_PREFIX) + PROG_VSTART;
+
+    if (info->enabled) {
+
+        if (id)
+            prog_1_fquit(); // force quit operation
+        else
+            prog_0_fquit();
+    }
+        
+
+    memcpy(addr, base->inst_set, base->inst_size);
+
+    addr += base->inst_size;
+
+    memcpy(addr, base->bss_data, base->data_size);
+
+    addr += base->data_size;
+
+    // TODO, empty heap and stack
 }
+
+/*
+*   TODO Called from the assembly, system calls
+*/
+
+extern void exec_0(void);
+extern void exec_1(void);
 
 void prog_exec(int8_t id, struct program_info *info) {
 

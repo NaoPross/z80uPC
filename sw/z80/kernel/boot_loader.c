@@ -1,5 +1,6 @@
 #include "boot.h"
 #include "progman.h"
+#include "string.h"
 
 #define DEFAULT_EXEC_STATUS 0x4000
 
@@ -14,30 +15,10 @@ void boot_init() {
 
 int8_t authenticate(const char *pwd) {
 
-    const char *c_pwd = PWD_ADDR, *c_req = pwd;
-    
-    for (uint8_t i = 0; i < PWD_SIZE; i++) {
-
-        if (*c_pwd != *c_req)
-            return 0;
-
-        c_pwd++;
-        c_req++;
-    }
-
-    return 1;
+    return !memcmp(PWD_ADDR, pwd, PWD_SIZE);
 }
 
 void set_pwd(const char *pwd) {
 
-    char *c_pwd = PWD_ADDR;
-    const char *c_req = pwd;
-
-    for (uint8_t i = 0; i < PWD_SIZE; i++) {
-
-        *c_pwd = *c_req;
-
-        c_pwd++;
-        c_req++;
-    }
+    memcpy(PWD_ADDR, pwd, PWD_SIZE);
 }
