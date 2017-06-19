@@ -40,6 +40,29 @@ void progman_init();
 int8_t prog_req(struct program_info *info);
 
 /*
+*   It allocates a program in the RAM
+*   To obtain the right id call prog_req() first
+*   Basic informations must be allocated and referenced by a program_base struct
+*/
+
+struct program_base {
+
+    void * inst_set;    // pointer to the instructions set
+    size_t inst_size;   // size of the instructions set
+    void * bss_data;    // pointer to the bss/data space
+    size_t data_size;   // size of the bss/data space
+    size_t stack_size;  // size of the stack to determine the stack limit
+};
+
+void prog_alloc(int8_t id, struct program_info *info, const struct program_base *base);
+
+/*
+*   It jumps the program counter to the given one
+*/
+
+void prog_exec(int8_t id, struct program_info *info);
+
+/*
 *   It sets a quit callback
 */
 

@@ -35,6 +35,16 @@ int8_t prog_req(struct program_info *info) {
     return prog;
 }
 
+void prog_alloc(int8_t id, struct program_info *info, const struct program_base *base) {
+
+    // TODO, implements program allocation
+}
+
+void prog_exec(int8_t id, struct program_info *info) {
+
+    // TODO, perform a program counter jump
+}
+
 void prog_0_qcb(void (*callback)(void)) {
 
     prog_0->quit_cb = callback;
