@@ -1,10 +1,7 @@
 #include "types.h"
+#include "usart.h"
 
-
-void main(void)
+void kmain(void)
 {
-    int i, j = 20;
-    for (i = 0; i < 10; i++) {
-        j--;
-    }
+    usart_init(USART_BAUDRATE_9600, USART_PARITY_EVEN, USART_STOP_BITS_1);
 }

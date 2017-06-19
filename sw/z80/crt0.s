@@ -27,7 +27,7 @@
 ;--------------------------------------------------------------------------
 
 	.module crt0
-	.globl	_main
+	.globl	_kmain
 
 	.area	_HEADER (ABS)
 	;; Reset vector
@@ -56,7 +56,7 @@ init:
 
 	;; Initialise global variables
 	call	gsinit
-	call	_main
+	call	_kmain
 	jp	    _exit
 
 	;; Ordering of segments for the linker.

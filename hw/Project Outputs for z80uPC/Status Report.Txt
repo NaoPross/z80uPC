@@ -1,10 +1,34 @@
-Output: Protel
-Type  : ProtelNetlist
-From  : Project [z80uPC.PrjPCB]
-   Generated File[MainSheet.NET]
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 09:54:31 On 23.05.2017
+
+Output: Gerber X2 Files
+Type  : GerberX2
+From  : PCB Document [MainBoard.PcbDoc]
+   Generated File[MainBoard_Copper_Signal_Top.gbr]
+   Generated File[MainBoard_Copper_Plane_1.gbr]
+   Generated File[MainBoard_Copper_Plane_2.gbr]
+   Generated File[MainBoard_Copper_Signal_Bot.gbr]
+   Generated File[MainBoard_Pads_Bot.gbr]
+   Generated File[MainBoard_Pads_Top.gbr]
+   Generated File[MainBoard_Legend_Top.gbr]
+   Generated File[MainBoard_Soldermask_Top.gbr]
+   Generated File[MainBoard_Paste_Bot.gbr]
+   Generated File[MainBoard_Legend_Bot.gbr]
+   Generated File[MainBoard_Soldermask_Bot.gbr]
+   Generated File[MainBoard_Paste_Top.gbr]
+   Generated File[MainBoard_Mechanical_15.gbr]
+   Generated File[MainBoard_Profile.gbr]
+   Generated File[MainBoard_NPTH_Drill.gbr]
+   Generated File[MainBoard_PTH_Drill.gbr]
+   Generated File[MainBoard_Drawing_1.gbr]
+   Generated File[MainBoard_Drillmap_1.gbr]
+   Generated File[MainBoard.RUL]
+   Generated File[MainBoard.EXTREP]
+   Generated File[MainBoard.REP]
 
 
-Files Generated   : 1
+Files Generated   : 21
 Documents Printed : 0
 
-Finished Output Generation At 10:54:34 On 06.03.2017
+Finished Output Generation At 09:54:33 On 23.05.2017

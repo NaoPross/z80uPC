@@ -1,0 +1,4 @@
+Added Component: Designator=C24(RB7.6-15)
+Added Pin To Net: NetName=NetC11_2 Pin=C24-1
+Added Pin To Net: NetName=DB9-5 Pin=C24-2
+Added Member To Class: ClassName=Peripherals Member=Component C24 Cap Pol1

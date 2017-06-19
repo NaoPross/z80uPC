@@ -1,0 +1,4 @@
+Change Component Footprint: Designator=P3 Old Footprint=MHDR2X5 New Footprint=HDR2X5
+Change Net Name : Old Net Name=GND New Net Name=DB9-5
+Added Member To Class: ClassName=Peripherals Member=Component C10 Cap
+Added Room: Name=MainSheet
