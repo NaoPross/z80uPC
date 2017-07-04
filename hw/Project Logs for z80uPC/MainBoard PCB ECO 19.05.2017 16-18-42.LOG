@@ -1,0 +1,11 @@
+Added Component: Designator=J2(KLD-0202)
+Added Pin To Net: NetName=NetC11_2 Pin=J2-1
+Added Pin To Net: NetName=NetC11_2 Pin=J2-1
+Added Pin To Net: NetName=NetC11_2 Pin=J2-1
+Added Pin To Net: NetName=DB9-5 Pin=J2-2
+Added Pin To Net: NetName=DB9-5 Pin=J2-2
+Added Pin To Net: NetName=DB9-5 Pin=J2-2
+Added Pin To Net: NetName=NetJ2_3 Pin=J2-3
+Added Pin To Net: NetName=NetJ2_3 Pin=J2-3
+Added Pin To Net: NetName=NetJ2_3 Pin=J2-3
+Added Member To Class: ClassName=Peripherals Member=Component J2 PWR2.5

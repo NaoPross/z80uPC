@@ -1,0 +1,73 @@
+Removed Pin From Net: NetName=CLK Pin=S1-1
+Added Member To Class: ClassName=IODevices Member=Component C1 Cap
+Added Member To Class: ClassName=IODevices Member=Component C2 Cap
+Added Member To Class: ClassName=IODevices Member=Component C3 Cap
+Added Member To Class: ClassName=IODevices Member=Component C4 Cap
+Added Member To Class: ClassName=IODevices Member=Component C5 Cap
+Added Member To Class: ClassName=IODevices Member=Component C6 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C7 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C8 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C9 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C10 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C11 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C12 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C13 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C14 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C15 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C16 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C17 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C18 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C19 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C20 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C21 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C22 Cap
+Added Member To Class: ClassName=Peripherals Member=Component C23 Cap
+Added Member To Class: ClassName=Peripherals Member=Component D1 1N4148
+Added Member To Class: ClassName=Peripherals Member=Component D2 1N4148
+Added Member To Class: ClassName=BusViewer Member=Component DS1 Dpy Blue-CC
+Added Member To Class: ClassName=BusViewer Member=Component DS2 Dpy Blue-CC
+Added Member To Class: ClassName=BusViewer Member=Component DS3 Dpy Blue-CC
+Added Member To Class: ClassName=BusViewer Member=Component DS4 Dpy Blue-CC
+Added Member To Class: ClassName=BusViewer Member=Component DS5 Dpy Blue-CC
+Added Member To Class: ClassName=BusViewer Member=Component DS6 Dpy Blue-CC
+Added Member To Class: ClassName=IODevices Member=Component J1 D Connector 9
+Added Member To Class: ClassName=Peripherals Member=Component J2 PWR2.5
+Added Member To Class: ClassName=IODevices Member=Component P1 MHDR1X10
+Added Member To Class: ClassName=IODevices Member=Component P2 Header 8X2
+Added Member To Class: ClassName=IODevices Member=Component P3 Header 10
+Added Member To Class: ClassName=IODevices Member=Component P4 MHDR1X10
+Added Member To Class: ClassName=IODevices Member=Component P5 MHDR1X10
+Added Member To Class: ClassName=Peripherals Member=Component P6 Header 32X2
+Added Member To Class: ClassName=Peripherals Member=Component P7 MHDR1X10
+Added Member To Class: ClassName=IODevices Member=Component R1 Res2
+Added Member To Class: ClassName=IODevices Member=Component R2 Res2
+Added Member To Class: ClassName=Peripherals Member=Component R3 Res2
+Added Member To Class: ClassName=Peripherals Member=Component R4 Res2
+Added Member To Class: ClassName=Peripherals Member=Component R5 Res2
+Added Member To Class: ClassName=Peripherals Member=Component R6 Res2
+Added Member To Class: ClassName=Peripherals Member=Component R7 Res2
+Added Member To Class: ClassName=MainSheet Member=Component S1 SW-3WAY
+Added Member To Class: ClassName=IODevices Member=Component S2 SW-SPDT
+Added Member To Class: ClassName=BusViewer Member=Component S3 SW-SPDT
+Added Member To Class: ClassName=Peripherals Member=Component S4 SW-PB
+Added Member To Class: ClassName=Peripherals Member=Component S5 SW-PB
+Added Member To Class: ClassName=MainSheet Member=Component U1 Z84C0004PEC
+Added Member To Class: ClassName=MainSheet Member=Component U2 M28C64-150P1
+Added Member To Class: ClassName=MainSheet Member=Component U3 HM62256
+Added Member To Class: ClassName=MainSheet Member=Component U4 M4-32/32-15JC
+Added Member To Class: ClassName=MainSheet Member=Component U5 M28C64-150P1
+Added Member To Class: ClassName=IODevices Member=Component U6 TL16C550C
+Added Member To Class: ClassName=IODevices Member=Component U8 Z84C3004PEC
+Added Member To Class: ClassName=IODevices Member=Component U9 Z84C2004PEC
+Added Member To Class: ClassName=BusViewer Member=Component U10 MC14495
+Added Member To Class: ClassName=BusViewer Member=Component U11 MC14495
+Added Member To Class: ClassName=BusViewer Member=Component U12 MC14495
+Added Member To Class: ClassName=BusViewer Member=Component U13 MC14495
+Added Member To Class: ClassName=BusViewer Member=Component U14 MC14495
+Added Member To Class: ClassName=BusViewer Member=Component U15 MC14495
+Added Member To Class: ClassName=Peripherals Member=Component U16 SE555P
+Added Member To Class: ClassName=Peripherals Member=Component U17 SG51P
+Added Member To Class: ClassName=Peripherals Member=Component U18 L7805ACV
+Added Member To Class: ClassName=IODevices Member=Component Y1 XTAL
+Added Room: Name=MainSheet
+Added Room: Name=Peripherals

@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=A12 Pin=U4-18
+Removed Pin From Net: NetName=A13 Pin=U4-19
+Removed Pin From Net: NetName=A14 Pin=U4-20
+Removed Pin From Net: NetName=A15 Pin=U4-21
+Added Pin To Net: NetName=A15 Pin=U4-36
+Added Pin To Net: NetName=A14 Pin=U4-37
+Added Pin To Net: NetName=A13 Pin=U4-38
+Added Pin To Net: NetName=A12 Pin=U4-39
+Added Pin To Net: NetName=D3 Pin=U4-40
+Added Pin To Net: NetName=D2 Pin=U4-41
+Added Pin To Net: NetName=D1 Pin=U4-42
+Added Pin To Net: NetName=D0 Pin=U4-43
+Added Pin To Net: NetName=MMU_A12 Pin=U4-18
+Added Net: Name=MMU_A12
+Added Pin To Net: NetName=MMU_A13 Pin=U4-19
+Added Net: Name=MMU_A13
+Added Pin To Net: NetName=MMU_A14 Pin=U4-20
+Added Net: Name=MMU_A14
+Added Pin To Net: NetName=MMU_A15 Pin=U4-21
+Added Net: Name=MMU_A15
+Added Member To Class: ClassName=IODevices Member=Component P2 Header 8X2
