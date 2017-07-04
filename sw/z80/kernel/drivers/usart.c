@@ -1,4 +1,4 @@
-#include "usart.h"
+#include "drivers/usart.h"
 
 static struct _usart_device *_usart = (struct _usart_device *) ADDR_DEV_USART;
 
