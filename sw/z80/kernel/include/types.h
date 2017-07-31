@@ -1,6 +1,8 @@
 #ifndef __TYPES_H__
 #define __TYPES_H__
 
+/* only types from primitive types are defined in this file */ 
+
 #define register_t  volatile unsigned char
 
 #define uint 		unsigned int

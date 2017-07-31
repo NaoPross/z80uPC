@@ -1,5 +1,5 @@
-#ifndef SYS_CALL
-#define SYS_CALL
+#ifndef __SYS_CALL_H__
+#define __SYS_CALL_H__
 
 /*
 *   Enable / disable virtual address traslation

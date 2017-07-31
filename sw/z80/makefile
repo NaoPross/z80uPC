@@ -23,6 +23,7 @@ CFLAGS	:= -mz80 \
 			-DDEBUG
 
 LDFLAGS := -mz80 --no-std-crt0 crt0.rel \
+			--std-c89 -pedantic \
 			--code-loc 0x0800 --data-loc 0x8000
 
 .PHONY: dirs dis clean

@@ -13,7 +13,7 @@ void _pio_command(int port, uint8_t cmd)
     *(pio_ctrl + port) = cmd;
 }
 
-void pio_set_mode(int port, int mode)
+/* void pio_set_mode(int port, int mode)
 {
-	
-}
+
+} */

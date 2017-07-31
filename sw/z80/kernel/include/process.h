@@ -2,6 +2,7 @@
 #define __PROCESS_H__
 
 #include "types.h"
+#include "memory.h"
 
  /* maximum number of processes (i.e. pages in ram)
   * since each program can use only one page in ram
@@ -10,17 +11,17 @@
 
 struct executable
 {
-	void *text;
-	size_t text_size;
-	void *bss;
-	size_t bss_size;
-}
+    void *text;
+    size_t text_size;
+    void *bss;
+    size_t bss_size;
+};
 
 struct process
 {
-    uint blocked :1;	// process is waiting for hardware or locked
-    uint running :1;	// pid is used
-    uint pages[4];		// pages used by the process
+    uint blocked :1;    // process is waiting for hardware or locked
+    uint running :1;    // pid is used
+    struct page pages[4];      // pages used by the process
     // TODO: implement quick callback?
 };
 
@@ -29,8 +30,9 @@ struct process
  * limitation but for our purposes is more than enough
  */
 extern struct process proc_table[255];
+extern struct process *current_proc;
 
-static pid_t newpid(void);
+pid_t newpid(void);
 
 int fork(void);
 int exec(char *path, char *args);
