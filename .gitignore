@@ -13,33 +13,33 @@ doc/**/*.log
 
 ## sw related
 # autotools
-sw/linux/**/makefile
-sw/linux/**/makefile.in
-sw/linux/**/ar-lib
-sw/linux/**/mdate-sh
-sw/linux/**/py-compile
-sw/linux/**/test-driver
-sw/linux/**/ylwrap
-sw/linux/**/autom4te.cache
-sw/linux/**/autoscan.log
-sw/linux/**/autoscan-*.log
-sw/linux/**/aclocal.m4
-sw/linux/**/compile
-sw/linux/**/config.guess
-sw/linux/**/config.h.in
-sw/linux/**/config.log
-sw/linux/**/config.status
-sw/linux/**/config.sub
-sw/linux/**/configure
-sw/linux/**/configure.scan
-sw/linux/**/depcomp
-sw/linux/**/install-sh
-sw/linux/**/missing
-sw/linux/**/stamp-h*
-sw/linux/**/build-aux
-sw/linux/**/ltmain.sh
-sw/linux/**/texinfo.tex
-sw/linux/**/.deps
+sw/programmer/linux/**/makefile
+sw/programmer/linux/**/makefile.in
+sw/programmer/linux/**/ar-lib
+sw/programmer/linux/**/mdate-sh
+sw/programmer/linux/**/py-compile
+sw/programmer/linux/**/test-driver
+sw/programmer/linux/**/ylwrap
+sw/programmer/linux/**/autom4te.cache
+sw/programmer/linux/**/autoscan.log
+sw/programmer/linux/**/autoscan-*.log
+sw/programmer/linux/**/aclocal.m4
+sw/programmer/linux/**/compile
+sw/programmer/linux/**/config.guess
+sw/programmer/linux/**/config.h.in
+sw/programmer/linux/**/config.log
+sw/programmer/linux/**/config.status
+sw/programmer/linux/**/config.sub
+sw/programmer/linux/**/configure
+sw/programmer/linux/**/configure.scan
+sw/programmer/linux/**/depcomp
+sw/programmer/linux/**/install-sh
+sw/programmer/linux/**/missing
+sw/programmer/linux/**/stamp-h*
+sw/programmer/linux/**/build-aux
+sw/programmer/linux/**/ltmain.sh
+sw/programmer/linux/**/texinfo.tex
+sw/programmer/linux/**/.deps
 
 # binaries
 sw/**/*.hex

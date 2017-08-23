@@ -44,7 +44,8 @@
               <object class="GtkEntry" id="devpath">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="placeholder_text" translatable="yes">Enter path</property>
+                <property name="text" translatable="yes">/dev/tty</property>
+                <property name="placeholder_text" translatable="yes">Enter device path</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -59,14 +60,14 @@
                 <property name="width_chars">0</property>
                 <property name="max_width_chars">7</property>
                 <property name="overwrite_mode">True</property>
-                <property name="placeholder_text" translatable="yes">9600</property>
+                <property name="placeholder_text" translatable="yes">1200</property>
                 <property name="input_purpose">number</property>
                 <property name="adjustment">baudrateadjust</property>
                 <property name="climb_rate">10</property>
                 <property name="snap_to_ticks">True</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
-                <property name="value">9600</property>
+                <property name="value">1200</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -104,7 +105,7 @@
               <object class="GtkEntry" id="filepath">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="placeholder_text" translatable="yes">Binary Path</property>
+                <property name="placeholder_text" translatable="yes">Enter binary path</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -173,21 +174,21 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow" id="logscrolled">
+          <object class="GtkViewport" id="logviewport">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="shadow_type">in</property>
+            <property name="can_focus">False</property>
             <child>
-              <object class="GtkViewport" id="logviewport">
+              <object class="GtkExpander" id="logexpander">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can_focus">True</property>
+                <property name="expanded">True</property>
+                <property name="label_fill">True</property>
+                <property name="resize_toplevel">True</property>
                 <child>
-                  <object class="GtkExpander" id="logexpander">
+                  <object class="GtkScrolledWindow" id="logscroller">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="expanded">True</property>
-                    <property name="label_fill">True</property>
-                    <property name="resize_toplevel">True</property>
+                    <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkTextView" id="logview">
                         <property name="visible">True</property>
@@ -198,13 +199,13 @@
                         <property name="monospace">True</property>
                       </object>
                     </child>
-                    <child type="label">
-                      <object class="GtkLabel" id="loglabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Logs</property>
-                      </object>
-                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel" id="loglabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Logs</property>
                   </object>
                 </child>
               </object>
@@ -213,7 +214,7 @@
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">4</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>
