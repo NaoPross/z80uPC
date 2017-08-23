@@ -8,10 +8,6 @@
 #include <fcntl.h>
 #include <termios.h>
 
-int serial_connect(const char *devpath, long baudrate);
-void serial_close(int fd);
-
-void serial_program(const char *rompath);
-void serial_read_rom(const char *rom);
+int serial_open(const char *devpath, unsigned long baudrate);
 
 #endif

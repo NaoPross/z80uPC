@@ -12,7 +12,7 @@ PORT := /dev/ttyUSB0
 MCU  := atmega328p
 
 CFLAGS  := -g -Wall -mcall-prologues -mmcu=$(MCU) -Os -I . \
-			-DF_CPU=1000000UL
+			-DF_CPU=1000000UL -DDEBUG
 LDFLAGS := -Wl,-gc-sections -Wl,-relax
 
 .PHONY: all clean program

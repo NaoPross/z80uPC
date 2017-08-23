@@ -1,5 +1,6 @@
-#include "fileinfo.h"
 #include "usart.h"
+
+#include <stdio.h>
 #include <util/delay.h>
 
 #define EEPROM_TICK_MS  10
@@ -18,6 +19,11 @@
 #define EEPROM_RD   1
 #define EEPROM_CLK  2
 
+struct file_blk
+{
+    uint16_t addr;
+    uint16_t size;
+};
 
 void eeprom_write(uint16_t addr, uint8_t byte);
 void eeprom_tick();
@@ -25,10 +31,10 @@ void eeprom_tick();
 int main(void)
 {
     uint8_t *buffer, i;
-    uint16_t addr;
     size_t read;
+    char str[64];
 
-    struct file_info *finfo =  malloc(sizeof(struct file_info));
+    struct file_blk *blk = malloc(sizeof(struct file_blk));
 
     DDRB = 0x7F;
     DDRC = 0x83;
@@ -36,28 +42,32 @@ int main(void)
 
     /* get configuration */
     usart_init(1200); 
+    usart_print("programmer Ready\n<waiting for binary>\n\r");
 
-    usart_print("EEPROM Programmer\n\r");
+    while (usart_read((uint8_t *) blk, sizeof(struct file_blk))) {
+        buffer = malloc(blk->size);
+        read = usart_read(buffer, blk->size);
 
-    do {
-        usart_print("Waiting for configuration\n\r");
-        read = usart_read((uint8_t *) finfo, sizeof(struct file_info));
-    } while (read != sizeof(struct file_info));
+#ifdef DEBUG
+        sprintf(str, "info : reading block from addr %d of size %d\n\r", 
+                blk->addr, blk->size);
+        usart_print(str);
 
-    usart_print("Programmer Ready\n<waiting for binary>\n\r");
+        if (read != blk->size) {
+            sprintf(str, "error: expected %d but read %d\n\r", 
+                    blk->size, read);
+            usart_print(str);
+        }
+#endif
 
-    buffer = malloc(finfo->blklen);
-    addr = finfo->start_addr;
-
-    /* read file */
-    while ((read = usart_read(buffer, finfo->blklen))) {
         for (i = 0; i < read; i++) {
-            eeprom_write(addr + i, *(buffer++));
+            eeprom_write(blk->addr +i, buffer[i]);
         }
 
-        addr += finfo->blklen;
+        free(buffer);
     }
 
+    free(blk);
     return 0;
 }
 

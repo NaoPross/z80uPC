@@ -1,6 +1,6 @@
 #include "serial.h"
 
-int serial_connect(const char *devpath, long baudrate)
+int serial_open(const char *devpath, unsigned long baudrate)
 {
     int fd;
     struct termios tty;
@@ -40,3 +40,4 @@ int serial_connect(const char *devpath, long baudrate)
 
     return fd;
 }
+
