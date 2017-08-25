@@ -7,25 +7,27 @@
 #define PIO_A       0
 #define PIO_B       1
 
-#define PIO_MODE_0  0
-#define PIO_MODE_1  1
-#define PIO_MODE_2  2
-#define PIO_MODE_3  3
+#define PIO_MODE_BYTE_IN   0
+#define PIO_MODE_BYTE_OUT  1
+#define PIO_MODE_BYTE_BI   2
+#define PIO_MODE_BIT_IO    3
 
 #define PIO_INT_ACTIVE_HIGH     (1<<5)
 #define PIO_INT_AND_MODE        (1<<6)
 #define PIO_INT_ENABLE          (1<<7)
 
 
-void _pio_data(int port, uint8_t data);
-void _pio_command(int port, uint8_t cmd);
+inline void _pio_data(int port, uint8_t data);
+inline void _pio_control(int port, uint8_t cmd);
 
-void pio_set_mode(int port, int mode);
+void pio_set_mode(int port, int mode, uint8_t io);
+
 void pio_set_interrupts(int port, int control);
-void pio_set_interrupts_mask(int port, uint8_t mask);
-void pio_set_io(int port, uint8_t io);
+void pio_set_interrupts_mask(int port, int control, uint8_t mask);
 
 // uint8_t pio_read_data(int port);
+uint8_t pio_read(int port);
+void pio_write(int port, uint8_t data);
 
 inline int pio_read_pin(int port, uint8_t pin);
 inline void pio_write_pin(int port, uint8_t pin);

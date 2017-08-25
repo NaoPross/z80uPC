@@ -1,11 +1,11 @@
 #include "string.h"
 
-void * memset(void *dest, const int8_t src, size_t n) {
+void *memset(void *dest, const int8_t src, size_t n) {
 
-    void *dp = dest;
+    char *dp = (char *) dest;
 
     while (n--)
-        *dp++ = src;
+        *(dp++) = src;
 
     return dest;
 }
@@ -22,16 +22,14 @@ void *memcpy(void *dest, void *src, size_t n)
     return dest;
 }
 
-int8_t memcmp(const void *s1, const void *s2, size_t n) {
+int8_t memcmp(void *s1, void *s2, size_t n)
+{
+    char *u1 = (char *) s1;
+    char *u2 = (char *) s2;
 
-    uint8_t u1, u2;
+    for ( ; n--; u1++, u2++) {
 
-    for ( ; n--; s1++, s2++) {
-
-        u1 = *s1;
-        u2 = *s2;
-
-        if (u1 != u2)
+        if (*u1 != *u2)
             return u1 - u2;
     }
 

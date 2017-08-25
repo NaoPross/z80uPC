@@ -33,8 +33,7 @@
 
 struct page
 {
-	uint used :1;
-	pid_t pid;     // process owner of the page
+	pid_t pid;       // process owner of the page (0 if free)
     uint16_t addr;   // physical address
 };
 

@@ -9,6 +9,12 @@
   */
 #define PROC_COUNT 2 
 
+/* the pid is defined with a single byte (pid_t is uint8_t), because of that 
+ * there cannot be more than 255 processes open at the same time. this is a
+ * limitation but for our purposes is more than enough
+ */
+#define PID_COUNT_MAX 255
+
 struct executable
 {
     void *text;
@@ -19,18 +25,11 @@ struct executable
 
 struct process
 {
-    uint blocked :1;    // process is waiting for hardware or locked
-    uint running :1;    // pid is used
-    struct page pages[4];      // pages used by the process
-    // TODO: implement quick callback?
+    uint blocked :1;      // process is waiting for hardware or locked
+    uint running :1;      // pid is used
+    uint pages;           // number of pages used by the process
+    struct page page[4];  // pages used by the process
 };
-
-/* the pid is defined with a single byte (pid_t is uint8_t), because of that 
- * there cannot be more than 255 processes open at the same time. this is a
- * limitation but for our purposes is more than enough
- */
-extern struct process proc_table[255];
-extern struct process *current_proc;
 
 pid_t newpid(void);
 
