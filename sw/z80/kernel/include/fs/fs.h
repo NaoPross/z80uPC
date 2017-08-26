@@ -50,6 +50,8 @@ struct fs_inode
     uint        uid :3;   // chown
     uint        type :2;  // file, dir, hard-link, sym-link
 
+    time_t      ctime;  // creation time
+
     /* data storage informations */
     uint24_t     size;
     uint16_t     blocks[FS_BLOCKS_N];
