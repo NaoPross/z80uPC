@@ -15,4 +15,10 @@
 #define size_t      uint16_t
 #define pid_t 		uint8_t
 
+#define ino_t       uint16_t
+
+typedef struct {
+    uint    data : 24;
+} uint24_t;
+
 #endif

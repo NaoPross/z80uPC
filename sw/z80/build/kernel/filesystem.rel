@@ -1,0 +1,54 @@
+XL2
+H 9 areas 9 global symbols
+M filesystem
+O -mz80
+S .__.ABS. Def0000
+A _CODE size 1C flags 0 addr 0
+S _fs_get_inode Def000A
+S _fs_parse_superblock Def0000
+S _fs_rename Def0018
+S _fs_new_inode Def000E
+S _fs_chmod Def0016
+S _fs_free_inode Def0012
+S _fs_chown Def0017
+S _fs_parse_path Def0004
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 21 00 00 C9
+R 00 00 00 00
+T 04 00
+R 00 00 00 00
+T 04 00 21 00 00 5D 54 C9
+R 00 00 00 00
+T 0A 00
+R 00 00 00 00
+T 0A 00 21 00 00 C9
+R 00 00 00 00
+T 0E 00
+R 00 00 00 00
+T 0E 00 21 00 00 C9
+R 00 00 00 00
+T 12 00
+R 00 00 00 00
+T 12 00 21 00 00 C9
+R 00 00 00 00
+T 16 00
+R 00 00 00 00
+T 16 00 C9
+R 00 00 00 00
+T 17 00
+R 00 00 00 00
+T 17 00 C9
+R 00 00 00 00
+T 18 00
+R 00 00 00 00
+T 18 00 21 00 00 C9
+R 00 00 00 00

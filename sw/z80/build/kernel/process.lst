@@ -1,0 +1,89 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.5.0 #9253 (Mar 24 2016) (Linux)
+                              4 ; This file was generated Wed Aug 23 21:44:59 2017
+                              5 ;--------------------------------------------------------
+                              6 	.module process
+                              7 	.optsdcc -mz80
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl _proc_table
+                             13 	.globl _newpid
+                             14 	.globl _fork
+                             15 	.globl _exec
+                             16 	.globl _spawn
+                             17 ;--------------------------------------------------------
+                             18 ; special function registers
+                             19 ;--------------------------------------------------------
+                             20 ;--------------------------------------------------------
+                             21 ; ram data
+                             22 ;--------------------------------------------------------
+                             23 	.area _DATA
+   0000                      24 _proc_table::
+   0000                      25 	.ds 6375
+   18E7                      26 _newpid_last_pid_1_11:
+   18E7                      27 	.ds 1
+                             28 ;--------------------------------------------------------
+                             29 ; ram data
+                             30 ;--------------------------------------------------------
+                             31 	.area _INITIALIZED
+                             32 ;--------------------------------------------------------
+                             33 ; absolute external ram data
+                             34 ;--------------------------------------------------------
+                             35 	.area _DABS (ABS)
+                             36 ;--------------------------------------------------------
+                             37 ; global & static initialisations
+                             38 ;--------------------------------------------------------
+                             39 	.area _HOME
+                             40 	.area _GSINIT
+                             41 	.area _GSFINAL
+                             42 	.area _GSINIT
+                             43 ;kernel/process.c:7: static pid_t last_pid = 0;
+   0000 FD 21rE7r18   [14]   44 	ld	iy,#_newpid_last_pid_1_11
+   0004 FD 36 00 00   [19]   45 	ld	0 (iy),#0x00
+                             46 ;--------------------------------------------------------
+                             47 ; Home
+                             48 ;--------------------------------------------------------
+                             49 	.area _HOME
+                             50 	.area _HOME
+                             51 ;--------------------------------------------------------
+                             52 ; code
+                             53 ;--------------------------------------------------------
+                             54 	.area _CODE
+                             55 ;kernel/process.c:5: pid_t newpid(void)
+                             56 ;	---------------------------------
+                             57 ; Function newpid
+                             58 ; ---------------------------------
+   0000                      59 _newpid::
+                             60 ;kernel/process.c:8: return ++last_pid;
+   0000 21rE7r18      [10]   61 	ld	hl, #_newpid_last_pid_1_11+0
+   0003 34            [11]   62 	inc	(hl)
+   0004 FD 21rE7r18   [14]   63 	ld	iy,#_newpid_last_pid_1_11
+   0008 FD 6E 00      [19]   64 	ld	l,0 (iy)
+   000B C9            [10]   65 	ret
+                             66 ;kernel/process.c:11: int fork(void)
+                             67 ;	---------------------------------
+                             68 ; Function fork
+                             69 ; ---------------------------------
+   000C                      70 _fork::
+                             71 ;kernel/process.c:14: }
+   000C C9            [10]   72 	ret
+                             73 ;kernel/process.c:16: int exec(char *path, char *args)
+                             74 ;	---------------------------------
+                             75 ; Function exec
+                             76 ; ---------------------------------
+   000D                      77 _exec::
+                             78 ;kernel/process.c:19: }
+   000D C9            [10]   79 	ret
+                             80 ;kernel/process.c:21: int spawn(char *path, char *args)
+                             81 ;	---------------------------------
+                             82 ; Function spawn
+                             83 ; ---------------------------------
+   000E                      84 _spawn::
+                             85 ;kernel/process.c:24: }
+   000E C9            [10]   86 	ret
+                             87 	.area _CODE
+                             88 	.area _INITIALIZER
+                             89 	.area _CABS (ABS)
