@@ -47,6 +47,9 @@ sw/**/*.bin
 sw/**/*.o
 sw/**/*.a
 
+# sdcc compiler output
+sw/z80/build
+
 # custom
 various/*
 
