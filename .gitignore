@@ -49,6 +49,7 @@ sw/**/*.a
 
 # sdcc compiler output
 sw/z80/build
+sw/z80_test/build
 
 # custom
 various/*

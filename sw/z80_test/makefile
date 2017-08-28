@@ -1,11 +1,9 @@
 ####
 # source code settings
 #
-OSNAME := helvetiOS_test
+OSNAME := sample
  
-CSOURCES 	:=  $(wildcard kernel/*.c) \
-				$(wildcard kernel/drivers/*.c) \
-				$(wildcard libc/*.c) 
+CSOURCES 	:=  $(wildcard *.c)
 
 OBJECTS 	:= $(patsubst %.c,build/%.rel,$(CSOURCES))
 HEXFILE		:= build/$(OSNAME).hex
@@ -17,9 +15,7 @@ BINARY  	:= build/$(OSNAME).bin
 CC 		:= sdcc
 
 CFLAGS	:= -mz80 \
-			-I kernel/include \
-			-I kernel/include/drivers \
-			-I libc/include \
+			-I . \
 			-DDEBUG
 
 LDFLAGS := -mz80 --no-std-crt0 crt0.rel \
@@ -43,7 +39,7 @@ crt0.rel: crt0.s
 	sdasz80 -o $<
 
 dirs:
-	mkdir -p build build/kernel build/libc
+	mkdir -p build
 
 dis: $(BINARY)
 	@# z80dasm -a -l -g 0h $< -o build/$(OSNAME).s
