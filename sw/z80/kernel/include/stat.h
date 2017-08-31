@@ -1,10 +1,11 @@
-#ifndef STAT_H
-#define STAT_H
+#ifndef __STAT_H__
+#define __STAT_H__
+
+#include "types.h"
 
 struct stat
 {
-    dev_t dev;        /* device id */
-    ino_t       inumber;    /* inode number inside the volume */
+    inode_t     inode;      /* inode reference */
 
     uint        mode :3;    /* mode */
     uint        uid :3;     /* owner id */
@@ -19,6 +20,5 @@ struct stat
 }
 
 struct stat * stat(const char *path, struct stat *buffer);
-struct stat * lstat(const char *link, struct stat *buffer);
 
-#endif
+#endif  // __STAT_H__

@@ -1,5 +1,5 @@
-#ifndef SIO_H
-#define SIO_H
+#ifndef __SIO_H__
+#define __SIO_H__
 
 #include "types.h"
 
@@ -24,7 +24,7 @@ struct dev_buffer
 };
 
 /* points to the buffers mapped in the I/O space */
-/* to be defined precisely in assemly */
+/* to be defined precisely in assembly */
 extern volatile struct dev_buffer sio_buffers[8];
 
 /* initialize serial interface */
@@ -40,4 +40,4 @@ size_t sio_read(void *buffer, size_t n);
 /* write n bytes into the current port */
 int8_t sio_write(const void *buffer, size_t n);
 
-#endif
+#endif  // __SIO_H__
