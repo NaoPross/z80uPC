@@ -41,3 +41,32 @@ int page_unmap(int page)
     pages_table[page].used = 0;
     return 0;
 }
+
+/* k_malloc manager */
+/*
+struct k_buf_entry k_buf_table[K_BUF_MAX_COUNT];
+
+struct k_buf k_buffers[K_BUF_MAX_COUNT];
+
+void * k_malloc()
+{
+    for (uint8_t i = 0; i < K_BUF_TABLE_COUNT; i++)
+    {
+        for (uint8_t bit = 0x80, j = 0; j < 8; bit >>= 1, j++)
+        {
+            if (bit & k_buf_table[i])
+            {
+                k_buf_table[i] |= bit;
+                return &k_buffers[8 * i + j];
+            }
+        }
+    }
+}
+
+void k_free(void * ptr)
+{
+    uint8_t index = (ptr - &k_buffers[0]) / K_BUF_SIZE;
+
+    if (index < K_BUF_MAX_COUNT)
+        k_buf_table[index / 8] ^= 0x80 >> index % 8;
+}*/
