@@ -18,9 +18,9 @@ CFLAGS	:= -mz80 \
 			-I . \
 			-DDEBUG
 
-LDFLAGS := -mz80 --no-std-crt0 crt0.rel \
+LDFLAGS := -mz80 --no-std-crt0 build/crt0.rel \
 			--std-c89 -pedantic \
-			--code-loc 0x0800 --data-loc 0x8000
+			--code-loc 0x0800 --data-loc 0x2000
 
 .PHONY: dirs dis clean
 all: $(BINARY)
@@ -29,14 +29,16 @@ all: $(BINARY)
 $(BINARY): $(OBJECTS) dirs
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $(HEXFILE)
 	@# xxd -r -p $(HEXFILE) $(BINARY)
-	makebin -s 16384 $(HEXFILE) $(BINARY)
+	@# makebin -s 16384 $(HEXFILE) $(BINARY)
+	makebin -s 8192 $(HEXFILE) $(BINARY)
 
-$(OBJECTS): build/%.rel : %.c $(CSOURCES) dirs crt0.rel
+$(OBJECTS): build/%.rel : %.c $(CSOURCES) dirs build/crt0.rel
 	@printf "\n"
 	$(CC) $(CFLAGS) -c $< -o $@
 
-crt0.rel: crt0.s
+build/crt0.rel: crt0.s
 	sdasz80 -o $<
+	@mv crt0.rel build/
 
 dirs:
 	mkdir -p build
