@@ -18,6 +18,7 @@ void ui_init(int *argc, char **argv[])
 
     /* connect objects to callbacks */
     window = GTK_WINDOW(gtk_builder_get_object(ui_builder, "window"));
+    g_signal_connect(window, "delete_event", G_CALLBACK(flash_close), NULL);
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
     connectbtn = GTK_BUTTON(gtk_builder_get_object(ui_builder, "connectbtn"));

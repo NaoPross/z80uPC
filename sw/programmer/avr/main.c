@@ -98,16 +98,21 @@ void eeprom_write(uint16_t addr, uint8_t byte)
 
     /* set data */
     EEPROMDR = byte;
+
+    // because EEPROMDR0 and EEPROMDR1 are used by Tx and Rx
+    EEPROMCR = (PINC & 0x07) | (byte & 0x03)<<3;
     EEPROMCR &= ~(_BV(ADDR_EH) | _BV(ADDR_EL));
 
     /* write eeprom */
     EEPROMCR &= ~_BV(EEPROM_WR);
-    eeprom_tick();
+
+    // eeprom_tick();
 
     EEPROMCR |= _BV(EEPROM_WR);
     EEPROMCR |= _BV(ADDR_EH) | _BV(ADDR_EL);
 }
 
+#if 0 
 /* pulse the clock line for the eeprom */
 void eeprom_tick()
 {
@@ -116,4 +121,4 @@ void eeprom_tick()
     EEPROMCR &= ~_BV(EEPROM_CLK);
     _delay_ms(EEPROM_TICK_MS);         
 }
-
+#endif

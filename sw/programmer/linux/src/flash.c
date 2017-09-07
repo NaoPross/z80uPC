@@ -28,19 +28,24 @@ int flash_write(const char *romfile, void (*log)(const char *))
 		goto exit_romfd;
 
 	while ((head.size = read(romfd, buffer, FLASH_BLOCK_SIZE))) {
+        if (head.size < 0) {
+            log("[!] Error while reading from file\n");
+            break;
+        }
+                
 		head.addr = (uint16_t) lseek(romfd, 0, SEEK_CUR);
 
 		written = write(flash_serial_fd, &head, sizeof(struct flash_blk));
-		if (written < 0) {
-			// error
+		if (written != sizeof(struct flash_blk)) {
+            log("[!] Some bytes of flash_blk haven't been written\n");
 		}
 
 		written = write(flash_serial_fd, buffer, head.size);		
-		if (written < 0) {
-			// error
+		if (written != head.size) {
+            log("[#] Some bytes might not have been written\n");
 		}
 
-		char logbuf[64];
+        char logbuf[64];
 		sprintf(logbuf, "[@] Written %d bytes at address %d\n", head.size, head.addr);
 		log(logbuf);
 	}
