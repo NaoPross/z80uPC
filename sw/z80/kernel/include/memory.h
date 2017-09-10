@@ -6,6 +6,7 @@
 
 /* maximum number of pages on the system */
 #define PAGES_MAX_COUNT 32
+#define PAGE_SIZE     1000
 
 /* in our system there are only 16 pages since only 64KB can be addressed
  * to optimize the memory management in ROM and RAM only pages from this set
@@ -31,16 +32,18 @@
 #define ADDR_PAGE_14 0xE000
 #define ADDR_PAGE_15 0xF000
 
+#define ADDR_PAGE_FIRST  ADDR_PAGE_8
+#define ADDR_PAGE_LAST   ADDR_PAGE_15
+
 struct page
 {
 	pid_t pid;       // process owner of the page (0 if free)
     uint16_t addr;   // physical address
 };
 
-extern struct page pages_table[PAGES_MAX_COUNT];
-
 int mmu_write_table(void);
 
+int page_new(void);
 int page_map(int page, int pid, uint16_t addr);
 int page_unmap(int page);
 

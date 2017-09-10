@@ -26,7 +26,23 @@ pid_t newpid(void)
 
 int fork(void)
 {
+    int i, p;
+    pid_t child_pid = newpid();
 
+    if (child_pid == 0)
+        return -1;
+
+
+    for (i = 0; i < current_proc.pages; i++) {
+        p = page_new();
+
+        if (p == -1) {
+            
+            return -2;
+        }
+
+        proc_table[child_pid].page[i] = p;
+    }
 }
 
 int exec(char *path, char *args)

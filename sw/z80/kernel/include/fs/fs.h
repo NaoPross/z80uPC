@@ -53,7 +53,7 @@ struct fs_inode
     time_t      ctime;  // creation time
 
     /* data storage informations */
-    uint24_t     size;
+    uint16_t     size;
     uint16_t     blocks[FS_BLOCKS_N];
 
 }
