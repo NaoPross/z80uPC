@@ -1,5 +1,5 @@
-#ifndef INODE_H
-#define INODE_H
+#ifndef __FS_H__
+#define __FS_H__
 
 #include "types.h"
 
@@ -11,57 +11,53 @@
 
 #define INODE_TYPE_FILE   0x0
 #define INODE_TYPE_DIR    0x1
-#define INODE_TYPE_HLINK    0x2
-#define INODE_TYPE_SLINK    0x3
+#define INODE_TYPE_SLINK    0x2
+#define INODE_TYPE_SPECIAL  0x3
 
-typedef struct time_s
-{
-    struct
-    {
-        uint    minutes :6;
-        uint    hour    :5;
+#define INODE_META_SIZE 8
 
-    } time;
-
-    struct
-    {
-        uint    day     :5;
-        uint    month   :4;
-        uint    year    :12;
-
-    } date;
-
-} time_t;
-
-struct fs_superblock
-{
-    uint8_t     magic;           // identifier
-
-    uint16_t    blk_size;           // size of a single block
-    uint16_t    imap_size;          // quantity of inodes
-    uint16_t    dmap_size;          // quantity of blocks
-}
-
+/* inode basic structure */
 struct fs_inode
 {
-    
     /* inode meta data */
+
     uint        mode :3;  // chmod
     uint        uid :3;   // chown
-    uint        type :2;  // file, dir, hard-link, sym-link
+    uint        type :2;  // file, dir, sym-link, special
 
-    time_t      ctime;  // creation time
+    time_t      ctime;          // creation time
+
+    uint24_t     size;              // inode size
 
     /* data storage informations */
-    uint16_t     size;
-    uint16_t     blocks[FS_BLOCKS_N];
+    /* it doesn't allocate memory, virtual size FS_BLOCKS_N */ 
+    blk_t     blocks[];
+};
 
-}
+#define FS_DEV_ROM      0x7f    /* 01111111 */
+#define FS_DEV_NULL     0x80    /* 10000000 */
 
-struct fs_inumber
-{
-    uint    dev : 4;    // device id, global in the fs
-    ino_t   rel;    // inode id relative to the volume
-}
+#define FS_ROM_SPACE    0x2000  // second rom 
 
-#endif
+#define FS_INO_ROOT   0x0       // first inode
+
+#define FS_INODE_ROOT(inode)   {inode.dev = 0xff; inode.inode = 0x0}
+#define FS_INODE_NULL(inode)   {inode.dev = 0x80; inode.inode = 0x0}
+
+#define FS_USE_ROM(inode)   {inode.dev == 0x7f}
+
+/* get block seek in current device */
+devsize_t fs_block(blk_t block);
+
+/* get common inode seek in current device */
+/* c_inode must be set first */
+/* returns seek at the beginning of blocks field */
+devsize_t fs_inode(struct fs_inode *buf);
+
+/* common inode for syscalls */
+extern inode_t c_inode;
+
+/* parse a path, absolute or relative to c_inode */
+inode_t fs_parse_path(const char *path);
+
+#endif  // __FS_H__

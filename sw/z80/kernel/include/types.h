@@ -3,17 +3,60 @@
 
 /* only types from primitive types are defined in this file */ 
 
-#define register_t  volatile unsigned char
+typedef volatile unsigned char      register_t;
 
-#define uint 		unsigned int
+typedef unsigned int                uint;
 
-#define int8_t      char
-#define uint8_t     unsigned char
-#define int16_t     int
-#define uint16_t    unsigned int
+typedef char                        int8_t;
+typedef unsigned char               uint8_t;
+typedef int                         int16_t;
+typedef unsigned int                uint16_t;
+typedef long int                    int32_t;
+typedef unsigned long int           uint32_t;
 
-#define size_t      uint16_t
-#define pid_t 		uint8_t
-#define ino_t       uint16_t
+typedef uint16_t                    size_t;
+typedef int16_t                     ssize_t;
+
+typedef uint8_t                     pid_t;
+typedef uint16_t                    ino_t;
+
+typedef uint8_t                     dev_t;
+typedef uint32_t                    devsize_t;
+typedef uint8_t                     fd_t;
+typedef uint16_t                    blk_t;
+typedef uint8_t                     user_t;
+
+typedef struct {
+    uint8_t member[3];
+
+} uint24_t;
+
+typedef uint32_t                    fsize_t;
+
+typedef struct 
+{
+    dev_t   dev;    // device id, global in the fs
+    ino_t   inode;    // inode id relative to the volume
+
+} inode_t;
+
+typedef struct time_s
+{
+    struct
+    {
+        uint    minutes :6;
+        uint    hour    :5;
+
+    } time;
+
+    struct
+    {
+        uint    day     :5;
+        uint    month   :4;
+        uint    year    :12;
+
+    } date;
+
+} time_t;
 
 #endif
