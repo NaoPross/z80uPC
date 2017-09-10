@@ -2,7 +2,7 @@
 BUILD_DIR := build
 RES_DIR := res
 
-SOURCES := z80uPC.tex notes.tex
+SOURCES := z80uPC.tex z80uPC_nostyle.tex notes.tex
 DOCUMENTS := $(patsubst %.tex,$(BUILD_DIR)/%.pdf,$(SOURCES))
 
 RES_SRC := $(wildcard $(RES_DIR)/*.svg)

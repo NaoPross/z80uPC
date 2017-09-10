@@ -1,0 +1,163 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{array}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{textgreek}
+\usepackage{graphicx}
+
+% source code
+\usepackage{listings}
+
+% set correct hypenation
+\usepackage[italian]{babel}
+
+% to fix macros
+\usepackage{xspace}
+% commands
+% macro for project name
+\newcommand{\prj}{Z80\textmu PC\xspace}
+
+% invert signal (not, active low)
+\newcommand{\inv}[1]{$\overline{\mbox{#1}}$}
+ 
+% metadata
+\title{\prj Single Board \\ Computer Development }
+\author{Naoki Pross}
+
+% document 
+\begin{document}
+
+\maketitle
+\begin{abstract}
+
+    Lo Zilog Z80 \`e un processore a 8 bit che fu introdotto nel 1976 che ebbe
+    un grandissimo successo nel mondo dell'elettronica e dell'informatica
+    nella fine del 20esimo secolo. In memoria di questo pioniere
+    dell'industria dei sistemi informatici questo progetto documenta la
+    realizzazione di un microcomputer a scopo generico a base di esso.
+    L'obiettivo primario dunque \`e di realizzare una scheda simile ad una
+    motherboard dei computers venduti all'epoca completa di RAM, ROMs,
+    interfacce seriali e altri circuiti di supporto. Successivamente per
+    l'aspetto software il progetto deve implementare i drivers per ogni
+    circuito presente sulla scheda in modo da semplificare la programmazione. 
+    L'obiettivo opzionale del progetto, una volta terminata la costruzione
+    hardware, \`e di realizzare una kernel monolitica che offre funzioni
+    minimali simili ad un sistema UNIX, quali processi, filesystem, memory
+    management e drivers.
+
+\end{abstract}
+
+\section{Hardware}
+
+\subsection{Specifiche tecniche dello Z80}
+
+Lo Z80 \`e un processore molto minimalistico se paragonato a ci\`o che si
+trova oggi sul mercato dei microcontrollori. Per il progetto \prj la CPU in
+uso \`e il modello originale \texttt{Zilog Z8400} che non dispone di moduli
+aggiuntivi integrati come i modelli SoC odierni. La scelta di una CPU tanto
+semplice \`e la conseguenza del design didattico del progetto, inoltre senza
+alcun dispositivo interno lo \texttt{Z8400} si presenta con un address space 
+completamente vuoto, ad eccezzione del punto d'inizio e i vettori di reset.
+
+Lo Z80 utilizza I/O paralleli sia per la lina a 16 degli indizzi che per la
+linea dati a 8 bit e dispone di 6 registri 8 bit ad utilizzo generico
+combinabili in coppie per ottenere un valore a 16 bit. Per il controllo dei
+dispositivi esterni, come lettura e scrittura esso possiede delle linee di
+controllo dedicate come {\tt\inv{RD}}, {\tt\inv{WR}}, {\tt\inv{MREQ}}, ecc. In
+quanto instruction set, lo Z80 ha 158 istruzioni possibili di cui 78 sono un
+sottoinsieme dello 8080A, architettate per poter mantere una
+retrocompatiblit\`a.
+
+\begin{table}[ht]\centering
+\caption{Riassunto delle specifiche}
+
+\begin{tabular}{ l l }
+    \\ \hline
+    Dimensione Indirizzi    & 16 bit \\
+    Dimensione Dati (word)  & 8 bit \\
+    Spazio Indirizzabile    & 64 KB \\
+    Registri Generici 8 bit & 6 ({\tt A..F}) \\
+    Registri 16 bit         & 2 ({\tt SP, PC}) \\
+    Clock speed             & 8 MHz, 6MHz, 4MHz, 2.5MHz \\
+    \hline
+\end{tabular}
+\end{table}
+
+\subsection{Componenti e modello di design}
+
+Il minimo necessario per far funzionare uno Z80 sono una {\tt RAM} ed una {\tt
+ROM}, ma avendo a disposizione altri dispositivi I/O lo \prj dispone anche di
+una porta seriale, di una porta parallela e di un counter timer; Hardware che
+si presenta normalmente all'interno di microcontrollori odierni.  
+
+\begin{table}[hb]\centering
+\caption{Lista dei componenti}
+\begin{tabular}{ >{\tt}l >{\tt\bfseries}l >{\footnotesize}p{.7\linewidth} }
+    \\ \hline
+    ROM & M28C64    & EEPROM da 8KB x 8 bit (64K) per il BIOS / Bootloader /
+                      OS installata doppia per avere 16KB \\
+    RAM & HM62256B  & SRAM da 32KB x 8bit (256K) \\
+    CTC & Z8430     & Counter timer circuit ufficiale di Zilog a 4 canali
+                      programmabili \\
+    PIO & Z8420     & Parallel input/output controller di Zilog per avere un
+                      intefaccia digitale con due porte da 8 bit \\
+    MMU & M4-32/32-15JC & CPLD programmabile che implementa una memory 
+                          management unit semplificata in grado di gestire i 5
+                          bit pi\`u significativi della linea di indirizzi \\
+    USART & TL16C550C & Interfaccia USART per poter comunicare utilizzando il
+                        protocollo RS232 \\
+    \hline
+\end{tabular}
+\end{table}
+
+Il design dello \prj \`e costruito sulla falsa riga di un Arduino o di un
+EasyPIC con l'aggiunta di funzionalit\`a a scopo didattico quali; la
+possiblit\`a di cambiare la velocit\`a di clock tra 4MHz, 200Hz o manuale
+(mediante un bottone sulla scheda) e una serie di display a 7 segmenti per
+vedere in tempo reale i valori sui bus degli indirizzi e dei dati.
+\begin{center}
+\begin{tabular}{ >{\bfseries}r p{.8\linewidth} }
+    0Hz     & Il clock manuale \`e un bottone che permette di creare
+              le pulsazioni, per poter analizzare ogni istruzione \\
+    200Hz   & Mediante un classico circuito con un LM555 si ha un clock
+              per eseguire i programmi a velocit\`a rallentata \\
+    4MHz    & Clock per esecuzione a velocit\`a piena (normale)
+\end{tabular}
+\end{center}
+
+\subsection{Memory management unit}
+
+Alcuni modelli sucessori dello Z8400 implementavano ina MMU (Memory Management
+Unit) SoC che permetteva di ampliare la dimensione dell'address space,
+permettendo quindi di mappare pi\`u memorie o dispositivi separati negli
+stessi indirizzi. Ci\`o \`e un sistema \`e comune nei sistemi a base di
+microcontrollers per ovviare al problema dello spazio. Lo \prj per\`o ha un
+architettura pi\`u simile ad un computer X86 in cui la MMU viene utilizzata
+per la gestione delle \emph{pagine} di memoria.
+
+Il concetto di pagine (pages in inglese) \`e necessario per sistemi con un
+supporto per il multitasking o per poter ampliare la memoria dinamica.
+
+\section*{Glossario Tecnico}
+
+\begin{tabular}{ >{\bfseries}p{.3\linewidth} p{.7\linewidth} }
+
+    Address Space & In informatica l'\emph{address space} \`e un intervallo di
+    indirizzi che possono corrispondere a indirizzi in rete, regioni di un
+    dispositivo, di una memoria o di un qualsiasi altro dispositivo fisico o
+    logico.  Per questo progetto \emph{address space} si riferisce
+    all'intervallo indirizzabile dal processore, ovvero $2^{16}$ locazioni
+    siccome il sistema dispone di un bus a 16 bit. \\
+
+    Registro & Un registro \`e un dispositivo di memoria in cui \`e possibile
+    pu\`o leggere e/o scrivere un certo valore. Normalmente in un computer /
+    microcontrollore la dimensione della memoria \`e data dall'architettura,
+    dunque 8, 16, 32 o 64 bits.  In questo documento viene viene comunemente
+    utilizzato per riferirsi ad una memoria di un dispositivo fisico come la
+    CPU o un IC seriale. \\
+    
+
+\end{tabular}
+
+\end{document}
