@@ -1,0 +1,12 @@
+-mjwx
+-i build/sample.hex
+-b _CODE = 0x0800
+-b _DATA = 0x2000
+-k /usr/libexec/../share/sdcc/lib/z80
+-k /usr/share/sdcc/lib/z80
+-l z80
+build/crt0.rel
+build/main.rel
+build/usart.rel
+
+-e

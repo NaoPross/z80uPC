@@ -33,15 +33,17 @@ int fork(void)
         return -1;
 
 
-    for (i = 0; i < current_proc.pages; i++) {
+    for (i = 0; i < current_proc->pages; i++) {
         p = page_new();
 
         if (p == -1) {
-            
             return -2;
         }
 
-        proc_table[child_pid].page[i] = p;
+        // TODO: use memcpy()
+        // SDCC does not allow assignemnts of structs
+
+        // proc_table[child_pid].page[i] = p;
     }
 }
 

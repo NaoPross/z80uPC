@@ -96,6 +96,7 @@ gsinit::
 	; ld	de, #s__INITIALIZED
 	; ld	hl, #s__INITIALIZER
 	ldir
+
 gsinit_next:
 
 	.area   _GSFINAL

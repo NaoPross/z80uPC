@@ -17,12 +17,14 @@ int mmu_write_table(void)
 
 int page_new(void)
 {
-    int i, addr, used;
+    int i, used;
+    uint16_t addr;
+
     for (addr = ADDR_PAGE_FIRST; addr < ADDR_PAGE_LAST; addr += PAGE_SIZE) {
         used = 0;
 
         for (i = 0; i < PAGES_MAX_COUNT; i++) {
-            if (page_map[i].addr == addr) {
+            if (pages_table[i].addr == addr) {
                 used = 1;
                 break;
             }
