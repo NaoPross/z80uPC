@@ -32,7 +32,7 @@ int flash_write(const char *romfile, void (*log)(const char *))
             log("[!] Error while reading from file\n");
             break;
         }
-                
+
 		head.addr = (uint16_t) lseek(romfd, 0, SEEK_CUR);
 
 		written = write(flash_serial_fd, &head, sizeof(struct flash_blk));

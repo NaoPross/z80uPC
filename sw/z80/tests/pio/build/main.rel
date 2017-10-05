@@ -1,0 +1,29 @@
+XL2
+H 9 areas 4 global symbols
+M main
+O -mz80
+S _pio_set_mode Ref0000
+S .__.ABS. Def0000
+S _pio_write Ref0000
+A _CODE size 23 flags 0 addr 0
+S _main Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 AF F5 33 21 01 00 E5 2E 00 E5 CD 00 00 F1
+R 00 00 00 00 02 0D 00 00
+T 0E 00 F1 33 0E 00
+R 00 00 00 00
+T 12 00
+R 00 00 00 00
+T 12 00 41 0C C5 C5 33 21 00 00 E5 CD 00 00 F1 33
+R 00 00 00 00 02 0C 02 00
+T 20 00 C1 18 EF
+R 00 00 00 00

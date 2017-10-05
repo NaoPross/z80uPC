@@ -1,0 +1,38 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+  2 __usart                                                        0000 R
+  7 __xinit___usart                                                0000 R
+  0 _usart_init                                                    0108 GR
+  0 _usart_read                                                    0198 GR
+  0 _usart_receive                                                 014C GR
+  0 _usart_set_autoflow                                            00CE GR
+  0 _usart_set_baudrate                                            0000 GR
+  0 _usart_set_parity                                              0034 GR
+  0 _usart_set_stop_bits                                           0088 GR
+  0 _usart_transmit                                                0131 GR
+  0 _usart_word_length                                             00B5 GR
+  0 _usart_write                                                   0151 GR
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size  21E   flags    0
+   1 _DATA                                      size    0   flags    0
+   2 _INITIALIZED                               size    2   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    2   flags    0
+   8 _CABS                                      size    0   flags    8
+
