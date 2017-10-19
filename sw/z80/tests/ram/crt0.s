@@ -1,38 +1,30 @@
 	.module crt0
-	.globl	_main
-
 	.area	_HEADER (ABS)
-	;; Reset vector
+
+;; Reset vectors
 	.org 	0
 	jp	init
 
-	.org	0x08
-	reti
-	.org	0x10
-	reti
-	.org	0x18
-	reti
-	.org	0x20
-	reti
-	.org	0x28
-	reti
-	.org	0x30
-	reti
-	.org	0x38
-	reti
-    .org    0x66
-    reti
+	.org	0x38 ; the instruction 0xff (not written) resets to this location
+    jp init
 
+;; main code
 	.org	0x100
+    .globl  _main
+
 init:
 	;; Set stack pointer directly above top of memory.
-	ld	sp,#0xFFFF
+	ld	sp,#0xffff
 
 	;; Start of the program
 	call	_main
 	jp	    _exit
 
-	;; Ordering of segments for the linker.
+_exit:
+    halt
+    jp  _exit
+
+;; Ordering of segments for the linker.
 	.area	_HOME
 	.area	_CODE
 	.area	_INITIALIZER
@@ -46,8 +38,3 @@ init:
 	.area   _HEAP
 
 	.area   _CODE
-
-_exit::
-1$:
-	halt
-	jr	1$

@@ -18,19 +18,23 @@ CFLAGS	:= -mz80 \
 			-I . \
 			-DDEBUG
 
-LDFLAGS := -mz80 --no-std-crt0 build/crt0.rel \
-			--std-c89 -pedantic \
-			--code-loc 0x0000 --data-loc 0x2000
+LDFLAGS := -mz80 \
+			--no-std-crt0 build/crt0.rel \
+			-pedantic 
 
-.PHONY: dirs dis clean
+			# --code-loc 0x0120 \
+			# --data-loc 0x2000
+
+.PHONY: flash dirs dis clean
 all: $(BINARY)
+
+flash: $(BINARY)
+	minipro -p M28C64 -w $< 
 
 # build binary
 $(BINARY): $(OBJECTS) dirs
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $(HEXFILE)
-	@# xxd -r -p $(HEXFILE) $(BINARY)
-	@# makebin -s 16384 $(HEXFILE) $(BINARY)
-	makebin -s 8192 $(HEXFILE) $(BINARY)
+	makebin -s 8192 -yo 1 $(HEXFILE) $(BINARY)
 
 $(OBJECTS): build/%.rel : %.c $(CSOURCES) dirs build/crt0.rel
 	@printf "\n"
@@ -44,9 +48,8 @@ dirs:
 	mkdir -p build
 
 dis: $(BINARY)
-	@# z80dasm -a -l -g 0h $< -o build/$(OSNAME).s
-	dz80 -b -n $<
+	#dz80 -b -n $<
+	r2 -a z80 $< -c 'pd 0x10; s 0x100; pd 10; s 0x200; pd 10'
 
 clean:
-	- rm -rd build/*
-	- rm crt0.rel
+	- rm -rd build

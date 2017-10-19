@@ -4,8 +4,18 @@
 #include "addresses.h"
 #include <stdint.h>
 
+// ports
 #define PIO_A       0
 #define PIO_B       1
+
+// registers
+#define PIO_REG_DATA 0
+#define PIO_REG_CTRL 1
+
+// #define PIO_REG_DATA_A      (PIO_A + PIO_REG_PORT)
+// #define PIO_REG_DATA_B 1    (PIO_B + PIO_REG_PORT)
+// #define PIO_REG_CTRL_A 2    (PIO_A + PIO_REG_CTRL)
+// #define PIO_REG_CTRL_B 3    (PIO_B + PIO_REG_CTRL)
 
 #define PIO_MODE_BYTE_IN   0
 #define PIO_MODE_BYTE_OUT  1
@@ -16,9 +26,9 @@
 #define PIO_INT_AND_MODE        (1<<6)
 #define PIO_INT_ENABLE          (1<<7)
 
-
-inline void _pio_data(int port, uint8_t data);
-inline void _pio_control(int port, uint8_t cmd);
+/* functions used internallyto interface with the device */
+inline void _pio_write(uint8_t reg, uint8_t data);
+inline uint8_t _pio_read(uint8_t reg);
 
 /* the last argument is needed only for IO mode */
 void pio_set_mode(int port, int mode, uint8_t io);

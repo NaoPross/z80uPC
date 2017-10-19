@@ -19,4 +19,4 @@ dirs:
 	mkdir -p build
 
 clean:
-	- rm -rd build/*
+	- rm -rd build

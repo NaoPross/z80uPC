@@ -1,13 +1,13 @@
 ####
 # source code settings
 #
-NAME := pio_test
+OSNAME := pio_test
  
-CSOURCES 	:= $(wildcard *.c)
+CSOURCES 	:=  $(wildcard *.c)
 
 OBJECTS 	:= $(patsubst %.c,build/%.rel,$(CSOURCES))
-HEXFILE		:= build/$(NAME).hex
-BINARY  	:= build/$(NAME).bin
+HEXFILE		:= build/$(OSNAME).hex
+BINARY  	:= build/$(OSNAME).bin
 
 ### 
 # compiler settings
@@ -15,26 +15,31 @@ BINARY  	:= build/$(NAME).bin
 CC 		:= sdcc
 
 CFLAGS	:= -mz80 \
-			-pedantic \
+			--allow-unsafe-read \
 			-I . \
 			-I ../../arch \
 			-I ../../drivers/include \
 			-DDEBUG
 
 LDFLAGS := -mz80 \
-			-L ../../drivers/build/ \
-			-l drivers.a \
 			--no-std-crt0 build/crt0.rel \
-			--code-loc 0x0800 \
-			--data-loc 0x2000
+			-L ../../drivers/build \
+			-l drivers.a \
+			-pedantic 
 
-.PHONY: dirs dis clean
+			# --code-loc 0x0120 \
+			# --data-loc 0x2000
+
+.PHONY: flash dirs dis clean
 all: $(BINARY)
+
+flash: $(BINARY)
+	minipro -p M28C64 -w $< 
 
 # build binary
 $(BINARY): $(OBJECTS) dirs
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $(HEXFILE)
-	makebin -s 8192 $(HEXFILE) $(BINARY)
+	makebin -s 8192 -yo 1 $(HEXFILE) $(BINARY)
 
 $(OBJECTS): build/%.rel : %.c $(CSOURCES) dirs build/crt0.rel
 	@printf "\n"
@@ -48,9 +53,14 @@ dirs:
 	mkdir -p build
 
 dis: $(BINARY)
-	@# z80dasm -a -l -g 0h $< -o build/$(OSNAME).s
-	dz80 -b -n $<
+	#dz80 -b -n $<
+	r2 -a z80 $< -A \
+	-c 'afr main 0x200; \
+		pd 0x10; \
+		s 0x100; \
+		pd 10; \
+		s 0x200; \
+		pd 0x40' \
 
 clean:
-	- rm -rd build/*
-	- rm crt0.rel
+	- rm -rd build
