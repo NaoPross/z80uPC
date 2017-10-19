@@ -47,13 +47,13 @@ sw/**/*.bin
 sw/**/*.o
 sw/**/*.a
 
+
 # sdcc compiler output
-sw/z80/build
-sw/z80_test/build
+sw/**/build/
 
 # custom
 various/*
 
 # sublime
-z80.sublime-project
-z80.sublime-workspace
+*.sublime-project
+*.sublime-workspace
