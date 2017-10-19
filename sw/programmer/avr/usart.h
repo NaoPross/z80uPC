@@ -73,7 +73,7 @@
 
 #include <avr/io.h>
 
-#define USART_TIMEOUT   5000
+#define USART_TIMEOUT   50000
 
 // struct usart_conf
 // {

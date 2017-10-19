@@ -7,6 +7,10 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <termios.h>
+#include <sys/ioctl.h>
+#include <termio.h>
+#include <err.h>
+#include <linux/serial.h>
 
 int serial_open(const char *devpath, unsigned long baudrate);
 

@@ -15,6 +15,7 @@ int flash_open(const char *path, unsigned long baudrate)
 int flash_write(const char *romfile, void (*log)(const char *))
 {
 	int romfd;
+    int v;
 	ssize_t written;
 
 	struct stat romst;
@@ -33,7 +34,11 @@ int flash_write(const char *romfile, void (*log)(const char *))
             break;
         }
 
-		head.addr = (uint16_t) lseek(romfd, 0, SEEK_CUR);
+		head.addr = (uint16_t) lseek(romfd, 0, SEEK_CUR) - head.size;
+
+        char logbuf[64];
+        sprintf(logbuf, "[@] Writing a block of size %d at addr %d\n", head.size, head.addr);
+        log(logbuf);
 
 		written = write(flash_serial_fd, &head, sizeof(struct flash_blk));
 		if (written != sizeof(struct flash_blk)) {
@@ -45,8 +50,9 @@ int flash_write(const char *romfile, void (*log)(const char *))
             log("[#] Some bytes might not have been written\n");
 		}
 
-        char logbuf[64];
-		sprintf(logbuf, "[@] Written %d bytes at address %d\n", head.size, head.addr);
+        while (!read(flash_serial_fd, &v, 1));
+
+        sprintf(logbuf, "[@] Written %d bytes at address %d\n", head.size, head.addr);
 		log(logbuf);
 	}
 

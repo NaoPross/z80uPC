@@ -73,7 +73,7 @@ size_t usart_read(uint8_t *buffer, size_t len)
     uint8_t *p = buffer;
 
     while (len--) {
-        if (usart_read_byte(p)  == 0) {
+        if (usart_read_byte(p) == 0) {
             p++; 
             read++;
         }

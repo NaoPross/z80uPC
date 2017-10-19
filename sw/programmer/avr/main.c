@@ -19,66 +19,57 @@
 #define EEPROM_RD   1
 #define EEPROM_CLK  2
 
+
 struct file_blk
 {
     uint16_t addr;
     uint16_t size;
 };
 
+void eeprom_set_addr(uint16_t addr);
 void eeprom_write(uint16_t addr, uint8_t byte);
-void eeprom_tick();
+uint8_t eeprom_read(uint16_t addr);
 
 int main(void)
 {
     uint8_t *buffer, i;
     size_t read;
-    char str[64];
 
     struct file_blk *blk = malloc(sizeof(struct file_blk));
 
     DDRB = 0x7F;
-    DDRC = 0x83;
-    DDRD = 0xFC;
+    DDRC = 0x1F;
+    DDRD = 0xFD;
 
     /* get configuration */
     usart_init(1200); 
-    usart_print("programmer Ready\n<waiting for binary>\n\r");
 
     while (usart_read((uint8_t *) blk, sizeof(struct file_blk))) {
         buffer = malloc(blk->size);
         read = usart_read(buffer, blk->size);
 
-#ifdef DEBUG
-        sprintf(str, "info : reading block from addr %d of size %d\n\r", 
-                blk->addr, blk->size);
-        usart_print(str);
-
-        if (read != blk->size) {
-            sprintf(str, "error: expected %d but read %d\n\r", 
-                    blk->size, read);
-            usart_print(str);
-        }
-#endif
-
         for (i = 0; i < read; i++) {
             eeprom_write(blk->addr +i, buffer[i]);
+            _delay_ms(5);
+            eeprom_read(blk->addr +i); // != buffer[i];
         }
 
         free(buffer);
+        usart_send_byte(0x06);
+        usart_send_byte(0x06);
+        usart_send_byte(0x06);
     }
 
     free(blk);
     return 0;
 }
 
-
-void eeprom_write(uint16_t addr, uint8_t byte)
+void eeprom_set_addr(uint16_t addr)
 {
     int bit;
 
-    /* set address */
     for (bit = 0; bit < 8; bit++) {
-        // clear bit
+        // clear bits
         ADDRCR &= ~0x07;
         // select the bit
         ADDRCR |= bit;
@@ -94,31 +85,56 @@ void eeprom_write(uint16_t addr, uint8_t byte)
             ADDRCR |= _BV(ADDR_DH);
         else
             ADDRCR &= ~_BV(ADDR_DH);
+
+        _delay_ms(5);
     }
+}
+
+void eeprom_write(uint16_t addr, uint8_t byte)
+{
+    eeprom_set_addr(addr);
+
+    DDRC |= 0x18; // ED1 ED0
+    DDRD |= 0xFC; // ED7-ED2
 
     /* set data */
-    EEPROMDR = byte;
+    EEPROMDR = byte & 0xFC;
 
     // because EEPROMDR0 and EEPROMDR1 are used by Tx and Rx
-    EEPROMCR = (PINC & 0x07) | (byte & 0x03)<<3;
+    EEPROMCR = (PINC & 0xE7) | (byte & 0x03)<<3;
+
+    /* enable address output */
     EEPROMCR &= ~(_BV(ADDR_EH) | _BV(ADDR_EL));
 
     /* write eeprom */
     EEPROMCR &= ~_BV(EEPROM_WR);
+    _delay_ms(5);
 
-    // eeprom_tick();
-
+    /* reset */
     EEPROMCR |= _BV(EEPROM_WR);
     EEPROMCR |= _BV(ADDR_EH) | _BV(ADDR_EL);
 }
 
-#if 0 
-/* pulse the clock line for the eeprom */
-void eeprom_tick()
+uint8_t eeprom_read(uint16_t addr)
 {
-    EEPROMCR |= _BV(EEPROM_CLK);
-    _delay_ms(EEPROM_TICK_MS);         
-    EEPROMCR &= ~_BV(EEPROM_CLK);
-    _delay_ms(EEPROM_TICK_MS);         
+    uint8_t data;
+
+    eeprom_set_addr(addr);
+
+    DDRC &= ~0x18;
+    DDRD &= ~0xFC;
+
+    /* enable address output */
+    EEPROMCR &= ~(_BV(ADDR_EH) | _BV(ADDR_EL));
+
+    /* enable read eeprom */
+    EEPROMCR &= ~_BV(EEPROM_RD);
+    data = (PINC & 0x18) | (PIND & 0xFB);
+    _delay_ms(5);
+
+    /* reset */
+    EEPROMCR |= _BV(EEPROM_RD);
+    EEPROMCR |= _BV(ADDR_EH) | _BV(ADDR_EL);
+
+    return data;
 }
-#endif
