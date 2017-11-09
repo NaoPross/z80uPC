@@ -27,6 +27,8 @@ _exit:
 ;; Ordering of segments for the linker.
     .area   _HOME
     .area   _CODE
+_main:
+    ret
     .area   _INITIALIZER
     .area   _GSINIT
     .area   _GSFINAL

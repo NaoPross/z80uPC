@@ -10,23 +10,24 @@
 
 // registers
 #define PIO_REG_DATA 0
-#define PIO_REG_CTRL 1
+#define PIO_REG_CTRL 2
 
 // #define PIO_REG_DATA_A      (PIO_A + PIO_REG_PORT)
 // #define PIO_REG_DATA_B 1    (PIO_B + PIO_REG_PORT)
 // #define PIO_REG_CTRL_A 2    (PIO_A + PIO_REG_CTRL)
 // #define PIO_REG_CTRL_B 3    (PIO_B + PIO_REG_CTRL)
 
-#define PIO_MODE_BYTE_IN   0
-#define PIO_MODE_BYTE_OUT  1
-#define PIO_MODE_BYTE_BI   2
-#define PIO_MODE_BIT_IO    3
+#define PIO_MODE_BYTE_OUT  0 // mode 0
+#define PIO_MODE_BYTE_IN   1 // mode 1
+#define PIO_MODE_BYTE_BI   2 // mode 2
+#define PIO_MODE_BIT_IO    3 // mode 3
 
-#define PIO_INT_ACTIVE_HIGH     (1<<5)
-#define PIO_INT_AND_MODE        (1<<6)
-#define PIO_INT_ENABLE          (1<<7)
+#define PIO_INT_DISABLE         0 
+#define PIO_INT_ACTIVE_HIGH     2 
+#define PIO_INT_AND_MODE        4
+#define PIO_INT_ENABLE          8
 
-/* functions used internallyto interface with the device */
+/* functions used internally to interface with the device */
 inline void _pio_write(uint8_t reg, uint8_t data);
 inline uint8_t _pio_read(uint8_t reg);
 

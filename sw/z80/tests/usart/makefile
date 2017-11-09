@@ -1,7 +1,7 @@
 ####
 # source code settings
 #
-OSNAME := pio_test
+OSNAME := usart_test
  
 CSOURCES 	:=  $(wildcard *.c)
 LIBS 		:= ../../arch/build/arch.a \

@@ -1,21 +1,24 @@
 # Drivers library
 
-LIB     := build/drivers.a
+LIB     := build/arch.a
 SOURCES := $(wildcard *.c)
 OBJECTS := $(patsubst %.c,build/%.rel,$(SOURCES))
 
+F_CPU := 10000
+
 CC := sdcc
 AR := sdar
-CFLAGS := -mz80 -Iinclude -I../arch/include -DDEBUG
+CFLAGS := -mz80 \
+			-Iinclude \
+			-DDEBUG \
+			-DF_CPU=$(F_CPU)
 
-.PHONY: dirs rebuild clean
+.PHONY: dirs clean
 $(LIB): $(OBJECTS)
-	$(AR) vrcs $@ $(OBJECTS)
+	$(AR) rcs $@ $(OBJECTS)
 
 $(OBJECTS): build/%.rel: %.c $(SOURCES) dirs
 	$(CC) $(CFLAGS) -c $< -o $@
-
-rebuild: clean $(LIB)
 
 dirs:
 	mkdir -p build

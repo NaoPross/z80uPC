@@ -3,27 +3,20 @@
 #
 OSNAME := ram_test
  
-CSOURCES 	:=  $(wildcard *.c)
+CSOURCES 	:=  $(wildcard *.s)
 
-OBJECTS 	:= $(patsubst %.c,build/%.rel,$(CSOURCES))
+OBJECTS 	:= $(patsubst %.s,build/%.rel,$(SOURCES))
 HEXFILE		:= build/$(OSNAME).hex
 BINARY  	:= build/$(OSNAME).bin
 
 ### 
 # compiler settings
 #
-CC 		:= sdcc
+ASM		:= sdasz80
+LD		:= sdldz80
 
-CFLAGS	:= -mz80 \
-			-I . \
-			-DDEBUG
-
-LDFLAGS := -mz80 \
-			--no-std-crt0 build/crt0.rel \
-			-pedantic 
-
-			# --code-loc 0x0120 \
-			# --data-loc 0x2000
+FLAGS	:= 
+LDFLAGS :=
 
 .PHONY: flash dirs dis clean
 all: $(BINARY)
@@ -33,12 +26,12 @@ flash: $(BINARY)
 
 # build binary
 $(BINARY): $(OBJECTS) dirs
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $(HEXFILE)
+	$(LD) $(LDFLAGS) $(OBJECTS) -o $(HEXFILE)
 	makebin -s 8192 -yo 1 $(HEXFILE) $(BINARY)
 
-$(OBJECTS): build/%.rel : %.c $(CSOURCES) dirs build/crt0.rel
+$(OBJECTS): build/%.rel : %.s $(SOURCES) dirs
 	@printf "\n"
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(ASM) $(FLAGS) $< -o
 
 build/crt0.rel: crt0.s
 	sdasz80 -o $<

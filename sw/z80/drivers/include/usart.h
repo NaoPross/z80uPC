@@ -48,8 +48,8 @@
 #define USART_AUTOFLOW_CTS      2
 #define USART_AUTOFLOW_OFF      0
 
-typedef unsigned int    uint;
-typedef uint8_t         register_t;
+typedef unsigned int        uint;
+typedef volatile uint8_t    register_t;
 
 /* stuctures for usart registers */
 struct IER 

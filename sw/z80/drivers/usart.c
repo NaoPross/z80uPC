@@ -1,6 +1,6 @@
 #include "usart.h"
 
-static struct _usart_device *_usart = (struct _usart_device *) ADDR_DEV_USART;
+static volatile struct _usart_device *_usart = ((struct _usart_device *) ADDR_DEV_USART);
 
 void usart_set_baudrate(uint16_t baudrate)
 {
