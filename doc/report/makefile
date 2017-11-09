@@ -2,14 +2,14 @@
 BUILD_DIR := build
 RES_DIR := res
 
-SOURCES := z80uPC.tex z80uPC_nostyle.tex notes.tex
+SOURCES := z80uPC_nostyle.tex notes.tex
 DOCUMENTS := $(patsubst %.tex,$(BUILD_DIR)/%.pdf,$(SOURCES))
 
 RES_SRC := $(wildcard $(RES_DIR)/*.svg)
 RES := $(patsubst %.svg,%.pdf,$(RES_SRC))
 
 # compiler settings
-TEX := texfot lualatex
+TEX := texfot xelatex
 
 # recipes
 .PHONY: all dir clean
