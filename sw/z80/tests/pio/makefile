@@ -66,7 +66,7 @@ dis: $(BINARY)
 		s 0x100; \
 		pd 10; \
 		s 0x200; \
-		pd 0x95'
+		pd 0x95' | tee build/dis.txt
 
 clean:
 	- rm -rd build

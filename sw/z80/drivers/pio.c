@@ -1,33 +1,34 @@
 #include "pio.h"
 
 #ifdef PIO_ASM_INTERFACE
-/* old inline asm implementation */
-inline void _pio_write(uint8_t reg, uint8_t data)
+// TODO: set inline
+void _pio_write(uint8_t reg, uint8_t data)
 {
     __asm
-    ;; pop function arguments
+    ;;  pop function arguments data in h, reg in a (l)
     pop hl
-    ;; store data in A
-    ld a, h
-    ld h, #0
+    ld a, l
     ;; add ADDR_DEV_PIO to get the device address
-    ld bc, #ADDR_DEV_PIO
-    add hl, bc
+    add a, #ADDR_DEV_PIO
+    ld c, a
     ;; load data
-    ld (hl), a
+    out (c), h
     __endasm;
 }
 
-inline uint8_t _pio_read(uint8_t reg) __naked
+inline uint8_t _pio_read(uint8_t reg)
 {
+    // TODO: check "dec sp"
     __asm
     ;; pop function argument
-    pop l
-    ld h, #0
+    dec sp
+    pop hl
+    ld a, l
     ;; add ADDR_DEV_PIO to get the device address
-    ld bc, #ADDR_DEV_PIO
-    add hl, bc
-    ld l, (hl)
+    add a, #ADDR_DEV_PIO
+    ld c, a
+    ;; read data
+    in l, (c)
     ret
     __endasm;
 }
@@ -68,7 +69,7 @@ void pio_set_interrupts_mask(int port, int control, uint8_t mask)
 {
     // 0x17 is a control sequence to set interrupts
     // AND interpret the next byte as a bitmask
-    _pio_write((PIO_REG_CTRL + port),(control | 0x17));
+    _pio_write((PIO_REG_CTRL + port),(control | 0x97));
     _pio_write((PIO_REG_CTRL + port), mask);
 }
 

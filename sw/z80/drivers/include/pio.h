@@ -4,6 +4,9 @@
 #include "addresses.h"
 #include <stdint.h>
 
+// DEBUG
+#define PIO_ASM_INTERFACE
+
 // ports
 #define PIO_A       0
 #define PIO_B       1
@@ -12,10 +15,10 @@
 #define PIO_REG_DATA 0
 #define PIO_REG_CTRL 2
 
-// #define PIO_REG_DATA_A      (PIO_A + PIO_REG_PORT)
-// #define PIO_REG_DATA_B 1    (PIO_B + PIO_REG_PORT)
-// #define PIO_REG_CTRL_A 2    (PIO_A + PIO_REG_CTRL)
-// #define PIO_REG_CTRL_B 3    (PIO_B + PIO_REG_CTRL)
+#define PIO_REG_DATA_A      (PIO_A | PIO_REG_PORT)
+#define PIO_REG_DATA_B 1    (PIO_B | PIO_REG_PORT)
+#define PIO_REG_CTRL_A 2    (PIO_A | PIO_REG_CTRL)
+#define PIO_REG_CTRL_B 3    (PIO_B | PIO_REG_CTRL)
 
 #define PIO_MODE_BYTE_OUT  0 // mode 0
 #define PIO_MODE_BYTE_IN   1 // mode 1

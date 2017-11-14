@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <string.h>
 
-// baudrate clock divisors 
+// baudrate clock divisors
 // values from TL16C550C datasheet (table 9 for 1.8432 MHz crystal)
 #define USART_BAUDRATE_50       2304
 #define USART_BAUDRATE_75       1536
@@ -125,7 +125,7 @@ struct MSR
     volatile uint data_carrier_detect :1;
 };
 
-/* this structure is only for internal usage */
+/* this structure is only for internal use */
 struct _usart_device
 {
     register_t buffer;  // also used as LSB for divisor latch
