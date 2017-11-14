@@ -1,0 +1,16 @@
+\select@language {italian}
+\select@language {italian}
+\contentsline {section}{\numberline {1}Hardware}{3}
+\contentsline {subsection}{\numberline {1.1}Specifiche tecniche dello Z80}{3}
+\contentsline {subsection}{\numberline {1.2}Componenti e modello di design}{3}
+\contentsline {subsection}{\numberline {1.3}Schema a blocchi}{4}
+\contentsline {subsubsection}{\numberline {1.3.1}Implementazione dei generatori di clocks}{4}
+\contentsline {subsubsection}{\numberline {1.3.2}Uscite verso l'esterno (DIN 41612)}{4}
+\contentsline {subsection}{\numberline {1.4}Address space}{5}
+\contentsline {subsection}{\numberline {1.5}Memory management unit}{5}
+\contentsline {section}{\numberline {2}Software}{8}
+\contentsline {subsection}{\numberline {2.1}Organizzazione del codice sorgente C}{8}
+\contentsline {subsection}{\numberline {2.2}C Toolchain}{8}
+\contentsline {subsection}{\numberline {2.3}CRT0 per lo Z80}{9}
+\contentsline {subsection}{\numberline {2.4}Codice sorgente VHDL}{10}
+\contentsline {subsubsection}{\numberline {2.4.1}Programmazione della MMU}{10}

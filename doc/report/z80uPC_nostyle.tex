@@ -1,5 +1,14 @@
 \documentclass[a4paper, 11pt]{article}
 
+% draftwatermark
+\usepackage{draftwatermark}
+\SetWatermarkText{\tt DRAFT}
+\SetWatermarkLightness{.8}
+\SetWatermarkScale{10}
+
+% urls
+\usepackage{url}
+
 % figures
 \usepackage{array}
 \usepackage{float}
@@ -80,6 +89,10 @@
 \end{abstract}
 
 \break
+\tableofcontents
+\break
+
+%-----------------------------------------------------------------------------
 \section{Hardware}
 
 \subsection{Specifiche tecniche dello Z80}
@@ -121,7 +134,7 @@ Il minimo necessario per far funzionare uno Z80 sono una {\tt RAM} ed una
 anche di una porta seriale, di una porta parallela e di un counter timer;
 Hardware che si presenta normalmente all'interno di microcontrollori odierni.
 
-\begin{table}[hb]\centering
+\begin{table}[h!]\centering
 \caption{Lista dei componenti}
 \begin{tabular}{ >{\tt}p{.1\textwidth} >{\tt\bfseries}p{.2\textwidth} >{\footnotesize}p{.6\textwidth} }
     \toprule
@@ -156,7 +169,16 @@ vedere in tempo reale i valori sui bus degli indirizzi e dei dati.
 \end{tabular}
 \end{center}
 
+\subsection{Schema a blocchi}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{res/block_diagram}
+    \caption{Schema a blocchi del \prj}
+\end{figure}
+
+% TODO
 \subsubsection{Implementazione dei generatori di clocks}
+
 \subsubsection{Uscite verso l'esterno (DIN 41612)}
 Per poter estendere lo \prj a lato \`e presente un connettore {\tt DIN 41612}
 per poter interfacciare schede di estensione della funzionali\`a siccome il
@@ -192,20 +214,79 @@ la parte di address space in cui \`e previsto di mappare dispositivi esterni.
 \end{tabu}}
 \end{table}
 
+% TODO
+\subsection{Address space}
+L'address space dello z80 \`e in grado di indirizzare 64 KB; la met\`a di
+questi \`e assegnata alla RAM e un quarto \`e della ROM. La ROM \`e minore
+della RAM perch\'e \`e intesa per essere un bootloader piuttosto che un vero e
+proprio OS.
+% TODO: redraw with xfig
+\begin{figure}[H]
+\centering
+\includegraphics[height=8cm]{res/addrspace}
+\end{figure}
 
 \subsection{Memory management unit}
-Alcuni modelli sucessori dello Z8400 implementavano ina MMU (Memory
-Management Unit) SoC che permetteva di ampliare la dimensione dell'address
-space, permettendo quindi di mappare pi\`u memorie o dispositivi separati
-negli stessi indirizzi. Ci\`o \`e un sistema \`e comune nei sistemi a base di
-microcontrollers per ovviare al problema dello spazio. Lo \prj per\`o ha un
-architettura pi\`u simile ad un computer X86 in cui la MMU viene utilizzata
-per la gestione delle \emph{pagine} di memoria.
+Alcuni modelli sucessori dello Z8400 implementavano ina MMU (Memory Management
+Unit) SoC che permetteva di ampliare la dimensione dell'address space,
+permettendo quindi di mappare pi\`u memorie o dispositivi separati negli stessi
+indirizzi. Lo \prj per\`o cerca di imitare un architettura pi\`u simile ad un
+computer X86 in cui la MMU viene utilizzata per la gestione delle \emph{pagine}
+di memoria. Il concetto di pagine (pages in inglese) \`e necessario per sistemi
+con un supporto per il multitasking. La conseguenza di questo design implica
+per\`o che sia introdotto anche il concetto di \emph{virtual address space}
+siccome, potendo reindirizzare a piacimento gli indirizzi, diventa possibile e
+conveniente offrire ai programmi eseguiti la stessa struttura di memoria
+indipendentemente dalla loro vera locazione in memoria.
 
-Il concetto di pagine (pages in inglese) \`e necessario per sistemi con un
-supporto per il multitasking o per poter ampliare la memoria dinamica.
+La struttura designata per il progetto \`e la seguente. \`E resa possibile
+solamente l'esecuzione di 2 programmi semi-paralleli, perch\`e
+l'implementazione di uno scheduler \`e troppo complessa con il CTC a
+disposizione. Si pu\`o quindi avviare due programmi ma solamente uno \`e in
+esecuzione ed utilizza il 100\% del tempo della CPU. Purtroppo le limitazioni
+di questo design non permettono di offrire funzionalit\`a importanti della
+kernel, ma in un futuro  si potrebbe risolvere il problema estendendo la
+piattaforma. Infatti grandi spazi dell'iospace sono stati lasciati liberi per
+l'aggiunta di dispositivi esterni.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[height=5cm]{res/mmu_ram_map}
+\end{figure}
+
+I due programmi in `esecuzione' sono salvati nella RAM alle locazioni {\tt
+0xB000} e {\tt 0xD0000} con 8 KB di RAM per uno. Per passare da un programma
+all'altro la kernel offre delle system calls che modificano la \emph{page
+table} all'interno della MMU in maniera da mappare l'indirizzo {\tt B000} o
+{\tt D000} a {\tt 0000}.
+
+\begin{figure}[h!]
+\centering
+\begin{minipage}[c]{.45\textwidth} \centering
+    \includegraphics[width=\linewidth]{res/mmu_addr}
+\end{minipage}%
+\begin{minipage}[c]{.45\textwidth} \centering
+\begin{verbatim}
+    Example program running 
+    at address 0xB000
+
+    Virtual address
+    LD (#0x1200), #0xFE
+
+    Real Instruction
+    LD (#0xC200), #0xFE
+\end{verbatim}
+\end{minipage}
+\end{figure}
+
+Naturalmente ci\`o significa che il programma non ha l'accesso all'iospace,
+perci\`o per le operazioni con i dispositivi \`e necessario implementare un
+driver nella kernel. Nel caso in cui si volesse creare dei drivers userspace la
+kernel dovr\`a mettere a disposizione delle system calls che permettano di
+modificare la page table in maniera indiretta.
 
 \break
+%-----------------------------------------------------------------------------
 \section{Software}
 \subsection{Organizzazione del codice sorgente C}
 Il codice sorgente dell'intero progetto \`e contenuto nella cartella {\tt
@@ -235,23 +316,25 @@ $ sdcc -mz80 -pedantic --no-std-crt0 <crt0> \
        -I. -c <source_file> -o <object_file>
 \end{verbatim}
 In cui {\tt <source\_file>} \`e il documento con il codice sorgente e {\tt
-<object\_file>} \`e il nome dell'object (solitamente lo stesso del sorgente
-con l'estensione {\tt .o}). Mentre per linkare gli objects e generare un
-eseguibile si utilizza
+<object\_file>} \`e il nome dell'object (solitamente lo stesso del sorgente con
+l'estensione {\tt .o}).  La flag {\tt --allow-unsafe-read} \`e permessa
+solamente nella compilazione per Z80 e serve ad indicare al compiler che le
+letture da locazioni arbitrarie di memoria sono ammesse (normalmente non lo
+sono). Per linkare gli objects e generare un eseguibile si utilizza
 \begin{verbatim}
 $ sdcc -mz80 --no-std-crt0 <crt0> \
        --code-loc=<addr> <objects> -o <hexfile>
 
 $ makebin -s <rom_size> -yo 1 -ya 1 <hexfile> <binary>
 \end{verbatim}
-Gli argomenti {\tt -yo 1 -ya 1} specificano rispettivamente il numero di
-banchi di ROM e di RAM. 
+Le flags {\tt -yo 1 -ya 1} specificano rispettivamente il numero di banchi di
+ROM e di RAM.
 
 \subsection{CRT0 per lo Z80}
-In C il CRT0 \`e un insieme di routines che vengono eseguite prima del codice
-C che servono ad inizializzare il sistema. Nel caso dello \prj \`e utilizzato
-per inizializzare lo stack pointer e per organizzare i settori dell'eseguibile. 
-Un esempio di crt0 utilizzato per il progetto:
+In C il CRT0 \`e un insieme di routines che vengono eseguite prima del codice C
+che servono ad inizializzare il sistema. Nel caso dello \prj \`e utilizzato per
+inizializzare lo stack pointer e per indicare al linker come organizzare i
+settori dell'eseguibile. Un esempio di crt0 utilizzato per il progetto:
 
 \lstset{escapechar=@,style=customasm}
 \begin{lstlisting}
@@ -303,19 +386,24 @@ assembler per lo Z80, per esempio quello fornito in SDCC.\@
 $ sdasz80 -o <crt0.s>
 \end{verbatim}
 
-Quindi l'argomento {\tt --no-std-crt0 <crt0>} per il compiler descritto precedente non 
-\`e assolutamente necessario ma \`e consigliato siccome permette di avere un
-controllo maggiore del contenuto dell'eseguibile.
+Quindi l'argomento {\tt --no-std-crt0 <crt0>} per il compiler descritto
+precedente non \`e assolutamente necessario ma \`e consigliato siccome permette
+di avere un controllo maggiore del contenuto dell'eseguibile.
 
 \subsection{Codice sorgente VHDL}
 Il codice sorgente in VHDL per la CPLD utilizzata come address decoder e MMU, 
 \`e contenuto nella cartella {\tt sw/cpld}. La toolchain utilizzata \`e quella
 offerta da Lattice.
 
+% TODO
+\subsubsection{Programmazione della MMU}
+
+
 \break
+%-----------------------------------------------------------------------------
 \section*{Glossario Tecnico}
 {\def\arraystretch{1.4}
-\begin{tabular}{ >{\bfseries}p{.3\linewidth} p{.7\linewidth} }
+\begin{tabular}{ >{\bfseries}p{.35\linewidth} p{.65\linewidth} }
 
     Address Space & In informatica l'\emph{address space} \`e un intervallo di
     indirizzi che possono corrispondere a indirizzi in rete, regioni di un
@@ -324,14 +412,49 @@ offerta da Lattice.
     all'intervallo indirizzabile dal processore, ovvero \(2^{16}\) locazioni
     siccome il sistema dispone di un bus a 16 bit. \\
 
+    Virtual Address Space & Il virtual address space \`e un livello di
+    astrazione che estende l'address space utilizzato nelle architetture
+    moderne (X86 / 64). In un sistema senza VAS, i programmi caricati in
+    memoria `vedono' l'indirizzo in cui si trovano e devono perci\`o essere
+    caricati in una regione di memoria continua. In un sistema con VAS invece
+    al programma figura sempre di avere l'intero address space disponibile per
+    se, e la MMU si occupa di traslare gli indirizzi virtuali in indirizzi
+    reali prima che essi raggiungano l'hardware. \\
+
     Registro & Un registro \`e un dispositivo di memoria in cui \`e possibile
     pu\`o leggere e/o scrivere un certo valore. Normalmente in un computer /
     microcontrollore la dimensione della memoria \`e data dall'architettura,
     dunque 8, 16, 32 o 64 bits.  In questo documento viene viene comunemente
     utilizzato per riferirsi ad una memoria di un dispositivo fisico come la
     CPU o un IC seriale. \\
+
+    Toolchain & Da Wikipedia \cite{wiki:toolchain}: In ambito software, una
+    toolchain è l'insieme dei programmi (tools) usati nello sviluppo di un
+    prodotto (tipicamente un altro programma o sistema di programmi). I tool
+    possono essere utilizzati in catena, in modo tale che l'output di ciascun
+    tool rappresenti l'input per il successivo, ma il termine è utilizzato in
+    maniera più estesa per riferirsi, più in generale, a qualunque insieme di
+    tool di sviluppo collegati tra loro. \\
+
+    Stack Pointer,\newline Program Counter & Lo Stack Pointer \`e un registro a
+    16 bit in cui \`e salvato l'indirizzo della fine (pi\`u in alto, ultimo
+    inserito) dello stack. Il program counter, un altro registro a 16 bit
+    contiene l'indirizzo da cui leggere della prossima istruzione da
+    eseguire.\\
+
 \end{tabular}}
 
-\section*{Bibliografia}
+\begin{thebibliography}{2}
+\bibitem{wiki:toolchain}
+    \url{https://it.wikipedia.org/wiki/Toolchain}
+
+\bibitem{z80book}
+    \textbf{Paolo Di Leo},
+    Z80 Microcomputer didattico, 
+    Gennaio 2016,
+    Libri SANDIT,
+    {\tt ISBN 978-88-6928-142-6}
+
+\end{thebibliography}
 
 \end{document}
