@@ -1,0 +1,204 @@
+// SDF delay-file
+(DELAYFILE
+  (SDFVERSION "2.1")
+  (DESIGN "address_decoder")
+  (DATE "11/13/2017 11:47:12")
+  (VENDOR "Lattice Semiconductor")
+  (PROGRAM "SDF Generator")
+  (VERSION "8.3.02.12_DE_HDL_BASE Data sheet version: 1.01")
+  (DIVIDER /)
+  (VOLTAGE :5.0:)
+  (PROCESS "typical")
+  (TEMPERATURE :25:)
+  (TIMESCALE 100ps)
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_MMU_OUT_15_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_CSROML_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_CSROMH_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_CSRAM_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_CSUART_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_CSCTC_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_CSPIO_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_MMU_OUT_14_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_MMU_OUT_13_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_MMU_OUT_12_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (20:20:20) (20:20:20) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "BUFF")
+    (INSTANCE GATE_MMU_OUT_15_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_CSRAM_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "BUFF")
+    (INSTANCE GATE_MMU_OUT_14_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "BUFF")
+    (INSTANCE GATE_MMU_OUT_13_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "BUFF")
+    (INSTANCE GATE_MMU_OUT_12_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_CSROML_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_CSROMH_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_CSUART_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_CSCTC_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_CSPIO_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (130:130:130) (130:130:130) )
+      )
+    )
+  )
+)

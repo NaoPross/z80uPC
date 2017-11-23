@@ -1,4 +1,0 @@
-@E: CD169 :"\\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\cpld_test.vhd":7:1:7:6|Illegal declaration
-@E: CD213 :"\\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\cpld_test.vhd":13:1:13:7|Undefined identifier
-@E|Parse errors encountered - exiting
-

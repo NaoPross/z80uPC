@@ -1,0 +1,33 @@
+Section Type   Array Num   Name                     Real Name          Base     Number     Increment
+// -------------------------------------------------------------------------------------------------
+      Port          1      MMU_IN(15:0)                   MMU_IN                 15         16            -1
+      Port          2      MMU_OUT(15:12)                  MMU_OUT                 15          4            -1
+End
+Section Member   Rename                   Array-Notation          Array Number     Index
+// -------------------------------------------------------------------------------------
+        Port      MMU_IN_15_                   MMU_IN[15]                       1            0            
+        Port      MMU_IN_14_                   MMU_IN[14]                       1            1            
+        Port      MMU_IN_13_                   MMU_IN[13]                       1            2            
+        Port      MMU_IN_12_                   MMU_IN[12]                       1            3            
+        Port      MMU_IN_11_                   MMU_IN[11]                       1            4            
+        Port      MMU_IN_10_                   MMU_IN[10]                       1            5            
+        Port      MMU_IN_9_                   MMU_IN[9]                       1            6            
+        Port      MMU_IN_8_                   MMU_IN[8]                       1            7            
+        Port      MMU_IN_7_                   MMU_IN[7]                       1            8            
+        Port      MMU_IN_6_                   MMU_IN[6]                       1            9            
+        Port      MMU_IN_5_                   MMU_IN[5]                       1            10            
+        Port      MMU_IN_4_                   MMU_IN[4]                       1            11            
+        Port      MMU_IN_3_                   MMU_IN[3]                       1            12            
+        Port      MMU_IN_2_                   MMU_IN[2]                       1            13            
+        Port      MMU_IN_1_                   MMU_IN[1]                       1            14            
+        Port      MMU_IN_0_                   MMU_IN[0]                       1            15            
+        Port      MMU_OUT_15_                  MMU_OUT[15]                       2            0            
+        Port      MMU_OUT_14_                  MMU_OUT[14]                       2            1            
+        Port      MMU_OUT_13_                  MMU_OUT[13]                       2            2            
+        Port      MMU_OUT_12_                  MMU_OUT[12]                       2            3            
+End
+Section Cross Reference File
+Design 'ADDRESS_DECODER' created Thu Nov 23 11:54:43 2017
+   Type              New Name                               Original Name
+// ----------------------------------------------------------------------
+End

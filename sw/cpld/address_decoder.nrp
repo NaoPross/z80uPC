@@ -1,0 +1,17 @@
+ispDesignExpert 8.3.02.12_DE_HDL_BASE Copyright ©, 1992-1999,
+Lattice Semiconductor Corporation, All Rights Reserved
+
+Output Files:
+  Netlist File: address_decoder.vho
+  Delay   File: address_decoder.sdf
+
+Parsing C:\ISPTOOLS\ISPSYS/dat/sdf.mdl
+Input file: c:\_prossn\cpld\address_decoder.tte
+Reading library information ...
+Mapping to combinational gates 
+Mapping to netlist view.
+Utilization Estimate
+    Combinational Macros:         27
+    Flip-Flop and Latch Macros:    0
+    I/O Pads:                     24
+Elapsed time: 1 seconds

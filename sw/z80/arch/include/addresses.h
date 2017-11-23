@@ -5,8 +5,8 @@
 #define ADDR_DEV_ROM_H      0x2000
 
 #define ADDR_DEV_PIO        0x0010
-#define ADDR_DEV_CTC        0x4100
-#define ADDR_DEV_USART      0x4200
+#define ADDR_DEV_CTC        0x0020
+#define ADDR_DEV_USART      0x0030
 
 #define ADDR_DEV_MMU
 

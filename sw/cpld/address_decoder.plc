@@ -1,0 +1,36 @@
+|--------------------------------------------|
+|- ispDesignExpert Fitter Report File       -|
+|- Version 8.3.02.12_DE_HDL_BASE                              -|
+|- (c)Copyright, Lattice Semiconductor 1999 -|
+|--------------------------------------------|
+
+
+; Source file address_decoder.tt4
+; FITTER-generated Placements.
+; DEVICE   mach432
+; DATE     Thu Nov 23 11:55:45 2017
+
+
+Pin   2  MMU_IN_7_
+Pin   3  MMU_IN_6_
+Pin   21  MMU_IN_15_
+Pin   4  MMU_IN_5_
+Pin   5  MMU_IN_4_
+Pin   36  MMU_OUT_15_ Comb ; S6=1  S9=1  Pair 66
+Pin   6  MMU_IN_3_
+Pin   30  IORQ
+Pin   7  MMU_IN_2_
+Pin   24  CSROML Comb ; S6=1  S9=1  Pair 75
+Pin   25  CSROMH Comb ; S6=1  S9=1  Pair 71
+Pin   37  MMU_OUT_14_ Comb ; S6=1  S9=1  Pair 62
+Pin   26  CSRAM Comb ; S6=1  S9=1  Pair 74
+Pin   38  MMU_OUT_13_ Comb ; S6=1  S9=1  Pair 65
+Pin   27  CSUART Comb ; S6=1  S9=1  Pair 70
+Pin   39  MMU_OUT_12_ Comb ; S6=1  S9=1  Pair 61
+Pin   28  CSCTC Comb ; S6=1  S9=1  Pair 73
+Pin   29  CSPIO Comb ; S6=1  S9=1  Pair 69
+Pin   20  MMU_IN_14_
+Pin   19  MMU_IN_13_
+Pin   18  MMU_IN_12_
+; Unused Pins & Nodes
+; -> None Found.

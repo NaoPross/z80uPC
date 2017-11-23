@@ -1,3 +1,0 @@
-@N|Running in 32-bit mode
-@N: CD720 :"C:\ispLEVER_Classic2\synpbase\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
-

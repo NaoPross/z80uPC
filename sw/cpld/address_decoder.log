@@ -1,0 +1,46 @@
+|--------------------------------------------|
+|- ispDesignExpert Fitter Report File       -|
+|- Version 8.3.02.12_DE_HDL_BASE                              -|
+|- (c)Copyright, Lattice Semiconductor 1999 -|
+|--------------------------------------------|
+
+
+
+*** Source file is address_decoder.tt4 . Device is M4-32/32-15JC .
+
+<Note>  F35109:  For this device, all input pairing is ignored since input
+                 registers or latches do not exist. All signals must pass
+                 through the central switch matrix before being latched or
+                 registered.
+<Note>  F40016:  0 pins have been reserved out of 34 .
+<Note>  F40021:  34 pins are available after reservation, 21 are required
+                 by the design.
+<Note>  F35065:  For outputs, implicit output enables will be set to VCC.
+
+*** End of Pla2db. 
+Check preplaced pins/nodes
+Check preplaced blocks
+Check unreferenced pins/nodes
+Check clock rules
+
+List of non-global clocks:
+   None.
+
+*** End of Normalization.
+
+*** End of DRC. 
+
+*** Start Partitioning
+ 
+*** Partitioning successful.
+
+
+*** Starting Place&Route
+
+*** Place&Route Successful
+*** The JEDEC file generated is address_decoder.jed .
+*** Report Generator invoked.
+*** Report Generator end.
+
+// Fitting successful.
+// ERROR count 0 WARNING count 0 .

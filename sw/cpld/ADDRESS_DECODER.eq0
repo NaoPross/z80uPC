@@ -1,0 +1,193 @@
+Edif2Blif version 8.2 
+
+Design address_decoder created Thu Nov 23 11:54:43 2017
+
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   1/1        1        1    Pin   MMU_OUT_15_ 
+   1/1        1        1    Pin   CSROML 
+   1/1        1        1    Pin   CSROMH 
+   1/1        1        1    Pin   MMU_OUT_14_ 
+   1/1        1        1    Pin   CSRAM 
+   1/1        1        1    Pin   MMU_OUT_13_ 
+   1/1        1        1    Pin   CSUART 
+   1/1        1        1    Pin   MMU_OUT_12_ 
+   1/1        1        1    Pin   CSCTC 
+   1/1        1        1    Pin   CSPIO 
+   1          2        1    Node  op_ge_un24_csromh 
+   1          2        1    Node  op_lt_un11_csromh 
+   1          2        1    Node  un12_csromhZ0 
+   1          2        1    Node  N_117 
+   1          2        1    Node  N_181 
+   1          2        1    Node  op_lt_un11_cspio 
+   1          2        1    Node  N_56 
+   1          2        1    Node  N_54 
+   1          2        1    Node  N_51 
+   1          1        1    Node  IORQ_iZ0 
+   1          1        1    Node  MMU_IN_i_0_7 
+   1          1        1    Node  MMU_IN_i_0_6 
+   1          1        1    Node  MMU_IN_i_0_5 
+   1          1        1    Node  MMU_IN_i_0_3 
+   1          1        1    Node  MMU_IN_i_0_2 
+   1          1        1    Node  MMU_IN_i_0_14 
+   1          1        1    Node  MMU_IN_i_0_13 
+   1/1        1        1    Node  MMU_IN_c_2 
+   1/1        1        1    Node  MMU_IN_c_3 
+   1/1        1        1    Node  MMU_IN_c_4 
+   1/1        1        1    Node  MMU_IN_c_5 
+   1/1        1        1    Node  MMU_IN_c_6 
+   1/1        1        1    Node  MMU_IN_c_7 
+   1/1        1        1    Node  MMU_IN_c_c_12 
+   1/1        1        1    Node  MMU_IN_c_c_13 
+   1/1        1        1    Node  MMU_IN_c_c_14 
+   1/1        1        1    Node  MMU_IN_c_c_15 
+   1/1        1        1    Node  IORQ_c 
+   1          1        1    Node  op_ge_un24_csromh_i_c 
+   1          1        1    Node  un12_csromh_i_c 
+   1          1        1    Node  MMU_IN_i_c_15 
+   1          1        1    Node  N_181_i_0_c 
+   0          0        1    Node  GND 
+   1          2        1    Node  N_184 
+=========
+  43/21         Best P-Term Total: 43
+                       Total Pins: 28
+                      Total Nodes: 34
+            Average P-Term/Output: 0
+
+
+Equations:
+
+MMU_OUT_15_ = (MMU_IN_c_c_15);
+
+CSROML = (op_ge_un24_csromh_i_c);
+
+CSROMH = (un12_csromh_i_c);
+
+MMU_OUT_14_ = (MMU_IN_c_c_14);
+
+CSRAM = (MMU_IN_i_c_15);
+
+MMU_OUT_13_ = (MMU_IN_c_c_13);
+
+CSUART = (GND);
+
+MMU_OUT_12_ = (MMU_IN_c_c_12);
+
+CSCTC = (GND);
+
+CSPIO = (N_181_i_0_c);
+
+op_ge_un24_csromh = (MMU_IN_i_c_15 & N_117);
+
+op_lt_un11_csromh = (MMU_IN_i_c_15 & MMU_IN_i_0_14);
+
+un12_csromhZ0 = (op_lt_un11_csromh & op_ge_un24_csromh_i_c);
+
+N_117 = (MMU_IN_i_0_14 & MMU_IN_i_0_13);
+
+N_181 = (op_lt_un11_cspio & N_184);
+
+op_lt_un11_cspio = (N_56 & MMU_IN_i_0_7);
+
+N_56 = (N_54 & MMU_IN_i_0_6);
+
+N_54 = (N_51 & MMU_IN_i_0_5);
+
+N_51 = (MMU_IN_i_0_3 & MMU_IN_i_0_2);
+
+IORQ_iZ0 = (!IORQ_c);
+
+MMU_IN_i_0_7 = (!MMU_IN_c_7);
+
+MMU_IN_i_0_6 = (!MMU_IN_c_6);
+
+MMU_IN_i_0_5 = (!MMU_IN_c_5);
+
+MMU_IN_i_0_3 = (!MMU_IN_c_3);
+
+MMU_IN_i_0_2 = (!MMU_IN_c_2);
+
+MMU_IN_i_0_14 = (!MMU_IN_c_c_14);
+
+MMU_IN_i_0_13 = (!MMU_IN_c_c_13);
+
+MMU_IN_c_2 = (MMU_IN_2_);
+
+MMU_IN_c_3 = (MMU_IN_3_);
+
+MMU_IN_c_4 = (MMU_IN_4_);
+
+MMU_IN_c_5 = (MMU_IN_5_);
+
+MMU_IN_c_6 = (MMU_IN_6_);
+
+MMU_IN_c_7 = (MMU_IN_7_);
+
+MMU_IN_c_c_12 = (MMU_IN_12_);
+
+MMU_IN_c_c_13 = (MMU_IN_13_);
+
+MMU_IN_c_c_14 = (MMU_IN_14_);
+
+MMU_IN_c_c_15 = (MMU_IN_15_);
+
+IORQ_c = (IORQ);
+
+op_ge_un24_csromh_i_c = (!op_ge_un24_csromh);
+
+un12_csromh_i_c = (!un12_csromhZ0);
+
+MMU_IN_i_c_15 = (!MMU_IN_c_c_15);
+
+N_181_i_0_c = (!N_181);
+
+GND = (0);
+
+N_184 = (MMU_IN_c_4 & IORQ_iZ0);
+
+
+Reverse-Polarity Equations:
+
+!MMU_OUT_15_ = (!MMU_IN_c_c_15);
+
+!CSROML = (!op_ge_un24_csromh_i_c);
+
+!CSROMH = (!un12_csromh_i_c);
+
+!MMU_OUT_14_ = (!MMU_IN_c_c_14);
+
+!CSRAM = (!MMU_IN_i_c_15);
+
+!MMU_OUT_13_ = (!MMU_IN_c_c_13);
+
+!CSUART = (!GND);
+
+!MMU_OUT_12_ = (!MMU_IN_c_c_12);
+
+!CSCTC = (!GND);
+
+!CSPIO = (!N_181_i_0_c);
+
+!MMU_IN_c_2 = (!MMU_IN_2_);
+
+!MMU_IN_c_3 = (!MMU_IN_3_);
+
+!MMU_IN_c_4 = (!MMU_IN_4_);
+
+!MMU_IN_c_5 = (!MMU_IN_5_);
+
+!MMU_IN_c_6 = (!MMU_IN_6_);
+
+!MMU_IN_c_7 = (!MMU_IN_7_);
+
+!MMU_IN_c_c_12 = (!MMU_IN_12_);
+
+!MMU_IN_c_c_13 = (!MMU_IN_13_);
+
+!MMU_IN_c_c_14 = (!MMU_IN_14_);
+
+!MMU_IN_c_c_15 = (!MMU_IN_15_);
+
+!IORQ_c = (!IORQ);
+

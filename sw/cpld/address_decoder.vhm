@@ -1,0 +1,288 @@
+--
+-- Written by Synplicity
+-- Thu Nov 23 11:54:35 2017
+--
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+library synplify;
+use synplify.components.all;
+entity AND2 is
+port(
+  O :  out std_logic;
+  I0 :  in std_logic;
+  I1 :  in std_logic);
+end AND2;
+
+architecture beh of AND2 is
+  signal NN_1 : std_logic ;
+  signal NN_2 : std_logic ;
+begin
+  NN_1 <= '1';
+  NN_2 <= '0';
+  O <= I0 and I1  after 100 ps;
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+library synplify;
+use synplify.components.all;
+entity IBUF is
+port(
+  O :  out std_logic;
+  I0 :  in std_logic);
+end IBUF;
+
+architecture beh of IBUF is
+  signal NN_1 : std_logic ;
+  signal NN_2 : std_logic ;
+begin
+  O <= I0;
+  NN_1 <= '1';
+  NN_2 <= '0';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+library synplify;
+use synplify.components.all;
+entity INV is
+port(
+  O :  out std_logic;
+  I0 :  in std_logic);
+end INV;
+
+architecture beh of INV is
+  signal NN_1 : std_logic ;
+  signal NN_2 : std_logic ;
+begin
+  O <= not I0;
+  NN_1 <= '1';
+  NN_2 <= '0';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+library synplify;
+use synplify.components.all;
+entity OBUF is
+port(
+  O :  out std_logic;
+  I0 :  in std_logic);
+end OBUF;
+
+architecture beh of OBUF is
+  signal NN_1 : std_logic ;
+  signal NN_2 : std_logic ;
+begin
+  O <= I0;
+  NN_1 <= '1';
+  NN_2 <= '0';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+library synplify;
+use synplify.components.all;
+entity ADDRESS_DECODER is
+port(
+  MMU_IN : in std_logic_vector(15 downto 0);
+  MMU_OUT : out std_logic_vector(15 downto 12);
+  IORQ :  in std_logic;
+  RD :  in std_logic;
+  CSROML :  out std_logic;
+  CSROMH :  out std_logic;
+  CSRAM :  out std_logic;
+  CSUART :  out std_logic;
+  CSCTC :  out std_logic;
+  CSPIO :  out std_logic);
+end ADDRESS_DECODER;
+
+architecture beh of ADDRESS_DECODER is
+  signal MMU_IN_I_0 : std_logic_vector(14 downto 2);
+  signal MMU_IN_C : std_logic_vector(7 downto 2);
+  signal MMU_IN_C_C : std_logic_vector(15 downto 12);
+  signal MMU_IN_I_C : std_logic_vector(15 to 15);
+  signal OP_GE_UN24_CSROMH : std_logic ;
+  signal OP_LT_UN11_CSROMH : std_logic ;
+  signal UN12_CSROMH : std_logic ;
+  signal N_117 : std_logic ;
+  signal N_181 : std_logic ;
+  signal OP_LT_UN11_CSPIO : std_logic ;
+  signal N_56 : std_logic ;
+  signal N_54 : std_logic ;
+  signal N_51 : std_logic ;
+  signal IORQ_I : std_logic ;
+  signal IORQ_C : std_logic ;
+  signal OP_GE_UN24_CSROMH_I_C : std_logic ;
+  signal UN12_CSROMH_I_C : std_logic ;
+  signal N_181_I_0_C : std_logic ;
+  signal GND : std_logic ;
+  signal N_184 : std_logic ;
+  signal VCC : std_logic ;
+  component IBUF
+    port(O :  out std_logic;
+    I0 :  in std_logic  );
+  end component;
+  component OBUF
+    port(O :  out std_logic;
+    I0 :  in std_logic  );
+  end component;
+  component AND2
+    port(O :  out std_logic;
+    I0 :  in std_logic;
+    I1 :  in std_logic  );
+  end component;
+  component INV
+    port(O :  out std_logic;
+    I0 :  in std_logic  );
+  end component;
+begin
+  GND <= '0';
+  \II_MMU_IN[2]\: IBUF port map (
+    O => MMU_IN_C(2),
+    I0 => MMU_IN(2));
+  \II_MMU_IN[3]\: IBUF port map (
+    O => MMU_IN_C(3),
+    I0 => MMU_IN(3));
+  \II_MMU_IN[4]\: IBUF port map (
+    O => MMU_IN_C(4),
+    I0 => MMU_IN(4));
+  \II_MMU_IN[5]\: IBUF port map (
+    O => MMU_IN_C(5),
+    I0 => MMU_IN(5));
+  \II_MMU_IN[6]\: IBUF port map (
+    O => MMU_IN_C(6),
+    I0 => MMU_IN(6));
+  \II_MMU_IN[7]\: IBUF port map (
+    O => MMU_IN_C(7),
+    I0 => MMU_IN(7));
+  \II_MMU_IN[12]\: IBUF port map (
+    O => MMU_IN_C_C(12),
+    I0 => MMU_IN(12));
+  \II_MMU_IN[13]\: IBUF port map (
+    O => MMU_IN_C_C(13),
+    I0 => MMU_IN(13));
+  \II_MMU_IN[14]\: IBUF port map (
+    O => MMU_IN_C_C(14),
+    I0 => MMU_IN(14));
+  \II_MMU_IN[15]\: IBUF port map (
+    O => MMU_IN_C_C(15),
+    I0 => MMU_IN(15));
+  \II_MMU_OUT[12]\: OBUF port map (
+    O => MMU_OUT(12),
+    I0 => MMU_IN_C_C(12));
+  \II_MMU_OUT[13]\: OBUF port map (
+    O => MMU_OUT(13),
+    I0 => MMU_IN_C_C(13));
+  \II_MMU_OUT[14]\: OBUF port map (
+    O => MMU_OUT(14),
+    I0 => MMU_IN_C_C(14));
+  \II_MMU_OUT[15]\: OBUF port map (
+    O => MMU_OUT(15),
+    I0 => MMU_IN_C_C(15));
+  II_IORQ: IBUF port map (
+    O => IORQ_C,
+    I0 => IORQ);
+  II_CSROML: OBUF port map (
+    O => CSROML,
+    I0 => OP_GE_UN24_CSROMH_I_C);
+  II_CSROMH: OBUF port map (
+    O => CSROMH,
+    I0 => UN12_CSROMH_I_C);
+  II_CSRAM: OBUF port map (
+    O => CSRAM,
+    I0 => MMU_IN_I_C(15));
+  II_CSUART: OBUF port map (
+    O => CSUART,
+    I0 => GND);
+  II_CSCTC: OBUF port map (
+    O => CSCTC,
+    I0 => GND);
+  II_CSPIO: OBUF port map (
+    O => CSPIO,
+    I0 => N_181_I_0_C);
+  II_UN26_CSPIO: AND2 port map (
+    O => N_181,
+    I0 => OP_LT_UN11_CSPIO,
+    I1 => N_184);
+  \II_UN26_CSPIO.G_184\: AND2 port map (
+    O => N_184,
+    I0 => MMU_IN_C(4),
+    I1 => IORQ_I);
+  \II_MMU_IN_I[6]\: INV port map (
+    O => MMU_IN_I_0(6),
+    I0 => MMU_IN_C(6));
+  \II_MMU_IN_I[5]\: INV port map (
+    O => MMU_IN_I_0(5),
+    I0 => MMU_IN_C(5));
+  \II_MMU_IN_I[3]\: INV port map (
+    O => MMU_IN_I_0(3),
+    I0 => MMU_IN_C(3));
+  \II_MMU_IN_I[2]\: INV port map (
+    O => MMU_IN_I_0(2),
+    I0 => MMU_IN_C(2));
+  \II_MMU_IN_I[14]\: INV port map (
+    O => MMU_IN_I_0(14),
+    I0 => MMU_IN_C_C(14));
+  \II_MMU_IN_I[13]\: INV port map (
+    O => MMU_IN_I_0(13),
+    I0 => MMU_IN_C_C(13));
+  II_UN12_CSROMH: AND2 port map (
+    O => UN12_CSROMH,
+    I0 => OP_LT_UN11_CSROMH,
+    I1 => OP_GE_UN24_CSROMH_I_C);
+  II_G_116: AND2 port map (
+    O => N_117,
+    I0 => MMU_IN_I_0(14),
+    I1 => MMU_IN_I_0(13));
+  II_G_118: AND2 port map (
+    O => OP_GE_UN24_CSROMH,
+    I0 => MMU_IN_I_C(15),
+    I1 => N_117);
+  II_G_179: AND2 port map (
+    O => OP_LT_UN11_CSROMH,
+    I0 => MMU_IN_I_C(15),
+    I1 => MMU_IN_I_0(14));
+  II_G_49: AND2 port map (
+    O => N_51,
+    I0 => MMU_IN_I_0(3),
+    I1 => MMU_IN_I_0(2));
+  II_G_53: AND2 port map (
+    O => N_54,
+    I0 => N_51,
+    I1 => MMU_IN_I_0(5));
+  II_G_55: AND2 port map (
+    O => N_56,
+    I0 => N_54,
+    I1 => MMU_IN_I_0(6));
+  II_G_57: AND2 port map (
+    O => OP_LT_UN11_CSPIO,
+    I0 => N_56,
+    I1 => MMU_IN_I_0(7));
+  II_N_181_I: INV port map (
+    O => N_181_I_0_C,
+    I0 => N_181);
+  \II_MMU_IN_I[15]\: INV port map (
+    O => MMU_IN_I_C(15),
+    I0 => MMU_IN_C_C(15));
+  II_UN12_CSROMH_I: INV port map (
+    O => UN12_CSROMH_I_C,
+    I0 => UN12_CSROMH);
+  II_OP_GE_UN24_CSROMH_I: INV port map (
+    O => OP_GE_UN24_CSROMH_I_C,
+    I0 => OP_GE_UN24_CSROMH);
+  II_IORQ_I: INV port map (
+    O => IORQ_I,
+    I0 => IORQ_C);
+  \II_MMU_IN_I[7]\: INV port map (
+    O => MMU_IN_I_0(7),
+    I0 => MMU_IN_C(7));
+  VCC <= '1';
+end beh;
+

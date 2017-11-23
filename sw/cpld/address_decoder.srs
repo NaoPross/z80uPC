@@ -1,0 +1,52 @@
+#
+#
+#
+# Created by Synplify VHDL Compiler version 5.3.0 from Synplicity, Inc.
+# Copyright 1994-1999 Synplicity, Inc. , All rights reserved.
+# Synthesis Netlist written on Thu Nov 23 11:54:34 2017
+#
+#
+#OPTIONS:"|-ram|-sm|-fid2|-sharing|on|-encrypt|-top|ADDRESS_DECODER|-ui|-lite|-lib|work"
+#CUR:"C:\\ISPTOOLS\\SYNPBASE\\bin\\c_vhdl.exe":944583556l
+#CUR:"C:\\ISPTOOLS\\SYNPBASE\\lib\\vhd\\location.map":975422018l
+#CUR:"C:\\ISPTOOLS\\SYNPBASE\\lib\\vhd\\std.vhd":927461368l
+#CUR:"C:\\_prossn\\cpld.nao\\address_decoder.vhd":1511438068l
+#CUR:"C:\\ISPTOOLS\\SYNPBASE\\lib\\vhd\\std1164.vhd":927461368l
+#CUR:"C:\\ISPTOOLS\\SYNPBASE\\lib\\vhd\\arith.vhd":941645104l
+#CUR:"C:\\ISPTOOLS\\SYNPBASE\\lib\\vhd\\unsigned.vhd":927461368l
+f "C:\ISPTOOLS\SYNPBASE\lib\vhd\std.vhd"; # file 0
+f "C:\_prossn\cpld.nao\address_decoder.vhd"; # file 1
+f "C:\ISPTOOLS\SYNPBASE\lib\vhd\std1164.vhd"; # file 2
+f "C:\ISPTOOLS\SYNPBASE\lib\vhd\arith.vhd"; # file 3
+f "C:\ISPTOOLS\SYNPBASE\lib\vhd\unsigned.vhd"; # file 4
+@E@MR@n4::n(::R.4I	FsR7q7)1 1_B7 m)7 RELCNFPHs;ND
+RNP3PH#ER8D4H;
+R4@@:4g::ng:Rzvv_rQh4j6:9vRvzh_Qr:46j
+9;F@R@44:4:44:4R:(v_vzmrza446:.v9RvQz_h6r4:94.;R
+H@:@444c:::4ccmRQ)QTRm;)T
+@HR@44:6::44.6:RR)7)
+7;F@R@4g:4:44:gR:nBm1)vkpRMk4_M_.cOF#sl
+E;F@R@4j:.:.4:jR:nBm1)vO]R#lsFEF;
+R4@@::.444:.:B6R1v)qR4kM_kll_rHM4;69
+@FR@.4:d::4.nd:RzB1qR)aBq1z)
+a;F@R@4c:.:.4:cR:6Ba1BB1RBB;aB
+@FR@.4:6::4.66:RuB1QOmR#FbH;R
+b@:@4g::4gR:nHRMPk_M4l_lkH4Mr6k9RMl4_lHk_M6r49vRvzh_Qr946;R
+b@:@444c:::4ccMRHPMRk4F_HskJRMH4_FRsJQTm);R
+b@:@j4::44R:.0CskRk0sCsR0k
+C;b@R@j::44::4.NRVDR#CV#NDCNRVD;#C
+@bR@4j::44::L.RkBVR1BBaRBB1aVBRNCD#;R
+b@:@j4::44R:.LRkVBq1z)BaR1)zqaNRVD;#C
+@bR@.d:64.:(6:...:6RRD0Fob_CM_k.Oc_#FbHR_FbokC_M_.cOH#bFvRvzh_Qrj(:9NRVD,#CV#NDCN,VD,#C0Csk,DVN#VC,NCD#,DVN#VC,NCD#;R
+b@:@d.:(n4.(:(6n:40RDR_FbDk0_M_44OH#bFbRF__D0k4M4_bO#HvFRvQz_h:r(jV9RNCD#,DVN#VC,NCD#,k0sCN,VD,#C0Csk,DVN#VC,NCD#;R
+b@:@d.:6.4.(:66.:.MRHPMRk4M_k.Oc_#FbHR4kM_.kMc#_ObRHFFob_CM_k.Oc_#FbH;R
+b@:@d.:6.4.(:66.:.0RDR_FbokC_M_.cOF#slFERbC_o_.kMc#_OsEFlRzvv_rQh4j6:9NRVD,#CV#NDCs,0kVC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#;R
+b@:@d.:(n4.(:(6n:40RDR_FbDk0_M_44OF#slFERb0_D_4kM4#_OsEFlRzvv_rQh4j6:9NRVD,#C0Csk,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#,DVN#VC,NCD#;R
+b@:@d.:6.4.(:66.:.MRHPMRk4M_k.Oc_#lsFEMRk4M_k.Oc_#lsFEbRF__oCkcM._sO#F;lE
+@bR@c4:64:.::c6UN6RMR8PknM._bO#HkFRM_.nOH#bFbRF__D0k4M4_bO#HkFRMk4_M_.cOH#bFR
+RRMRk4F_Hs
+J;b@R@46:c:c(:6R:UHRMPOH#bF#RObRHFknM._bO#H
+F;b@R@4d:6::..6nd:6MRN8kPRM_4.OF#slkERM_4.OF#slFERb0_D_4kM4#_OsEFlR4kM_.kMc#_OsEFl;R
+b@:@46Ud:::6dgMRHP#ROsEFlRsO#FRlEk.M4_sO#F;lE
+
+C;

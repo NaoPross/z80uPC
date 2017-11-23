@@ -1,0 +1,142 @@
+#$ TOOL ispDesignEXPERT 8.3.02.12
+#$ DATE Thu Nov 23 11:54:43 2017
+#$ MODULE address_decoder
+#$ PINS 28 MMU_IN_7_ MMU_IN_6_ MMU_IN_15_ MMU_IN_5_ MMU_IN_4_ MMU_OUT_15_ MMU_IN_3_ \
+#  IORQ MMU_IN_2_ RD MMU_IN_1_ CSROML MMU_IN_0_ CSROMH MMU_OUT_14_ CSRAM MMU_OUT_13_ CSUART \
+#  MMU_OUT_12_ CSCTC CSPIO MMU_IN_14_ MMU_IN_13_ MMU_IN_12_ MMU_IN_11_ MMU_IN_10_ \
+#  MMU_IN_9_ MMU_IN_8_
+#$ NODES 34 op_ge_un24_csromh op_lt_un11_csromh un12_csromhZ0 N_117 N_181 \
+#  op_lt_un11_cspio N_56 N_54 N_51 IORQ_iZ0 MMU_IN_i_0_7 MMU_IN_i_0_6 MMU_IN_i_0_5 \
+#  MMU_IN_i_0_3 MMU_IN_i_0_2 MMU_IN_i_0_14 MMU_IN_i_0_13 MMU_IN_c_2 MMU_IN_c_3 \
+#  MMU_IN_c_4 MMU_IN_c_5 MMU_IN_c_6 MMU_IN_c_7 MMU_IN_c_c_12 MMU_IN_c_c_13 \
+#  MMU_IN_c_c_14 MMU_IN_c_c_15 IORQ_c op_ge_un24_csromh_i_c un12_csromh_i_c \
+#  MMU_IN_i_c_15 N_181_i_0_c GND N_184
+.model address_decoder
+.inputs MMU_IN_15_.BLIF IORQ.BLIF MMU_IN_14_.BLIF MMU_IN_13_.BLIF \
+MMU_IN_12_.BLIF MMU_IN_11_.BLIF MMU_IN_10_.BLIF MMU_IN_9_.BLIF MMU_IN_8_.BLIF \
+MMU_IN_7_.BLIF MMU_IN_6_.BLIF MMU_IN_5_.BLIF MMU_IN_4_.BLIF MMU_IN_3_.BLIF \
+MMU_IN_2_.BLIF MMU_IN_1_.BLIF MMU_IN_0_.BLIF op_ge_un24_csromh.BLIF \
+op_lt_un11_csromh.BLIF un12_csromhZ0.BLIF N_117.BLIF N_181.BLIF \
+op_lt_un11_cspio.BLIF N_56.BLIF N_54.BLIF N_51.BLIF IORQ_iZ0.BLIF \
+MMU_IN_i_0_7.BLIF MMU_IN_i_0_6.BLIF MMU_IN_i_0_5.BLIF MMU_IN_i_0_3.BLIF \
+MMU_IN_i_0_2.BLIF MMU_IN_i_0_14.BLIF MMU_IN_i_0_13.BLIF MMU_IN_c_2.BLIF \
+MMU_IN_c_3.BLIF MMU_IN_c_4.BLIF MMU_IN_c_5.BLIF MMU_IN_c_6.BLIF \
+MMU_IN_c_7.BLIF MMU_IN_c_c_12.BLIF MMU_IN_c_c_13.BLIF MMU_IN_c_c_14.BLIF \
+MMU_IN_c_c_15.BLIF IORQ_c.BLIF op_ge_un24_csromh_i_c.BLIF un12_csromh_i_c.BLIF \
+MMU_IN_i_c_15.BLIF N_181_i_0_c.BLIF GND.BLIF N_184.BLIF
+.outputs MMU_OUT_15_ CSROML CSROMH CSRAM CSUART CSCTC CSPIO MMU_OUT_14_ \
+MMU_OUT_13_ MMU_OUT_12_ op_ge_un24_csromh op_lt_un11_csromh un12_csromhZ0 \
+N_117 N_181 op_lt_un11_cspio N_56 N_54 N_51 IORQ_iZ0 MMU_IN_i_0_7 MMU_IN_i_0_6 \
+MMU_IN_i_0_5 MMU_IN_i_0_3 MMU_IN_i_0_2 MMU_IN_i_0_14 MMU_IN_i_0_13 MMU_IN_c_2 \
+MMU_IN_c_3 MMU_IN_c_4 MMU_IN_c_5 MMU_IN_c_6 MMU_IN_c_7 MMU_IN_c_c_12 \
+MMU_IN_c_c_13 MMU_IN_c_c_14 MMU_IN_c_c_15 IORQ_c op_ge_un24_csromh_i_c \
+un12_csromh_i_c MMU_IN_i_c_15 N_181_i_0_c GND N_184
+.names MMU_IN_i_c_15.BLIF N_117.BLIF op_ge_un24_csromh
+11 1
+.names MMU_IN_i_c_15.BLIF MMU_IN_i_0_14.BLIF op_lt_un11_csromh
+11 1
+.names op_lt_un11_csromh.BLIF op_ge_un24_csromh_i_c.BLIF un12_csromhZ0
+11 1
+.names MMU_IN_i_0_14.BLIF MMU_IN_i_0_13.BLIF N_117
+11 1
+.names op_lt_un11_cspio.BLIF N_184.BLIF N_181
+11 1
+.names N_56.BLIF MMU_IN_i_0_7.BLIF op_lt_un11_cspio
+11 1
+.names N_54.BLIF MMU_IN_i_0_6.BLIF N_56
+11 1
+.names N_51.BLIF MMU_IN_i_0_5.BLIF N_54
+11 1
+.names MMU_IN_i_0_3.BLIF MMU_IN_i_0_2.BLIF N_51
+11 1
+.names IORQ_c.BLIF IORQ_iZ0
+0 1
+.names MMU_IN_c_7.BLIF MMU_IN_i_0_7
+0 1
+.names MMU_IN_c_6.BLIF MMU_IN_i_0_6
+0 1
+.names MMU_IN_c_5.BLIF MMU_IN_i_0_5
+0 1
+.names MMU_IN_c_3.BLIF MMU_IN_i_0_3
+0 1
+.names MMU_IN_c_2.BLIF MMU_IN_i_0_2
+0 1
+.names MMU_IN_c_c_14.BLIF MMU_IN_i_0_14
+0 1
+.names MMU_IN_c_c_13.BLIF MMU_IN_i_0_13
+0 1
+.names op_ge_un24_csromh.BLIF op_ge_un24_csromh_i_c
+0 1
+.names un12_csromhZ0.BLIF un12_csromh_i_c
+0 1
+.names MMU_IN_c_c_15.BLIF MMU_IN_i_c_15
+0 1
+.names N_181.BLIF N_181_i_0_c
+0 1
+.names GND
+.names MMU_IN_c_4.BLIF IORQ_iZ0.BLIF N_184
+11 1
+.names MMU_IN_c_c_15.BLIF MMU_OUT_15_
+1 1
+0 0
+.names op_ge_un24_csromh_i_c.BLIF CSROML
+1 1
+0 0
+.names un12_csromh_i_c.BLIF CSROMH
+1 1
+0 0
+.names MMU_IN_i_c_15.BLIF CSRAM
+1 1
+0 0
+.names GND.BLIF CSUART
+1 1
+0 0
+.names GND.BLIF CSCTC
+1 1
+0 0
+.names N_181_i_0_c.BLIF CSPIO
+1 1
+0 0
+.names MMU_IN_c_c_14.BLIF MMU_OUT_14_
+1 1
+0 0
+.names MMU_IN_c_c_13.BLIF MMU_OUT_13_
+1 1
+0 0
+.names MMU_IN_c_c_12.BLIF MMU_OUT_12_
+1 1
+0 0
+.names MMU_IN_2_.BLIF MMU_IN_c_2
+1 1
+0 0
+.names MMU_IN_3_.BLIF MMU_IN_c_3
+1 1
+0 0
+.names MMU_IN_4_.BLIF MMU_IN_c_4
+1 1
+0 0
+.names MMU_IN_5_.BLIF MMU_IN_c_5
+1 1
+0 0
+.names MMU_IN_6_.BLIF MMU_IN_c_6
+1 1
+0 0
+.names MMU_IN_7_.BLIF MMU_IN_c_7
+1 1
+0 0
+.names MMU_IN_12_.BLIF MMU_IN_c_c_12
+1 1
+0 0
+.names MMU_IN_13_.BLIF MMU_IN_c_c_13
+1 1
+0 0
+.names MMU_IN_14_.BLIF MMU_IN_c_c_14
+1 1
+0 0
+.names MMU_IN_15_.BLIF MMU_IN_c_c_15
+1 1
+0 0
+.names IORQ.BLIF IORQ_c
+1 1
+0 0
+.end

@@ -1,0 +1,1 @@
+-inp "address_decoder.tt4" -vci "address_decoder.vct" -typ pla -mod loc -dir "c:\_prossn\cpld.nao" -DP1 eq3 -DP2 eq3 -lab Constraint#Editor -ntyp BLIF -nfile "address_decoder.bl2" -DP3 bl2 -ntyp BLIF -nfile "address_decoder.bl2" -DP3 bl2

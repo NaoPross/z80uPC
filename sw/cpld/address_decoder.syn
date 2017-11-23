@@ -1,0 +1,8 @@
+JDF B
+// Created by Version 8.3 
+PROJECT Untitled
+DESIGN address_decoder Normal
+DEVKIT M4-32/32-15JC
+ENTRY Schematic/VHDL
+MODULE address_decoder.vhd
+MODSTYLE ADDRESS_DECODER Normal

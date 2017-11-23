@@ -1,7 +1,0 @@
-C:\ispLEVER_Classic2\synpbase\bin\c_vhdl.exe  -osyn  \\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\synwork\cpld_test_comp.srs  -top  cpld_test  -prodtype  synplify_pro  -nostructver -dfltencoding sequential -encrypt  -pro  -dmgen  \\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\dm  -lite -ui -fid2 -ram -sharing on -ll 2000 -autosm -ignore_undefined_lib  -lib work \\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\cpld_test.vhd -loga  \\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\cpld_test.srr 
-rc:2 success:0
-\\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\synwork\cpld_test_comp.srs|o|0|0
-\\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\cpld_test.vhd|i|1496311903|284
-\\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld_test\cpld_test.srr|o|1496317911|1349
-C:\ispLEVER_Classic2\synpbase\bin64\c_vhdl.exe|i|1401224104|5533184
-C:\ispLEVER_Classic2\synpbase\bin\c_vhdl.exe|i|1401223898|2046976

@@ -1,0 +1,82 @@
+
+[Device]
+Family = M4;
+PartNumber = M4-32/32-15JC;
+Package = 44PLCC;
+PartType = M4-32/32;
+Speed = -15;
+Operating_condition = COM;
+Status = Production;
+
+[Revision]
+Parent = m4.vci;
+Design = ;
+DATE = 09/25/2017;
+TIME = 16:10:34;
+
+[IGNORE ASSIGNMENTS]
+
+[CLEAR ASSIGNMENTS]
+
+[BACKANNOTATE ASSIGNMENTS]
+
+[GLOBAL PROJECT OPTIMIZATION]
+
+[OPTIMIZATION OPTIONS]
+
+[FITTER GLOBAL OPTIONS]
+
+[LOCATION ASSIGNMENT]
+layer = OFF;
+CSROML = Output, 24, B, -;
+CSROMH = Output, 25, B, -;
+CSRAM = Output, 26, B, -;
+CSUART = Output, 27, B, -;
+CSCTC = Output, 28, B, -;
+CSPIO = Output, 29, B, -;
+MMU_IN_0_ = Input, 9, A, -;
+MMU_IN_1_ = Input, 8, A, -;
+MMU_IN_2_ = Input, 7, A, -;
+MMU_IN_3_ = Input, 6, A, -;
+MMU_IN_4_ = Input, 5, A, -;
+MMU_IN_5_ = Input, 4, A, -;
+MMU_IN_6_ = Input, 3, A, -;
+MMU_IN_7_ = Input, 2, A, -;
+MMU_IN_8_ = Input, 14, A, -;
+MMU_IN_9_ = Input, 15, A, -;
+MMU_IN_10_ = Input, 16, A, -;
+MMU_IN_11_ = Input, 17, A, -;
+MMU_IN_12_ = Input, 18, A, -;
+MMU_IN_13_ = Input, 19, A, -;
+MMU_IN_14_ = Input, 20, A, -;
+MMU_IN_15_ = Input, 21, A, -;
+MMU_OUT_12_ = Output, 39, B, -;
+MMU_OUT_13_ = Output, 38, B, -;
+MMU_OUT_14_ = Output, 37, B, -;
+MMU_OUT_15_ = Output, 36, B, -;
+IORQ = Input, 30, B, -;
+
+[GROUP ASSIGNMENT]
+layer = OFF;
+
+[SPACE RESERVATIONS]
+layer = OFF;
+
+[PIN RESERVATIONS]
+layer = OFF;
+
+[FITTER REPORT FORMAT]
+
+[POWER]
+
+[SOURCE CONSTRAINT OPTION]
+
+[HARDWARE DEVICE OPTIONS]
+
+[PULL]
+
+[OPENDRAIN]
+
+[Timing Analyzer]
+
+[Backannotate Netlist]

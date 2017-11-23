@@ -1,0 +1,452 @@
+|--------------------------------------------|
+|- ispDesignExpert Fitter Report File       -|
+|- Version 8.3.02.12_DE_HDL_BASE                              -|
+|- (c)Copyright, Lattice Semiconductor 1999 -|
+|--------------------------------------------|
+
+
+
+
+Project_Summary
+~~~~~~~~~~~~~~~
+
+Project Name :          address_decoder
+Project Path :          C:\_prossn\cpld.nao
+Project Fitted on :     Thu Nov 23 11:55:45 2017
+
+Device :                M4-32/32
+Package :               44PLCC
+Speed :                 -15
+Partnumber :            M4-32/32-15JC
+Source Format :         ABEL_Schematic
+
+
+// Project 'address_decoder' was Fitted Successfully! //
+
+
+Compilation_Times
+~~~~~~~~~~~~~~~~~
+Reading/DRC                                   0 sec
+Partition                                     0 sec
+Place                                         0 sec
+Route                                         0 sec
+Jedec/Report generation                       0 sec
+                                         --------
+Fitter                                   00:00:00
+
+
+Design_Summary
+~~~~~~~~~~~~~~
+  Total Input Pins :                 11
+  Total Output Pins :                10
+  Total Bidir I/O Pins :              0
+  Total Flip-Flops :                  0
+  Total Product Terms :              10
+  Total Reserved Pins :               0
+  Total Reserved Blocks :             0
+
+
+Device_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~~~~
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                ..       ..     ..    -->    ..
+  Clock/Input Pins                2        0      2    -->     0%
+I/O Pins                         32       21     11    -->    65%
+Logic Macrocells                 32       10     22    -->    31%
+  Unusable Macrocells            ..        0     ..
+
+CSM Outputs/Total Block Inputs   66       11     55    -->    16%
+Logical Product Terms           160       10    150    -->     6%
+Product Term Clusters            32        0     32    -->     0%
+
+
+Blocks_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~~~~
+                                                                  # of PT  
+                   I/O           Macrocells   Macrocells   logic  clusters 
+          Fanin    Pins         Used Unusable  available    PTs   available  Pwr
+---------------------------------------------------------------------------------
+Maximum     33     16            --     --         16       80       16       -
+---------------------------------------------------------------------------------
+Block  A     0     10             0      0         16        0       16       Hi 
+Block  B    11     11            10      0          6       10       16       Hi 
+---------------------------------------------------------------------------------
+
+<Note> Four rightmost columns above reflect last status of the placement process.
+<Note> Pwr (Power) : Hi = High
+                     Lo = Low.
+
+
+Optimizer_and_Fitter_Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pin Assignment :                       Yes
+Group Assignment :                     No
+Pin Reservation :                      No (1)
+Block Reservation :                    No
+
+@Ignore_Project_Constraints :
+  Pin Assignments :                    No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+  Group Assignments :                  No
+  Macrocell Assignment :               No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+
+@Backannotate_Project_Constraints
+  Pin Assignments :                    No
+  Pin And Block Assignments :          No
+  Pin, Macrocell and Block :           No
+
+@Timing_Constraints :                  No
+
+@Global_Project_Optimization :
+  Balanced Partitioning :              Yes
+  Spread Placement :                   Yes
+
+  Note :
+    Pack Design :
+       Balanced Partitioning = No
+       Spread Placement      = No
+    Spread Design :
+       Balanced Partitioning = Yes
+       Spread Placement      = Yes
+
+@Logic_Synthesis :
+  Logic Reduction :                    Yes
+  Node Collapsing :                    Yes
+  D/T Synthesis :                      Yes
+  Clock Optimization :                 No
+  Input Register Optimization :        Yes
+  XOR Synthesis :                      Yes
+  Max. P-Term for Collapsing :         16
+  Max. P-Term for Splitting :          16
+  Max. Equation Fanin :                32
+  Keep Xor :                           Yes
+
+@Utilization_options
+  Max. % of macrocells used :          100
+  Max. % of block inputs used :        100
+  Max. % of segment lines used :       ---
+  Max. % of macrocells used :          ---
+
+
+@Import_Source_Constraint_Option       No
+
+@Zero_Hold_Time                        No
+
+@Pull_up                               No
+
+@User_Signature                        0
+
+@Output_Slew_Rate                      Default = Fast(2)
+
+@Power                                 Default = High(2)
+
+
+Device Options:
+<Note> 1 : Reserved unused I/Os can be independently driven to Low or High, and does not
+           follow the drive level set for the Global Configure Unused I/O Option.
+<Note> 2 : For user-specified constraints on individual signals, refer to the Output, 
+           Bidir and Burried Signal Lists.
+
+
+
+
+Pinout_Listing
+~~~~~~~~~~~~~~
+      | Pin  |Blk |Assigned|
+Pin No| Type |Pad |Pin     | Signal name
+---------------------------------------------------------------
+    1 |  GND |    |        |
+    2 |  I_O | A7 |   *    |MMU_IN_7_
+3     |  I_O | A6 |   *    |MMU_IN_6_
+4     |  I_O | A5 |   *    |MMU_IN_5_
+5     |  I_O | A4 |   *    |MMU_IN_4_
+6     |  I_O | A3 |   *    |MMU_IN_3_
+7     |  I_O | A2 |   *    |MMU_IN_2_
+8     |  I_O | A1 |        |
+9     |  I_O | A0 |        |
+10    | JTAG |    |        |
+11    | CkIn |    |        |
+12    |  GND |    |        |
+13    | JTAG |    |        |
+14    |  I_O | A8 |        |
+15    |  I_O | A9 |        |
+16    |  I_O | A10|        |
+17    |  I_O | A11|        |
+18    |  I_O | A12|   *    |MMU_IN_12_
+19    |  I_O | A13|   *    |MMU_IN_13_
+20    |  I_O | A14|   *    |MMU_IN_14_
+21    |  I_O | A15|   *    |MMU_IN_15_
+22    |  Vcc |    |        |
+23    |  GND |    |        |
+24    |  I_O | B15|   *    |CSROML
+25    |  I_O | B14|   *    |CSROMH
+26    |  I_O | B13|   *    |CSRAM
+27    |  I_O | B12|   *    |CSUART
+28    |  I_O | B11|   *    |CSCTC
+29    |  I_O | B10|   *    |CSPIO
+30    |  I_O | B9 |   *    |IORQ
+31    |  I_O | B8 |        |
+32    | JTAG |    |        |
+33    | CkIn |    |        |
+34    |  GND |    |        |
+35    | JTAG |    |        |
+36    |  I_O | B0 |   *    |MMU_OUT_15_
+37    |  I_O | B1 |   *    |MMU_OUT_14_
+38    |  I_O | B2 |   *    |MMU_OUT_13_
+39    |  I_O | B3 |   *    |MMU_OUT_12_
+40    |  I_O | B4 |        |
+41    |  I_O | B5 |        |
+42    |  I_O | B6 |        |
+43    |  I_O | B7 |        |
+44    |  Vcc |    |        |
+
+---------------------------------------------------------------------------
+
+<Note> Blk Pad : This notation refers to the Block I/O pad number in the device.
+<Note> Assigned Pin : user or dedicated input assignment (E.g. Clock pins).
+<Note> Pin Type : 
+           CkIn : Dedicated input or clock pin 
+           CLK  : Dedicated clock pin
+           INP  : Dedicated input pin
+           JTAG : JTAG Control and test pin
+           NC   : No connected
+
+
+
+Input_Signal_List
+~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Input 
+Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+ 30  B   .  I/O          -B      Hi Fast      IORQ   
+ 18  A   .  I/O          -B      Hi Fast      MMU_IN_12_   
+ 19  A   .  I/O          -B      Hi Fast      MMU_IN_13_   
+ 20  A   .  I/O          -B      Hi Fast      MMU_IN_14_   
+ 21  A   .  I/O          -B      Hi Fast      MMU_IN_15_   
+  7  A   .  I/O          -B      Hi Fast      MMU_IN_2_   
+  6  A   .  I/O          -B      Hi Fast      MMU_IN_3_   
+  5  A   .  I/O          -B      Hi Fast      MMU_IN_4_   
+  4  A   .  I/O          -B      Hi Fast      MMU_IN_5_   
+  3  A   .  I/O          -B      Hi Fast      MMU_IN_6_   
+  2  A   .  I/O          -B      Hi Fast      MMU_IN_7_   
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+Output_Signal_List
+~~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Output 
+Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+ 28  B   1  COM          --      Hi Fast      CSCTC   
+ 29  B   1  COM          --      Hi Fast      CSPIO   
+ 26  B   1  COM          --      Hi Fast      CSRAM   
+ 25  B   1  COM          --      Hi Fast      CSROMH   
+ 24  B   1  COM          --      Hi Fast      CSROML   
+ 27  B   1  COM          --      Hi Fast      CSUART   
+ 39  B   1  COM          --      Hi Fast      MMU_OUT_12_   
+ 38  B   1  COM          --      Hi Fast      MMU_OUT_13_   
+ 37  B   1  COM          --      Hi Fast      MMU_OUT_14_   
+ 36  B   1  COM          --      Hi Fast      MMU_OUT_15_   
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+Bidir_Signal_List
+~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Bidir 
+Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+Buried_Signal_List
+~~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Node 
+#Mc Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+
+Signals_Fanout_List
+~~~~~~~~~~~~~~~~~~~
+Signal Source  :    Fanout List
+-----------------------------------------------------------------------------
+  MMU_IN_7_{ B}:          CSPIO{ B}
+  MMU_IN_6_{ B}:          CSPIO{ B}
+ MMU_IN_15_{ B}:    MMU_OUT_15_{ B}         CSROML{ B}         CSROMH{ B}
+               :          CSRAM{ B}
+  MMU_IN_5_{ B}:          CSPIO{ B}
+  MMU_IN_4_{ B}:          CSPIO{ B}
+  MMU_IN_3_{ B}:          CSPIO{ B}
+       IORQ{ C}:          CSPIO{ B}
+  MMU_IN_2_{ B}:          CSPIO{ B}
+ MMU_IN_14_{ B}:         CSROML{ B}         CSROMH{ B}    MMU_OUT_14_{ B}
+ MMU_IN_13_{ B}:         CSROML{ B}         CSROMH{ B}    MMU_OUT_13_{ B}
+ MMU_IN_12_{ B}:    MMU_OUT_12_{ B}
+-----------------------------------------------------------------------------
+
+<Note> {.} : Indicates block location of signal
+
+
+Set_Reset_Summary
+~~~~~~~~~~~~~~~~~
+
+Block  A
+block level set pt   : 
+block level reset pt : 
+Equations :
+|     |     |Block|Block| Signal
+| Reg |Mode |Set  |Reset| Name
++-----+-----+-----+-----+------------------------
+|     |     |     |     | MMU_IN_15_
+|     |     |     |     | MMU_IN_14_
+|     |     |     |     | MMU_IN_13_
+|     |     |     |     | MMU_IN_12_
+|     |     |     |     | MMU_IN_2_
+|     |     |     |     | MMU_IN_3_
+|     |     |     |     | MMU_IN_4_
+|     |     |     |     | MMU_IN_5_
+|     |     |     |     | MMU_IN_6_
+|     |     |     |     | MMU_IN_7_
+
+
+Block  B
+block level set pt   : 
+block level reset pt : 
+Equations :
+|     |     |Block|Block| Signal
+| Reg |Mode |Set  |Reset| Name
++-----+-----+-----+-----+------------------------
+|     |     |     |     | MMU_OUT_12_
+|     |     |     |     | MMU_OUT_13_
+|     |     |     |     | MMU_OUT_14_
+|     |     |     |     | MMU_OUT_15_
+|     |     |     |     | CSPIO
+|     |     |     |     | CSCTC
+|     |     |     |     | CSUART
+|     |     |     |     | CSRAM
+|     |     |     |     | CSROMH
+|     |     |     |     | CSROML
+|     |     |     |     | IORQ
+
+
+<Note> (S) means the macrocell is configured in synchronous mode
+       i.e. it uses the block-level set and reset pt.
+       (A) means the macrocell is configured in asynchronous mode
+       i.e. it can have its independant set or reset pt.
+       (BS) means the block-level set pt is selected.
+       (BR) means the block-level reset pt is selected.
+
+
+
+
+BLOCK_B_LOGIC_ARRAY_FANIN
+~~~~~~~~~~~~~~~~~~~~~~~~~
+CSM             Signal    Source        CSM             Signal    Source
+------------------------------------    ------------------------------------
+mx B0       MMU_IN_7_         pin 2     mx B17             ...           ...
+mx B1       MMU_IN_4_         pin 5     mx B18       MMU_IN_2_         pin 7
+mx B2             ...           ...     mx B19             ...           ...
+mx B3             ...           ...     mx B20             ...           ...
+mx B4             ...           ...     mx B21             ...           ...
+mx B5             ...           ...     mx B22             ...           ...
+mx B6       MMU_IN_6_         pin 3     mx B23             ...           ...
+mx B7       MMU_IN_3_         pin 6     mx B24             ...           ...
+mx B8      MMU_IN_15_        pin 21     mx B25             ...           ...
+mx B9       MMU_IN_5_         pin 4     mx B26             ...           ...
+mx B10      MMU_IN_12_        pin 18     mx B27             ...           ...
+mx B11             ...           ...     mx B28             ...           ...
+mx B12      MMU_IN_13_        pin 19     mx B29             ...           ...
+mx B13            IORQ        pin 30     mx B30             ...           ...
+mx B14             ...           ...     mx B31             ...           ...
+mx B15      MMU_IN_14_        pin 20     mx B32             ...           ...
+mx B16             ...           ...
+----------------------------------------------------------------------------
+
+<Note> CSM indicates the mux inputs from the Central Switch Matrix.
+<Note> Source indicates where the signal comes from (pin or macrocell). 
+
+
+
+
+PostFit_Equations
+~~~~~~~~~~~~~~~~~
+
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   1          1        1    Pin   MMU_OUT_15_ 
+   1          3        1    Pin   CSROML- 
+   1          3        1    Pin   CSROMH- 
+   1          1        1    Pin   MMU_OUT_14_ 
+   1          1        1    Pin   CSRAM 
+   1          1        1    Pin   MMU_OUT_13_ 
+   0          0        1    Pin   CSUART 
+   1          1        1    Pin   MMU_OUT_12_ 
+   0          0        1    Pin   CSCTC 
+   1          7        1    Pin   CSPIO- 
+=========
+   8                 P-Term Total: 8
+                       Total Pins: 21
+                      Total Nodes: 0
+            Average P-Term/Output: 0
+
+
+Equations:
+
+MMU_OUT_15_ = (MMU_IN_15_);
+
+!CSROML = (!MMU_IN_15_ & !MMU_IN_14_ & !MMU_IN_13_);
+
+!CSROMH = (!MMU_IN_15_ & !MMU_IN_14_ & MMU_IN_13_);
+
+MMU_OUT_14_ = (MMU_IN_14_);
+
+CSRAM = (!MMU_IN_15_);
+
+MMU_OUT_13_ = (MMU_IN_13_);
+
+CSUART = (0);
+
+MMU_OUT_12_ = (MMU_IN_12_);
+
+CSCTC = (0);
+
+!CSPIO = (!IORQ & !MMU_IN_7_ & !MMU_IN_6_ & !MMU_IN_5_ & MMU_IN_4_ & !MMU_IN_3_ & !MMU_IN_2_);
+
+
+Reverse-Polarity Equations:
+

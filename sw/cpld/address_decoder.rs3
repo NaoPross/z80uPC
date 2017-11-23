@@ -1,0 +1,1 @@
+-inp "address_decoder.tt4" -vci "address_decoder.vco" -typ pla -mod nil -lab Post-Fit#Pinouts

@@ -1,1 +1,1 @@
-. ADDRESS_DECODER address_decoder.vhd \\nas001\account_pif\_prossn\samb_3\lab3\projects\z80upc\sw\cpld\address_decoder.vhd
+. ADDRESS_DECODER address_decoder.vhd c:\_prossn\cpld.nao\address_decoder.vhd

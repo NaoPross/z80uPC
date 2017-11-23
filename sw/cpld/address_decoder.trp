@@ -1,0 +1,75 @@
+
+Timing Report for STAMP
+
+//  Project = address_decoder
+//  Family  = M4
+//  Device  = M4-32/32
+//  Speed   = -15
+//  Voltage = 5.0
+//  Operating Condition = COM
+//  Data sheet version  = 1.01
+
+//  Pass Bidirection = OFF
+//  Pass S/R = OFF
+//  Pass Latch = OFF
+//  Pass Clock = OFF
+//  Maximum Paths = 20
+//  T_SU Endpoints D/T inputs = ON
+//  T_SU Endpoints CE inputs = OFF
+//  T_SU Endpoints S/R inputs = OFF
+
+
+Section IO
+  //DESTINATION NODES;
+  CSCTC [out]
+  CSPIO [out]
+  CSRAM [out]
+  CSROMH [out]
+  CSROML [out]
+  CSUART [out]
+  MMU_OUT[12] [out]
+  MMU_OUT[13] [out]
+  MMU_OUT[14] [out]
+  MMU_OUT[15] [out]
+
+  //SOURCE NODES;
+  MMU_IN[2] [in]
+  MMU_IN[3] [in]
+  MMU_IN[4] [in]
+  MMU_IN[5] [in]
+  MMU_IN[6] [in]
+  MMU_IN[7] [in]
+  MMU_IN[8] [in]
+  MMU_IN[9] [in]
+  MMU_IN[10] [in]
+  MMU_IN[11] [in]
+  MMU_IN[12] [in]
+  MMU_IN[13] [in]
+  MMU_IN[14] [in]
+  MMU_IN[15] [in]
+
+
+Section tPD
+
+  Delay           Location(From => To)          Source                 Destination
+  =====           ====================          ======                 ===========
+   15.0            p7       =>  p27             MMU_IN[2]              CSUART
+   15.0            p6       =>  p27             MMU_IN[3]              CSUART
+   15.0            p5       =>  p27             MMU_IN[4]              CSUART
+   15.0            p4       =>  p27             MMU_IN[5]              CSUART
+   15.0            p3       =>  p27             MMU_IN[6]              CSUART
+   15.0            p2       =>  p27             MMU_IN[7]              CSUART
+   15.0            p14      =>  p28             MMU_IN[8]              CSCTC
+   15.0            p14      =>  p29             MMU_IN[8]              CSPIO
+   15.0            p14      =>  p27             MMU_IN[8]              CSUART
+   15.0            p15      =>  p28             MMU_IN[9]              CSCTC
+   15.0            p15      =>  p29             MMU_IN[9]              CSPIO
+   15.0            p15      =>  p27             MMU_IN[9]              CSUART
+   15.0            p16      =>  p28             MMU_IN[10]             CSCTC
+   15.0            p16      =>  p29             MMU_IN[10]             CSPIO
+   15.0            p16      =>  p27             MMU_IN[10]             CSUART
+   15.0            p17      =>  p28             MMU_IN[11]             CSCTC
+   15.0            p17      =>  p29             MMU_IN[11]             CSPIO
+   15.0            p17      =>  p27             MMU_IN[11]             CSUART
+   15.0            p18      =>  p28             MMU_IN[12]             CSCTC
+   15.0            p18      =>  p29             MMU_IN[12]             CSPIO

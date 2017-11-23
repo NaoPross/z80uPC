@@ -1,7 +1,0 @@
-bin_PROGRAMS = z80prog
-z80prog_SOURCES = main.c ui.c serial.c flash.c
-
-z80prog_CFLAGS = -Wall -g $(gtk3_CFLAGS) -pthread
-z80prog_LDADD = $(gtk3_LIBS) 
-
-CLEANFILES = *~

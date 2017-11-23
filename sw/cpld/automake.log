@@ -1,6 +1,7 @@
-ispLEVER Auto-Make Log File
----------------------------
+ispDesignEXPERT Auto-Make Log File
+----------------------------------
 
-Starting: 'C:\ispLEVER_Classic2\ispcpld\bin\checkini.exe -err=automake.err "C:\ispLEVER_Classic2\ispcpld\config\lc.ini"'
+Updating: Post-Fit Pinouts
 
-Done: completed successfully.
+Launching: 'C:\ispTOOLS\ispsys\bin\devedit.exe @address_decoder.rs3'
+

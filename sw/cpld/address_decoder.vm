@@ -1,0 +1,317 @@
+//
+// Written by Synplify
+// Thu Nov 23 11:54:35 2017
+//
+// Source file index table:
+// Object locations will have the form <file>:<line>
+// file 0 "noname"
+// file 1 "\c:\isptools\synpbase\lib\vhd\std.vhd "
+// file 2 "\c:\_prossn\cpld.nao\address_decoder.vhd "
+// file 3 "\c:\isptools\synpbase\lib\vhd\std1164.vhd "
+// file 4 "\c:\isptools\synpbase\lib\vhd\arith.vhd "
+// file 5 "\c:\isptools\synpbase\lib\vhd\unsigned.vhd "
+
+`timescale 100 ps/100 ps
+module IBUF (
+  O,
+  I0
+);
+output O;
+input I0;
+wire O ;
+wire I0 ;
+wire true ;
+wire false ;
+  assign #(1)  O = I0;
+  assign true = 1'b1;
+  assign false = 1'b0;
+endmodule /* IBUF */
+
+module OBUF (
+  O,
+  I0
+);
+output O;
+input I0;
+wire O ;
+wire I0 ;
+wire true ;
+wire false ;
+  assign #(1)  O = I0;
+  assign true = 1'b1;
+  assign false = 1'b0;
+endmodule /* OBUF */
+
+module AND2 (
+  O,
+  I0,
+  I1
+);
+output O;
+input I0;
+input I1;
+wire O ;
+wire I0 ;
+wire I1 ;
+wire true ;
+wire false ;
+  assign true = 1'b1;
+  assign false = 1'b0;
+  assign #(1)  O = I0  & I1 ;
+endmodule /* AND2 */
+
+module INV (
+  O,
+  I0
+);
+output O;
+input I0;
+wire O ;
+wire I0 ;
+wire true ;
+wire false ;
+  assign #(1)  O = ~ I0;
+  assign true = 1'b1;
+  assign false = 1'b0;
+endmodule /* INV */
+
+module ADDRESS_DECODER (
+  MMU_IN,
+  MMU_OUT,
+  IORQ,
+  RD,
+  CSROML,
+  CSROMH,
+  CSRAM,
+  CSUART,
+  CSCTC,
+  CSPIO
+);
+input [15:0] MMU_IN;
+output [15:12] MMU_OUT;
+input IORQ;
+input RD;
+output CSROML;
+output CSROMH;
+output CSRAM;
+output CSUART;
+output CSCTC;
+output CSPIO;
+wire [15:0] MMU_IN;
+wire [15:12] MMU_OUT;
+wire IORQ ;
+wire RD ;
+wire CSROML ;
+wire CSROMH ;
+wire CSRAM ;
+wire CSUART ;
+wire CSCTC ;
+wire CSPIO ;
+wire [14:2] MMU_IN_i_0;
+wire [7:2] MMU_IN_c;
+wire [15:12] MMU_IN_c_c;
+wire [15:15] MMU_IN_i_c;
+wire op_ge_un24_csromh ;
+wire op_lt_un11_csromh ;
+wire un12_csromh ;
+wire N_117 ;
+wire N_181 ;
+wire op_lt_un11_cspio ;
+wire N_56 ;
+wire N_54 ;
+wire N_51 ;
+wire IORQ_i ;
+wire IORQ_c ;
+wire op_ge_un24_csromh_i_c ;
+wire un12_csromh_i_c ;
+wire N_181_i_0_c ;
+wire GND ;
+wire N_184 ;
+wire VCC ;
+//@1:1
+  assign GND = 1'b0;
+  IBUF \MMU_IN_Z[2]  (
+	.O(MMU_IN_c[2]),
+	.I0(MMU_IN[2])
+);
+  IBUF \MMU_IN_Z[3]  (
+	.O(MMU_IN_c[3]),
+	.I0(MMU_IN[3])
+);
+  IBUF \MMU_IN_Z[4]  (
+	.O(MMU_IN_c[4]),
+	.I0(MMU_IN[4])
+);
+  IBUF \MMU_IN_Z[5]  (
+	.O(MMU_IN_c[5]),
+	.I0(MMU_IN[5])
+);
+  IBUF \MMU_IN_Z[6]  (
+	.O(MMU_IN_c[6]),
+	.I0(MMU_IN[6])
+);
+  IBUF \MMU_IN_Z[7]  (
+	.O(MMU_IN_c[7]),
+	.I0(MMU_IN[7])
+);
+  IBUF \MMU_IN_Z[12]  (
+	.O(MMU_IN_c_c[12]),
+	.I0(MMU_IN[12])
+);
+  IBUF \MMU_IN_Z[13]  (
+	.O(MMU_IN_c_c[13]),
+	.I0(MMU_IN[13])
+);
+  IBUF \MMU_IN_Z[14]  (
+	.O(MMU_IN_c_c[14]),
+	.I0(MMU_IN[14])
+);
+  IBUF \MMU_IN_Z[15]  (
+	.O(MMU_IN_c_c[15]),
+	.I0(MMU_IN[15])
+);
+  OBUF \MMU_OUT_Z[12]  (
+	.O(MMU_OUT[12]),
+	.I0(MMU_IN_c_c[12])
+);
+  OBUF \MMU_OUT_Z[13]  (
+	.O(MMU_OUT[13]),
+	.I0(MMU_IN_c_c[13])
+);
+  OBUF \MMU_OUT_Z[14]  (
+	.O(MMU_OUT[14]),
+	.I0(MMU_IN_c_c[14])
+);
+  OBUF \MMU_OUT_Z[15]  (
+	.O(MMU_OUT[15]),
+	.I0(MMU_IN_c_c[15])
+);
+  IBUF IORQ_Z (
+	.O(IORQ_c),
+	.I0(IORQ)
+);
+  OBUF CSROML_Z (
+	.O(CSROML),
+	.I0(op_ge_un24_csromh_i_c)
+);
+  OBUF CSROMH_Z (
+	.O(CSROMH),
+	.I0(un12_csromh_i_c)
+);
+  OBUF CSRAM_Z (
+	.O(CSRAM),
+	.I0(MMU_IN_i_c[15])
+);
+  OBUF CSUART_Z (
+	.O(CSUART),
+	.I0(GND)
+);
+  OBUF CSCTC_Z (
+	.O(CSCTC),
+	.I0(GND)
+);
+  OBUF CSPIO_Z (
+	.O(CSPIO),
+	.I0(N_181_i_0_c)
+);
+  AND2 un26_cspio (
+	.O(N_181),
+	.I0(op_lt_un11_cspio),
+	.I1(N_184)
+);
+  AND2 \un26_cspio.G_184  (
+	.O(N_184),
+	.I0(MMU_IN_c[4]),
+	.I1(IORQ_i)
+);
+  INV \MMU_IN_i[6]  (
+	.O(MMU_IN_i_0[6]),
+	.I0(MMU_IN_c[6])
+);
+  INV \MMU_IN_i[5]  (
+	.O(MMU_IN_i_0[5]),
+	.I0(MMU_IN_c[5])
+);
+  INV \MMU_IN_i[3]  (
+	.O(MMU_IN_i_0[3]),
+	.I0(MMU_IN_c[3])
+);
+  INV \MMU_IN_i[2]  (
+	.O(MMU_IN_i_0[2]),
+	.I0(MMU_IN_c[2])
+);
+  INV \MMU_IN_i[14]  (
+	.O(MMU_IN_i_0[14]),
+	.I0(MMU_IN_c_c[14])
+);
+  INV \MMU_IN_i[13]  (
+	.O(MMU_IN_i_0[13]),
+	.I0(MMU_IN_c_c[13])
+);
+  AND2 un12_csromh_Z (
+	.O(un12_csromh),
+	.I0(op_lt_un11_csromh),
+	.I1(op_ge_un24_csromh_i_c)
+);
+  AND2 G_116 (
+	.O(N_117),
+	.I0(MMU_IN_i_0[14]),
+	.I1(MMU_IN_i_0[13])
+);
+  AND2 G_118 (
+	.O(op_ge_un24_csromh),
+	.I0(MMU_IN_i_c[15]),
+	.I1(N_117)
+);
+  AND2 G_179 (
+	.O(op_lt_un11_csromh),
+	.I0(MMU_IN_i_c[15]),
+	.I1(MMU_IN_i_0[14])
+);
+  AND2 G_49 (
+	.O(N_51),
+	.I0(MMU_IN_i_0[3]),
+	.I1(MMU_IN_i_0[2])
+);
+  AND2 G_53 (
+	.O(N_54),
+	.I0(N_51),
+	.I1(MMU_IN_i_0[5])
+);
+  AND2 G_55 (
+	.O(N_56),
+	.I0(N_54),
+	.I1(MMU_IN_i_0[6])
+);
+  AND2 G_57 (
+	.O(op_lt_un11_cspio),
+	.I0(N_56),
+	.I1(MMU_IN_i_0[7])
+);
+  INV N_181_i (
+	.O(N_181_i_0_c),
+	.I0(N_181)
+);
+  INV \MMU_IN_i[15]  (
+	.O(MMU_IN_i_c[15]),
+	.I0(MMU_IN_c_c[15])
+);
+  INV un12_csromh_i (
+	.O(un12_csromh_i_c),
+	.I0(un12_csromh)
+);
+  INV op_ge_un24_csromh_i (
+	.O(op_ge_un24_csromh_i_c),
+	.I0(op_ge_un24_csromh)
+);
+  INV IORQ_i_Z (
+	.O(IORQ_i),
+	.I0(IORQ_c)
+);
+  INV \MMU_IN_i[7]  (
+	.O(MMU_IN_i_0[7]),
+	.I0(MMU_IN_c[7])
+);
+  assign VCC = 1'b1;
+endmodule /* ADDRESS_DECODER */
+
