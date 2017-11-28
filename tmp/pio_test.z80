@@ -1,0 +1,193 @@
+;
+;  DZ80 V3.4.1 Z80 Disassembly of build/pio_test.bin
+;  2017/10/23 14:35
+;
+	org	0x0
+;
+X0000:	jp	X0100
+;
+X0003:	rst	0x38
+X0004:	rst	0x38
+;
+	org	0x38
+;
+	jp	X0100
+;
+	org	0x100
+;
+X0100:	ld	sp,Xffff
+	call	X0200
+	jp	X0109
+;
+X0109:	halt
+;
+	rst	0x38
+;
+	org	0x200
+;
+X0200:	ld	b,0x0
+	push	bc
+	xor	a
+	push	af
+	inc	sp
+	ld	hl,X0003
+	push	hl
+	ld	l,0x0
+	push	hl
+	call	X0255
+	pop	af
+	pop	af
+	inc	sp
+	ld	hl,X0000
+	push	hl
+	ld	l,0x0
+	push	hl
+	call	X028e
+	pop	af
+	pop	af
+	pop	bc
+X0220:	push	bc
+	push	bc
+	inc	sp
+	ld	hl,X0000
+	push	hl
+	call	X02e0
+	pop	af
+	inc	sp
+	pop	bc
+	ld	a,b
+	cpl
+	ld	b,a
+	jr	X0220
+;
+	ld	hl,X0002
+	add	hl,sp
+	ld	c,(hl)
+	ld	b,0x0
+	ld	hl,X4200
+	add	hl,bc
+	ld	iy,X0003
+	add	iy,sp
+	ld	a,(iy+0x0)
+	ld	(hl),a
+	ret
+;
+	ld	hl,X0002
+	add	hl,sp
+	ld	c,(hl)
+	ld	b,0x0
+	ld	hl,X4200
+	add	hl,bc
+	ld	l,(hl)
+	ret
+;
+X0255:	push	ix
+	ld	ix,X0000
+	add	ix,sp
+	ld	a,(ix+0x6)
+	rrca
+	rrca
+	and	0xc0
+	or	0xf
+	ld	d,a
+	ld	e,(ix+0x4)
+	inc	e
+	inc	e
+	ld	l,e
+	ld	h,0x0
+	ld	bc,X4200
+	add	hl,bc
+	ld	(hl),d
+	ld	a,(ix+0x6)
+	sub	0x3
+	jr	nz,X028b
+	ld	a,(ix+0x7)
+	or	a
+	jr	nz,X028b
+	ld	c,(ix+0x8)
+	ld	d,0x0
+	ld	hl,X4200
+	add	hl,de
+	ld	(hl),c
+X028b:	pop	ix
+	ret
+;
+X028e:	ld	hl,X0004
+	add	hl,sp
+	ld	a,(hl)
+	rlca
+	rlca
+	rlca
+	rlca
+	and	0xf0
+	or	0x7
+	ld	c,a
+	ld	hl,X0002
+	add	hl,sp
+	ld	e,(hl)
+	inc	e
+	inc	e
+	ld	d,0x0
+	ld	hl,X4200
+	add	hl,de
+	ld	(hl),c
+	ret
+;
+	push	ix
+	ld	ix,X0000
+	add	ix,sp
+	ld	a,(ix+0x6)
+	or	0x17
+	ld	d,a
+	ld	e,(ix+0x4)
+	inc	e
+	inc	e
+	ld	l,e
+	ld	h,0x0
+	ld	bc,X4200
+	add	hl,bc
+	ld	(hl),d
+	ld	c,(ix+0x8)
+	ld	d,0x0
+	ld	hl,X4200
+	add	hl,de
+	ld	(hl),c
+	pop	ix
+	ret
+;
+	ld	hl,X0002
+	add	hl,sp
+	ld	c,(hl)
+	ld	b,0x0
+	ld	hl,X4200
+	add	hl,bc
+	ld	l,(hl)
+	ret
+;
+X02e0:	ld	hl,X0004
+	add	hl,sp
+	ld	c,(hl)
+	ld	hl,X0002
+	add	hl,sp
+	ld	e,(hl)
+	ld	d,0x0
+	ld	hl,X4200
+	add	hl,de
+	ld	(hl),c
+	ret
+;
+	rst	0x38
+;
+;	Miscellaneous equates
+;
+;  These are addresses referenced in the code but
+;  which are in the middle of a multibyte instruction
+;  or are addresses outside the initialized space
+;
+X0002	equ	0x2
+X4200	equ	0x4200
+Xffff	equ	0xffff
+;
+	end
+;
+

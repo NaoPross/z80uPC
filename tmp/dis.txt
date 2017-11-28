@@ -1,0 +1,224 @@
+mkdir -p build
+
+sdcc -mz80 --allow-unsafe-read -I . -I ../../arch/include -I ../../drivers/include -DDEBUG -c main.c -o build/main.rel
+sdcc -mz80 --no-std-crt0 build/crt0.rel -L ../../drivers/build -l drivers.a -pedantic  build/main.rel -o build/pio_test.hex
+makebin -s 8192 -yo 1 build/pio_test.hex build/pio_test.bin
+#dz80 -b -n build/pio_test.bin
+r2 -a z80 build/pio_test.bin -A \
+-c 'afr main 0x200; \
+	pd 0x10; \
+	s 0x100; \
+	pd 10; \
+	s 0x200; \
+	pd 0xa0' \
+
+/ (fcn) fcn.00000000 13
+|   fcn.00000000 ();
+|              ; XREFS: DATA 0x00000202  DATA 0x00000204  DATA 0x00000209  DATA 0x0000020c  DATA 0x00000216  DATA 0x00000219  DATA 0x00000220  DATA 0x00000221  
+|              ; XREFS: DATA 0x00000226  DATA 0x00000256  
+\       ,=< 0x00000000      c30001         jp loc.00000100
+        |   0x00000003      ff             rst 0x38
+        |   0x00000004      ff             rst 0x38
+        |   0x00000005      ff             rst 0x38
+        |   0x00000006      ff             rst 0x38
+        |   0x00000007      ff             rst 0x38
+        |   0x00000008      ff             rst 0x38
+        |   0x00000009      ff             rst 0x38
+        |   0x0000000a      ff             rst 0x38
+        |   0x0000000b      ff             rst 0x38
+        |   0x0000000c      ff             rst 0x38
+        |   0x0000000d      ff             rst 0x38
+        |   0x0000000e      ff             rst 0x38
+        |   0x0000000f      ff             rst 0x38
+        |   0x00000010      ff             rst 0x38
+        |   0x00000011      ff             rst 0x38
+|- loc.00000100 10
+|   loc.00000100 ();
+|              ; JMP XREF from 0x00000000 (fcn.00000000)
+|              ; JMP XREF from 0x00000106 (loc.00000100)
+|           0x00000100      31ffff         ld sp, 0xffff
+|           0x00000103      cd0002         call main
+|       ,=< 0x00000106      c30901         jp 0x0109
+|       |      ; JMP XREF from 0x00000106 (loc.00000100)
+\       `-> 0x00000109      76             halt
+            0x0000010a      ff             rst 0x38
+            0x0000010b      ff             rst 0x38
+            0x0000010c      ff             rst 0x38
+            0x0000010d      ff             rst 0x38
+            0x0000010e      ff             rst 0x38
+            0x0000010f      ff             rst 0x38
+/ (fcn) main 50
+|   main ();
+|              ; CALL XREF from 0x00000103 (loc.00000100)
+|              ; CALL XREF from 0x00000200 (main)
+|           0x00000200      0600           ld b, 0x00
+|           0x00000202      c5             push bc
+|           0x00000203      af             xor a
+|           0x00000204      f5             push af
+|           0x00000205      33             inc sp
+|           0x00000206      210300         ld hl, 0x0003
+|           0x00000209      e5             push hl
+|           0x0000020a      2e00           ld l, 0x00
+|           0x0000020c      e5             push hl
+|           0x0000020d      cd5502         call fcn.00000255
+|           0x00000210      f1             pop af
+|           0x00000211      f1             pop af
+|           0x00000212      33             inc sp
+|           0x00000213      210000         ld hl, 0x0000
+|           0x00000216      e5             push hl
+|           0x00000217      2e00           ld l, 0x00
+|           0x00000219      e5             push hl
+|           0x0000021a      cd8e02         call fcn.0000028e
+|           0x0000021d      f1             pop af
+|           0x0000021e      f1             pop af
+\           0x0000021f      c1             pop bc
+|              ; JMP XREF from 0x00000230 (main)
+|       .-> 0x00000220      c5             push bc
+|       |   0x00000221      c5             push bc
+|       |   0x00000222      33             inc sp
+|       |   0x00000223      210000         ld hl, 0x0000
+|       |   0x00000226      e5             push hl
+|       |   0x00000227      cde002         call fcn.000002e0
+|       |   0x0000022a      f1             pop af
+|       |   0x0000022b      33             inc sp
+|       |   0x0000022c      c1             pop bc
+|       |   0x0000022d      78             ld a, b
+|       |   0x0000022e      2f             cpl
+|       |   0x0000022f      47             ld b, a
+|       `=< 0x00000230      18ee           jr 0xee
+            0x00000232      210200         ld hl, 0x0002
+            0x00000235      39             add hl, sp
+            0x00000236      4e             ld c, [hl]
+            0x00000237      0600           ld b, 0x00
+            0x00000239      210042         ld hl, 0x4200
+            0x0000023c      09             add hl, bc
+            0x0000023d      fd210300       ld iy, 0x0003
+            0x00000241      fd39           add iy, sp
+            0x00000243      fd7e00         ld a, [iy+0x00]
+            0x00000246      77             ld [hl], a
+            0x00000247      c9             ret
+            0x00000248      210200         ld hl, 0x0002
+            0x0000024b      39             add hl, sp
+            0x0000024c      4e             ld c, [hl]
+            0x0000024d      0600           ld b, 0x00
+            0x0000024f      210042         ld hl, 0x4200
+            0x00000252      09             add hl, bc
+            0x00000253      6e             ld l, [hl]
+            0x00000254      c9             ret
+/ (fcn) fcn.00000255 8
+|   fcn.00000255 ();
+|              ; CALL XREF from 0x0000020d (main)
+|           0x00000255      dde5           push ix
+|           0x00000257      dd210000       ld ix, 0x0000
+\           0x0000025b      dd39           add ix, sp
+            0x0000025d      dd7e06         ld a, [ix+0x06]
+            0x00000260      0f             rrca
+            0x00000261      0f             rrca
+            0x00000262      e6c0           and 0xc0
+            0x00000264      f60f           or 0x0f
+            0x00000266      57             ld d, a
+            0x00000267      dd5e04         ld e, [ix+0x04]
+            0x0000026a      1c             inc e
+            0x0000026b      1c             inc e
+            0x0000026c      6b             ld l, e
+            0x0000026d      2600           ld h, 0x00
+            0x0000026f      010042         ld bc, 0x4200
+            0x00000272      09             add hl, bc
+            0x00000273      72             ld [hl], d
+            0x00000274      dd7e06         ld a, [ix+0x06]
+            0x00000277      d603           sub 0x03
+        ,=< 0x00000279      2010           jr nz, 0x10
+        |   0x0000027b      dd7e07         ld a, [ix+0x07]
+        |   0x0000027e      b7             or a
+       ,==< 0x0000027f      200a           jr nz, 0x0a
+       ||   0x00000281      dd4e08         ld c, [ix+0x08]
+       ||   0x00000284      1600           ld d, 0x00
+       ||   0x00000286      210042         ld hl, 0x4200
+       ||   0x00000289      19             add hl, de
+       ||   0x0000028a      71             ld [hl], c
+       ``-> 0x0000028b      dde1           pop ix
+            0x0000028d      c9             ret
+/ (fcn) fcn.0000028e 29
+|   fcn.0000028e ();
+|              ; CALL XREF from 0x0000021a (main)
+|           0x0000028e      210400         ld hl, 0x0004
+|           0x00000291      39             add hl, sp
+|           0x00000292      7e             ld a, [hl]
+|           0x00000293      07             rlca
+|           0x00000294      07             rlca
+|           0x00000295      07             rlca
+|           0x00000296      07             rlca
+|           0x00000297      e6f0           and 0xf0
+|           0x00000299      f607           or 0x07
+|           0x0000029b      4f             ld c, a
+|           0x0000029c      210200         ld hl, 0x0002
+|           0x0000029f      39             add hl, sp
+|           0x000002a0      5e             ld e, [hl]
+|           0x000002a1      1c             inc e
+|           0x000002a2      1c             inc e
+|           0x000002a3      1600           ld d, 0x00
+|           0x000002a5      210042         ld hl, 0x4200
+|           0x000002a8      19             add hl, de
+|           0x000002a9      71             ld [hl], c
+\           0x000002aa      c9             ret
+            0x000002ab      dde5           push ix
+            0x000002ad      dd210000       ld ix, 0x0000
+            0x000002b1      dd39           add ix, sp
+            0x000002b3      dd7e06         ld a, [ix+0x06]
+            0x000002b6      f617           or 0x17
+            0x000002b8      57             ld d, a
+            0x000002b9      dd5e04         ld e, [ix+0x04]
+            0x000002bc      1c             inc e
+            0x000002bd      1c             inc e
+            0x000002be      6b             ld l, e
+            0x000002bf      2600           ld h, 0x00
+            0x000002c1      010042         ld bc, 0x4200
+            0x000002c4      09             add hl, bc
+            0x000002c5      72             ld [hl], d
+            0x000002c6      dd4e08         ld c, [ix+0x08]
+            0x000002c9      1600           ld d, 0x00
+            0x000002cb      210042         ld hl, 0x4200
+            0x000002ce      19             add hl, de
+            0x000002cf      71             ld [hl], c
+            0x000002d0      dde1           pop ix
+            0x000002d2      c9             ret
+            0x000002d3      210200         ld hl, 0x0002
+            0x000002d6      39             add hl, sp
+            0x000002d7      4e             ld c, [hl]
+            0x000002d8      0600           ld b, 0x00
+            0x000002da      210042         ld hl, 0x4200
+            0x000002dd      09             add hl, bc
+            0x000002de      6e             ld l, [hl]
+            0x000002df      c9             ret
+/ (fcn) fcn.000002e0 18
+|   fcn.000002e0 ();
+|              ; CALL XREF from 0x00000227 (main)
+|           0x000002e0      210400         ld hl, 0x0004
+|           0x000002e3      39             add hl, sp
+|           0x000002e4      4e             ld c, [hl]
+|           0x000002e5      210200         ld hl, 0x0002
+|           0x000002e8      39             add hl, sp
+|           0x000002e9      5e             ld e, [hl]
+|           0x000002ea      1600           ld d, 0x00
+|           0x000002ec      210042         ld hl, 0x4200
+|           0x000002ef      19             add hl, de
+|           0x000002f0      71             ld [hl], c
+\           0x000002f1      c9             ret
+            0x000002f2      ff             rst 0x38
+            0x000002f3      ff             rst 0x38
+            0x000002f4      ff             rst 0x38
+            0x000002f5      ff             rst 0x38
+            0x000002f6      ff             rst 0x38
+            0x000002f7      ff             rst 0x38
+            0x000002f8      ff             rst 0x38
+            0x000002f9      ff             rst 0x38
+            0x000002fa      ff             rst 0x38
+            0x000002fb      ff             rst 0x38
+            0x000002fc      ff             rst 0x38
+            0x000002fd      ff             rst 0x38
+            0x000002fe      ff             rst 0x38
+            0x000002ff      ff             rst 0x38
+            0x00000300      ff             rst 0x38
+            0x00000301      ff             rst 0x38
+            0x00000302      ff             rst 0x38
+ -- Change the graph block definition with graph.callblocks, graph.jmpblocks, graph.flagblocks[0x00000200]> 
