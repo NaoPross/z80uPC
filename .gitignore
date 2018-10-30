@@ -11,48 +11,11 @@
 doc/**/*.aux
 doc/**/*.log
 
-## sw related
-# autotools
-sw/programmer/linux/**/makefile
-sw/programmer/linux/**/makefile.in
-sw/programmer/linux/**/ar-lib
-sw/programmer/linux/**/mdate-sh
-sw/programmer/linux/**/py-compile
-sw/programmer/linux/**/test-driver
-sw/programmer/linux/**/ylwrap
-sw/programmer/linux/**/autom4te.cache
-sw/programmer/linux/**/autoscan.log
-sw/programmer/linux/**/autoscan-*.log
-sw/programmer/linux/**/aclocal.m4
-sw/programmer/linux/**/compile
-sw/programmer/linux/**/config.guess
-sw/programmer/linux/**/config.h.in
-sw/programmer/linux/**/config.log
-sw/programmer/linux/**/config.status
-sw/programmer/linux/**/config.sub
-sw/programmer/linux/**/configure
-sw/programmer/linux/**/configure.scan
-sw/programmer/linux/**/depcomp
-sw/programmer/linux/**/install-sh
-sw/programmer/linux/**/missing
-sw/programmer/linux/**/stamp-h*
-sw/programmer/linux/**/build-aux
-sw/programmer/linux/**/ltmain.sh
-sw/programmer/linux/**/texinfo.tex
-sw/programmer/linux/**/.deps
-
 # binaries
-sw/**/*.hex
-sw/**/*.bin
-sw/**/*.o
-sw/**/*.a
-
-
-# sdcc compiler output
-sw/**/build/
-
-# custom
-various/*
+sw*/**/*.hex
+sw*/**/*.bin
+sw*/**/*.o
+sw*/**/*.a
 
 # sublime
 *.sublime-project
