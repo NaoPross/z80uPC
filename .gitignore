@@ -17,6 +17,10 @@ sw*/**/*.bin
 sw*/**/*.o
 sw*/**/*.a
 
+sw*/**/CMakeFiles
+sw*/**/CMakeCache.txt
+sw*/**/cmake_install.cmake
+
 # sublime
 *.sublime-project
 *.sublime-workspace
