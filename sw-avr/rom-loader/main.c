@@ -1,11 +1,10 @@
 #include <avr/io.h>
+#include <util/delay.h>
+#include <stdint.h>
+
 
 #include "usart.h"
 #include "pinmap.h"
-
-// TODO: remove
-#include <util/delay.h>
-
 
 inline void io_init(void)
 {
@@ -19,19 +18,48 @@ inline void io_init(void)
     DATA_DDR = 0xFF;
 }
 
+inline void set_addr(uint16_t addr)
+{
+    uint8_t i;
+
+    // disable 74LS259 chips
+    ADDRL_PORT &= ~(_BV(ADDRL_bitE));
+    ADDRH_PORT &= ~(_BV(ADDRH_bitE));
+
+    for (i = 0; i < 8; i++) {
+        ADDRL_PORT &= ~(0x7<<ADDRL_bitA0);
+        ADDRL_PORT |= (i<<ADDRL_bitA0);
+
+        if (bit_is_set(addr, i))
+            ADDRL_PORT |= _BV(ADDRL_bitD);
+        else
+            ADDRL_PORT &= ~(_BV(ADDRL_bitD));
+
+        if (bit_is_set(addr, i+8))
+            ADDRH_PORT |= _BV(ADDRH_bitD);
+        else
+            ADDRH_PORT &= ~(_BV(ADDRH_bitD));
+    }
+    
+    // enable 74LS259 chips
+    ADDRL_PORT |= _BV(ADDRL_bitE);
+    ADDRH_PORT |= _BV(ADDRH_bitE);
+}
+
 int main(void)
 {
+    uint16_t addr = 0;
+
     io_init();
     usart_init();
 
-    // TODO: remove
-    DATA_PORT |= _BV(1);
-
     while (1) {
-        DATA_PORT ^= _BV(1);
-        _delay_ms(500);
+        DATA_PORT = usart_recv();
+        set_addr(addr);
 
-        usart_send('c');
+        _delay_ms(1);
+
+        addr++;
     }
 
     return 0;
