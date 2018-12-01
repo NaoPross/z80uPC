@@ -17,6 +17,8 @@ sw*/**/*.bin
 sw*/**/*.o
 sw*/**/*.a
 
+# CMake 
+sw-linux/rom-loader/Makefile
 sw*/**/CMakeFiles
 sw*/**/CMakeCache.txt
 sw*/**/cmake_install.cmake
