@@ -55,7 +55,7 @@ serial::serial(const std::string& port, speed_t baud)
 serial::~serial()
 {
     if (m_fd > 0)
-        close(m_fd);
+        ::close(m_fd);
 }
 
 int serial::write(const std::string& data) const
